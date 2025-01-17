@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+    {% seo %}
+  </head>
+  <body>
+        <header>
+      <div class="container">
+        <a id="a-title" href="{{ '/' | relative_url }}">
+          <h1>{{ site.title | default: site.github.repository_name }}</h1>
+        </a>
+        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+        <section id="pages">
+          {%- assign homepage = site.pages | where: "title", "Home" | first -%}
+          <a href="{{ homepage.url }}">{{homepage.title | escape}}</a> &nbsp
+          {%- assign article = site.pages | where: "title", "Blog Articles" | first -%}
+          <a href="{{ article.url }}">{{article.title | escape}}</a> &nbsp
+          {%- assign publication = site.pages | where: "title", "Publications" | first -%}
+          <a href="{{ publication.url }}">{{publication.title | escape}}</a> &nbsp
+          {%- assign aboutme = site.pages | where: "title", "About Me" | first -%}
+          <a href="{{ aboutme.url }}">{{aboutme.title | escape}}</a> &nbsp
+          {%- assign contact = site.pages | where: "title", "Contacts" | first -%}
+          <a href="{{ contact.url }}">{{contact.title | escape}}</a> &nbsp
+        </section>
+      </div>
+
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        {{ content }}
+      </section>
+    </div>
+  </body>
+</html>
