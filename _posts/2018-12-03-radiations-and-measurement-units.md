@@ -7,10 +7,10 @@ layout: post
 guid: 'http://localhost:8080/?p=494'
 permalink: /2018/12/03/radiations-and-measurement-units/
 categories:
-    - 'Math&amp;Physics'
+    - 'Math&amp;physics'
 tags:
     - measurement
-    - Physics
+    - physics
     - radiation
     - radioactive
 ---

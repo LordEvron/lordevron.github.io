@@ -7,15 +7,15 @@ layout: post
 guid: 'http://presspi/?p=209'
 permalink: /2018/02/04/inertial-frames-in-general-relativity/
 categories:
-    - 'Math&amp;Physics'
+    - 'Math&amp;physics'
 tags:
     - Einstein
     - frames
-    - Physics
+    - physics
     - relativity
 ---
 
-Today I don’t want to talk about code, but about one of my other passions: Physics…I want to start this new thread with something relative basic: the concept of **inertial frame of reference**. In physics courses the importance of such concept is often underestimated by teachers. The concept of inertial frames is not only important in Newtonian Mechanics, but even more important in Einstein relativity.  Indeed such basic concept has been one of the leading cause that has lead Einstein and Minkowski to come up with the theory of relativity. But lets start from the begin…
+Today I don’t want to talk about code, but about one of my other passions: physics…I want to start this new thread with something relative basic: the concept of **inertial frame of reference**. In physics courses the importance of such concept is often underestimated by teachers. The concept of inertial frames is not only important in Newtonian Mechanics, but even more important in Einstein relativity.  Indeed such basic concept has been one of the leading cause that has lead Einstein and Minkowski to come up with the theory of relativity. But lets start from the begin…
 
 In classical mechanics, an inertial frame of reference is defined as a frame of reference “whose net force acting upon it is zero”: in other words it is “not accelerating” . This simply means that the frame is either stationary OR moving at constant velocity in a straight line (indeed moving in a curved line will result an acceleration and thus not being inertial)… So why are so important in classical mechanics? Well because, you use them as reference to measure accelerations of other frames. Furthermore is worth to remark that, since the inertial frames do not accelerate, this automatically imply that all the inertial frames are not accelerating within each other. So if from one reference frame you find that another frame is accelerating, this means that one of the two is not inertial.. Also Newton’s second law ***F=ma*** is only true in inertial frame of reference. The test for showing if a frame of reference is inertial or not is pretty simple. Pick up an object and release it: apart from the gravity, no other forces should act on the objects. In case the frame is not inertial (e.g. a car going around in circle) then the Newton second law should appear violated (e.g. the driver being “pushed/accelerated” sideways from no force). All this concepts are basic so nothing new until now…
 

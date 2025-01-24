@@ -11,11 +11,11 @@ yasr_overall_rating:
 yasr_review_type:
     - Product
 categories:
-    - 'Math&amp;Physics'
+    - 'Math&amp;physics'
 tags:
     - fusion
     - nuclear
-    - Physics
+    - physics
     - star
     - sun
 ---

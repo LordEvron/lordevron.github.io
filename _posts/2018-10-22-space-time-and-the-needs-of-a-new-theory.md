@@ -7,9 +7,9 @@ layout: post
 guid: 'http://localhost:8080/?p=477'
 permalink: /2018/10/22/space-time-and-the-needs-of-a-new-theory/
 categories:
-    - 'Math&amp;Physics'
+    - 'Math&amp;physics'
 tags:
-    - Physics
+    - physics
     - relativity
     - universe
 ---

@@ -6,7 +6,7 @@ author: Lord_evron
 layout: default
 image: /assets/images/2018/01/programmer-1-e1516723517503.jpg
 ---
-I have studied to master the microverse (PhD in Nano Technologies after MSc. in Electronics Engineering, yeah you read that right) and ended up wrangled of ones and zeros (programmer, data scientist, architect, and recently, SecOps ninja). 
+I have studied to master the nanoverse (PhD in Nano Technologies after MSc. in Electronics Engineering, yeah you read that right) and ended up wrangled of ones and zeros (programmer, data scientist, architect, and recently, SecOps ninja). 
 
 For me the real adrenaline rush comes from bending silicon to my will, a hardware hacker at heart, thriving in the Software ecosystems.
 

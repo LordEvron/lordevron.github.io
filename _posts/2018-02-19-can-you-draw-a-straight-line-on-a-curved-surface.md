@@ -7,10 +7,10 @@ layout: post
 guid: 'http://localhost:8080/?p=305'
 permalink: /2018/02/19/can-you-draw-a-straight-line-on-a-curved-surface/
 categories:
-    - 'Math&amp;Physics'
+    - 'Math&amp;physics'
 tags:
     - Curvature
-    - Physics
+    - physics
     - relativity
 ---
 
