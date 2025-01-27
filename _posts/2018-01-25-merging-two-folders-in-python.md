@@ -15,13 +15,11 @@ tags:
     - python
 ---
 
-Recently i wanted to merge two folders in python and overwrite existing files in the destination folders. *Shutil* library offers a lot of high level file handling functions, however, noone of them offers offer the merging.  In particular the function `shutil.``copytree()` copy recursively the source three in the destination tree, but it requires that the destination folder must not exist.
+Recently I wanted to merge two folders in python and overwrite existing files in the destination folders. *Shutil* library offers a lot of high level file handling functions, however, noone of them offers offer the merging.  In particular the function `shutil.``copytree()` copy recursively the source three in the destination tree, but it requires that the destination folder must not exist.
 
 In order to merge folders, here there is a small function that does exactly that:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-
-
+```
 #recursively merge two folders including subfolders
 def mergefolders(root_src_dir, root_dst_dir):
     for src_dir, dirs, files in os.walk(root_src_dir):
@@ -35,7 +33,4 @@ def mergefolders(root_src_dir, root_dst_dir):
                 os.remove(dst_file)
             shutil.copy(src_file, dst_dir)
 
-
 ```
-
-</div>
