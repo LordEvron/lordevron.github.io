@@ -10,21 +10,29 @@ categories:
     - Technical
 tags:
     - linux
-    - Message
-    - MOTD
-    - shell
-    - ssh
+    - technology
+    - bash
+    - code
 ---
 
-Recently I wanted to add a message of the day (MOTD) to my RPI. Basically every time I login i want to see the some info as shown in the picture.
+I recently decided to implement a message of the day (MOTD) on my Raspberry Pi.  
+My goal was to have certain information displayed upon each login, similar to what's shown in the image.
 
-![](http://localhost:8080/wp-content/uploads/2018/02/Message-of-the-Day-1.jpg)
+<div class="image-container">
+  <img src="{{ site.baseurl }}/assets/images/2018/02/Message-of-the-Day-1.jpg" 
+       alt="Message of the Day" 
+       class="img-responsive" 
+       style="display: block; margin: 0 auto; max-width: 700px;">
+        <figcaption class="caption" 
+              style="display: block; text-align: center; margin-top: 10px;">
+    Message of the Day
+  </figcaption>
+</div>
 
-The way how to do that is to add some code to the “*~/bash\_profile*” file, so it is executed when an interactive login shell is launched (like when you ssh into it).
+This can be accomplished by adding commands to the `~/bash\_profile` file, which is executed when an interactive login shell is started (like when you SSH into the Pi).
 
-I found one example on the RPI website, but was showing the temperatures in “Fahrenheit” degree! So i quickly changed that to show the degree in “Celsius”. So I fixed few other things in the script (such as locations) but it was still failing to get the temperature! After some quick debugging, i discovered the the regex in the “SED” function was not parsing the minus sign in front of the weather forecast string (And in Oslo we are often below 0\*C). So I fixed also that.. Here there is the final code.. Just append it to you “*~/bash\_profile*” and should work…
-
-```
+ I found a sample script on the Raspberry Pi website, but it displayed temperatures in Fahrenheit. I quickly converted it to Celsius, made a few other adjustments (like location settings), but it still failed to retrieve the temperature. After some debugging, I discovered that the regular expression in the `sed` command wasn't correctly parsing the minus sign for sub-zero temperatures (a common occurrence in Oslo!).  I've fixed that as well.  The final, working script is below. Just append it to your `~/.bash_profile` file.
+```bash
 let upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
 let secs=$((${upSeconds}%60))
 let mins=$((${upSeconds}/60%60))
@@ -47,4 +55,6 @@ echo "$(tput setaf 2)
    '~ .~~~. ~'    $(tput setaf 3)Weather............: $(tput sgr0)`curl -s "http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=EUR|NO|OSLO|OSLO|" | sed -n '/Currently:/ s/.*: \(.*\): \(.[0-9]*\)\([CF]\).*/\2°\3, \1/p'`$(tput setaf 1)
        '~'        $(tput setaf 3)CPU Temp...........: $(tput sgr0)`awk '{printf("%.1f °C\n",$1*1.0/1e3)}' /sys/class/thermal/thermal_zone0/temp`
 $(tput sgr0)"
+
 ```
+

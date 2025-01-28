@@ -15,30 +15,24 @@ tags:
     - wordpress
 ---
 
-Today I wanted to restructure this website, by excluding the Articles from Blog Section… I using worpress (Yeah, I am Lazy..) . So It turns out there is an easy solution for that:
+I wanted to restructure my WordPress site today, specifically to remove certain categories (my "Articles") from the main blog page.  Turns out, it's surprisingly simple:
 
-1\. Go on Posts-&gt;Categories .
+1. Navigate to Posts → Categories.
+2. Hover over the categories you want to hide and note the ID in the URL that appears.
+3. With the category IDs in hand, edit your theme's functions.php file (Appearance → Editor).
+4. Add the following PHP snippet to the end of the file, replacing 21 and 29 with the IDs of the categories you want to exclude.  To exclude additional categories, simply add their IDs, comma-separated, to the list.
 
-2\. Hover the mouse over the categories that you want to hide from the main blog page and look at the ID in the shown URL.
-
-![](http://localhost:8080/wp-content/uploads/2018/02/Category-wordpress-300x167.jpg)
-
-3 Now that you have the category ID you can edit the PHP file.. Go on Apperance–&gt;Editor, and locate the “***functions.php”*** File of your Template.
-
-4\. Add this line of code in the end, substituting the categories that you want to exclude. In the example below i am excluding the categories 21 and 29. You can exclude more categories by adding more comma separated values.
-
-<div class="wp-block-syntaxhighlighter-code ">```
-
-#function exclude_category( $query ) {
+```php
+function exclude_category( $query ) {
   if ( $query->is_home() && $query->is_main_query() ) {
-        $query->set( 'cat', '-21, -29' );
-        }
+    $query->set( 'cat', '-21, -29' );
   }
+}
 add_action( 'pre_get_posts', 'exclude_category' );
 ```
 
-</div>5\. Save and reload… The selected categories now should not appear anymore on the main blog page.
+Save the changes and refresh your site. The specified categories should now be hidden from your main blog page.
 
-ExtraTip: If you write *21, 29 (without the minus sign)* then you will ONLY show the categories 21 and 29 in the main page (hiding all the others).
+Bonus Tip:  If you list the category IDs without the minus sign (e.g., 21, 29), your main page will only display posts from those categories, effectively hiding everything else.
 
-I hope that was useful!
+Hopefully this helps!

@@ -1,6 +1,6 @@
 ---
 id: 254
-title: 'Flash code to ESP8266 ESP-12 Module &#8211; Step-by-step guide&#8230;'
+title: 'Flash code to ESP8266 ESP-12 Module. Step-by-step guide'
 date: '2018-02-08T20:57:34+01:00'
 author: Lord_evron
 layout: post

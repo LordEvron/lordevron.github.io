@@ -9,39 +9,47 @@ permalink: /2018/02/12/template-classes-in-c/
 categories:
     - Technical
 tags:
-    - C++
+    - c++
     - code
-    - template
+    - technology
 ---
 
-C++ is one of the most powerful programming language in the world. You can practically do everything with it. Furthermore you keep full control of the memory and you can literally address each single bit of it. Of course with great power comes great responsibilities and many programmers often have problems to deal with it (that is why crap languages like java are very popular…). Anyway, today i want to show some example of advanced usage of c++ templates.
+C++ is arguably the most powerful among programming languages, offering unparalleled control and the ability to manipulate memory at the bit level.  
+This power, however, demands responsibility, a challenge many developers find daunting (hence the unfortunate popularity of languages like Java). 
+Today, I'll delve into the advanced realm of C++ templates.
 
-Templates are helpful in case you want to write functions that accept generic types as arguments. But lets make a step back. C++ is a type safe language, meaning that you need to declare the type of the variable before you can actually use it. Not all the languages are type safe. For example in python you can type “a=10” without declaring if “a” is a int or a double.  
-Type-safety is in general a good thing because the compiler can also do a bunch of checks to help avoid bug in your applications. However sometimes we are writting functions that can work with multiple types such as int, float, double. For example, a function that return the max between two numbers. The implementation of that function is the same regardless of the numeric type input. So how can we write one function that works for different types such as “int”,”float”, “double”…? Templates!
+Templates provide a mechanism for writing functions that accept generic types.  
+C++ is statically typed, requiring explicit type declarations for variables. 
+This type safety is generally a good thing, enabling the compiler to catch potential bugs.  
+However, it can present a hurdle when creating functions that operate on multiple types, like `int`, `float`, and `double`.  
+Consider a function to determine the maximum of two numbers; the logic remains consistent regardless of the input type.  
+How then can we write a single function adaptable to various numeric types?  The answer: templates!
 
-In the easiest usage you can just easily write this:
+A basic template implementation looks like this:
 
-<div class="wp-block-syntaxhighlighter-code ">```
+```c++
 
 //return the max between two numbers
 template <class myNum>
 myNum GetMax (myNum a, myNum b) {
  return (a>b?a:b);
 }
+
 ```
 
-</div>then in order to use it you can just write:
+then in order to use it you can just write:
 
-<div class="wp-block-syntaxhighlighter-code ">```
+```c++
 
 float x,y;
 GetMax <float> (x,y);
+
 ```
 
-</div>Template can also be more complex. For example in case we want to have a matrix class that accept the size of the matrix as parameters and the numeric type of the values you could write something like:
+Template can also be more complex. For example in case we want to have a matrix class that accept the size of the matrix as parameters and the numeric type of the values you could write something like:
 
-<div class="wp-block-syntaxhighlighter-code ">```
 
+```c++
 //advanced template example
 
 //definition of the class
@@ -61,21 +69,21 @@ templated_matrix<ROW, COL, myType>:templated_matrix(){
 
 ```
 
-</div>Now when you want to use the class you can easily do that by typing:
+Now when you want to use the class you can easily do that by typing:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-
+```c++
 //usage of the class
 templated_matrix<5,10,float> mymatrix;
 ```
 
-</div>And this is it.. Now, few remarks:
+And this is it... Now, few remarks:
 
-1\. Every time that you actually change the size of the type of that matrix Class, the compiler Generate a NEW function with the matching footprint. So templated\_matrix&lt;5,10,float&gt;; templated\_matrix&lt;6,10,float&gt;; templated\_matrix&lt;5,10,int&gt;; refer to three completely different functions (that the compiler created for you during compilation).
+1. Every time that you actually change the size of the type of that matrix Class, the compiler Generate a NEW function with the matching footprint. 
+So `templated_matrix<5,10,float>;`, `templated_matrix<6,10,float>;` and `templated_matrix<5,10,int>;` refer to three completely different functions (that the compiler created for you during compilation).
 
-2\. When you use template you cannot separate header files (.hpp) from implementation files (.cpp) because the compiler needs to have the code full visible to be able to compile it. So the sub-optimal approach is to use .tpp files. For example the matrix before can be divided in two. The header file would look something like this and it will include the .tpp file at the end:
+2. When you use template you cannot separate header files (.hpp) from implementation files (.cpp) because the compiler needs to have the code full visible to be able to compile it. So the sub-optimal approach is to use .tpp files. For example the matrix before can be divided in two. The header file would look something like this and it will include the .tpp file at the end:
 
-<div class="wp-block-syntaxhighlighter-code ">```
+```c++
 
 //advanced template example
 //templated_matrix.hpp
@@ -92,9 +100,9 @@ public:
 #include templated_matrix.tpp
 ```
 
-</div>and the .tpp file looks just like the implementation file:
+and the .tpp file looks just like the implementation file:
 
-<div class="wp-block-syntaxhighlighter-code ">```
+```c++
 
 //advanced template example
 //templated_matrix.tpp 
@@ -107,4 +115,5 @@ templated_matrix<ROW, COL, myType>:templated_matrix(){
 
 ```
 
-</div>And that is it! Don’t be afraid to use them!
+And that is it! Don’t be afraid to use them!
+
