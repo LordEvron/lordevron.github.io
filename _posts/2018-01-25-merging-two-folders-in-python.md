@@ -10,8 +10,7 @@ categories:
     - Technical
 tags:
     - code
-    - folders
-    - merge
+    - technology
     - python
 ---
 
@@ -19,7 +18,7 @@ Recently I wanted to merge two folders in python and overwrite existing files in
 
 In order to merge folders, here there is a small function that does exactly that:
 
-```
+```python
 #recursively merge two folders including subfolders
 def mergefolders(root_src_dir, root_dst_dir):
     for src_dir, dirs, files in os.walk(root_src_dir):
