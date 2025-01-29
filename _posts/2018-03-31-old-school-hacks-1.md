@@ -31,15 +31,13 @@ I quickly figured out that the "two-hole" disks were the good ones.
 One day, I desperately needed to copy a game but was out of high-density floppies. Frustrated, I took matters into my own hands and drilled a second hole. 
 Here's a picture of a floppy disk with the added hole circled in red.
 
-<div class="image-container">
+<div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
   <img src="{{ site.baseurl }}/assets/images/2018/04/diskette.jpg" 
        alt="Floppy Disk" 
-       class="img-responsive" 
-       style="display: block; margin: 0 auto; max-width: 700px;">
-        <figcaption class="caption" 
-              style="display: block; text-align: center; margin-top: 10px;">
+       style="width: 100%; height: auto; display: block;">
+  <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
     Modified Floppy Disk
-  </figcaption>
+  </div>
 </div>
 
 

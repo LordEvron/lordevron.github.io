@@ -18,15 +18,13 @@ tags:
 I recently decided to implement a message of the day (MOTD) on my Raspberry Pi.  
 My goal was to have certain information displayed upon each login, similar to what's shown in the image.
 
-<div class="image-container">
+<div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
   <img src="{{ site.baseurl }}/assets/images/2018/02/Message-of-the-Day-1.jpg" 
-       alt="Message of the Day" 
-       class="img-responsive" 
-       style="display: block; margin: 0 auto; max-width: 700px;">
-        <figcaption class="caption" 
-              style="display: block; text-align: center; margin-top: 10px;">
+       alt="Message of the Day"
+       style="width: 100%; height: auto; display: block;">
+  <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
     Message of the Day
-  </figcaption>
+  </div>
 </div>
 
 This can be accomplished by adding commands to the `~/bash\_profile` file, which is executed when an interactive login shell is started (like when you SSH into the Pi).

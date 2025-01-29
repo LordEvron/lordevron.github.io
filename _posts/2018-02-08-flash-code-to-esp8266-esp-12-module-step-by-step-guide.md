@@ -29,15 +29,13 @@ Let's clarify a few things:
 Immagine di ESP8266 module (AIThinker ESP12)Si apre in una nuova finestra<div class="text-center">
 - Development boards with integrated USB connectors are commonly used for ESP8266 development. However, my module lacked a USB connector. To connect it to my PC and flash the firmware, I needed an FTDI adapter, a common USB-to-serial converter.
 
-<div class="image-container">
+<div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
   <img src="{{ site.baseurl }}/assets/images/2018/02/ESP8266.jpg" 
        alt="ESP8266 - AI-Thinker ESP12" 
-       class="img-responsive" 
-       style="display: block; margin: 0 auto; max-width: 500px;">
-        <figcaption class="caption" 
-              style="display: block; text-align: center; margin-top: 10px;">
+       style="width: 100%; height: auto; display: block;">
+  <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
     ESP8266 - AI-Thinker ESP12
-  </figcaption>
+  </div>
 </div>
 
 Let's now dig into the hardware connections.
@@ -46,15 +44,13 @@ Let's now dig into the hardware connections.
 
 This is the pinout of the module.
 
-<div class="image-container">
+<div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
   <img src="{{ site.baseurl }}/assets/images/2018/02/ESP_8266-PinOut.jpg" 
-       alt="ESP8266 - AI-Thinker ESP12" 
-       class="img-responsive" 
-       style="display: block; margin: 0 auto; max-width: 500px;">
-        <figcaption class="caption" 
-              style="display: block; text-align: center; margin-top: 10px;">
+       alt="ESP12 Pinout" 
+       style="width: 100%; height: auto; display: block;">
+  <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
     ESP12 Pinout
-  </figcaption>
+  </div>
 </div>
 
 
@@ -80,16 +76,13 @@ The ESP can actually be flashed using the Arduino IDE but some more settings are
 
 Well After this is done, from Tools–&gt; Board you will see the ESP8266 sections.. You can either select the ESP12 or the generic. I have this settings:
 
-
-<div class="image-container">
+<div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
   <img src="{{ site.baseurl }}/assets/images/2018/02/ESP8266_Arduino_settings.jpg" 
        alt="Arduino settings" 
-       class="img-responsive" 
-       style="display: block; margin: 0 auto; max-width: 500px;">
-        <figcaption class="caption" 
-              style="display: block; text-align: center; margin-top: 10px;">
+       style="width: 100%; height: auto; display: block;">
+  <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
     Arduino Settings
-  </figcaption>
+  </div>
 </div>
 
 Just select the correct COM/tty Port and should work!!! You can try flash any Arduino code…

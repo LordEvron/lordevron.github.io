@@ -26,15 +26,13 @@ Before we can answer, we need to clarify some seemingly obvious, yet subtle, con
 What exactly is straightness, and what distinguishes a straight line from a curved one?
 What makes line A straight while line B, in this image, is not?
 
-<div class="image-container">
+<div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
   <img src="{{ site.baseurl }}/assets/images/2018/02/Line.jpg" 
        alt="Straight lines" 
-       class="img-responsive" 
-       style="display: block; margin: 0 auto; max-width: 500px;">
-        <figcaption class="caption" 
-              style="display: block; text-align: center; margin-top: 10px;">
-    
-  </figcaption>
+       style="width: 100%; height: auto; display: block;">
+  <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
+    Lines: Why A is straight and b is not? 
+  </div>
 </div>
 
 
