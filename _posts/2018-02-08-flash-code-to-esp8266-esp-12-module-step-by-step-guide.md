@@ -12,8 +12,7 @@ tags:
     - arduino
     - technology
     - ESP8266
-    - MCU
-    - Wifi
+    - hardware
 ---
 
 Recently, I stumbled upon a forgotten box in the shared hardware lab. Inside, amidst some clutter, I found a small chip module, about 1x2cm in size, labeled "ESP8266." I initially assumed it was a spare part from a larger kit, perhaps unused by a previous lab member.
@@ -26,7 +25,6 @@ Let's clarify a few things:
 
 - The ESP8266 is the chip itself, produced by Espressif, which integrates an MCU, Wi-Fi module, and a full TCP stack.
 - AI-Thinker is a manufacturer that produces various modules incorporating the ESP8266 chip. These modules, often referred to as ESP-XX, differ in pinout, dimensions, and integrated antennas.
-Immagine di ESP8266 module (AIThinker ESP12)Si apre in una nuova finestra<div class="text-center">
 - Development boards with integrated USB connectors are commonly used for ESP8266 development. However, my module lacked a USB connector. To connect it to my PC and flash the firmware, I needed an FTDI adapter, a common USB-to-serial converter.
 
 <div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
@@ -70,9 +68,12 @@ Unfortunately, despite I had all in place the flashing was still failing. After 
 The ESP can actually be flashed using the Arduino IDE but some more settings are required which i found on internet. In Particular:
 
 1. Go to File &gt; Preferences
-2. <span style="font-size: 1rem;">Add http://arduino.esp8266.com/stable/package\_esp8266com\_index.json to the Additional Boards Manager URLs. (source: https://github.com/esp8266/Arduino)</span>
-3. <span style="font-size: 1rem;"> Go to Tools &gt; Board &gt; Boards Manager and look for </span><span style="font-size: 1rem;">esp8266</span>
-4. <span style="font-size: 1rem;"> Select the version that best suite you and install. **Notice that if you want the `"wifi_send_pkt_freedom()"` than you must install the 2.0.0 .** I tried with the latest version but does not work.. **ALSO <span style="text-decoration: underline;">Notice that for using that functions more settings are required</span>.** I will have another Article explaining better what to do with code and such. This time we are just flashing “hello world” code… </span>
+2. Add [Esp8266 Board](http://arduino.esp8266.com/stable/package\_esp8266com\_index.json) to the Additional Boards Manager URLs. You can read more [here](https://github.com/esp8266/Arduino)
+3. Go to Tools &gt; Board &gt; Boards Manager and look for esp8266
+4. Select the version that best suite you and install. 
+
+
+**Notice that if you want the `"wifi_send_pkt_freedom()"` than you must install the 2.0.0 .** I tried with the latest version but does not work.. **ALSO Notice that for using that functions more settings are required.** I will have another Article explaining better what to do with code and such. This time we are just flashing “hello world” code… 
 
 Well After this is done, from Tools–&gt; Board you will see the ESP8266 sections.. You can either select the ESP12 or the generic. I have this settings:
 
@@ -96,4 +97,4 @@ If you experience problems make sure this two things:
 1. The MCU is properly supplied
 2. You remember to reset the MCU after switching GPIO0 to LOW/HIGH
 
-Well that is it.. Next time we will use this module to do some cool Stuffs!
+Well that is it... Next time we will use this module to do some cool Stuffs!

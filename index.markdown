@@ -5,11 +5,20 @@
 layout: index
 title: "Home"
 ---
-Welcome to my blog...
+Welcome to my blog!
 
-Here you can find my blog posts and some info about myself. The blog is divided in three main sections: technical, math&amp;physics and non-technical.
+Here, I share my thoughts on a variety of subjects, but I'm particularly fascinated by physics—especially astrophysics 
+and quantum physics—as well as the ever-evolving world of technology, from fundamental chip design to cutting-edge computing.  
+I also occasionally delve into the other realms such as psychology.
 
-TIPS: Use Tags to retrieve articles, such as “[code](/_tags/code.html)“, “[linux](/_tags/linux.html)“, “[psychology](/_tags/psychology.html)“, “[physics](/_tags/physics.html)” etc. Just look around and see if you find something interesting…
+
+To help you navigate, I've tagged my articles. Looking for something specific? Try “[code](/_tags/code.html)“, 
+“[linux](/_tags/linux.html)“, “[psychology](/_tags/psychology.html)“, “[physics](/_tags/physics.html)”. 
+A full list of tags is available at the bottom of this page.
+
+
+So, take a look around.  I hope you find something that sparks your curiosity and perhaps even challenges your perspective.  Enjoy!
+
 
 N.B. --> Many of those articles are migrated (with a script) from my old lukelogbook.tech Wordpress site, so some link/images are still not working.. I will fix/review them when I have some time!
 

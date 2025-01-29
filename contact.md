@@ -10,7 +10,7 @@ image: /assets/images/2018/02/contact.jpg
 Found anything interesting or worth to discuss?
 
 You can contact me at: <span style="color: grey;">  **Petricca**(doot)**Luca**(aat) **gmail.com** </span>  
-Here my public PGP key [0x610BD011](http://localhost:8080/wp-content/uploads/2018/01/0x610BD011.asc):
+Here my public PGP key [0x610BD011](https://lukemainframe.top/assets/0x610BD011.asc):
 <div>
 <font color="green" style="color:green; text-align:justify; display: inline-block; font-family: monospace; font-size: 12px;">  
 —–BEGIN PGP PUBLIC KEY BLOCK—– <br>

@@ -14,3 +14,16 @@ layout: default
     {% endif %}
   {% endfor %}
 </ul>
+
+<hr>
+<div class="container">
+  <h3>Available Tags</h3>
+  {% assign tag_pages = site.pages | where_exp: "item", "item.path contains 'tags/'" %}
+  {% for page in tag_pages %}
+    {% if page.name contains '.html' %}
+      {% assign tag_name = page.name | remove: '.html' %}
+      <a href="{{ site.baseurl }}{{ page.url }}">{{ tag_name }}</a>{% unless forloop.last %}, {% endunless %}
+    {% endif %}
+  {% endfor %}
+</div>
+
