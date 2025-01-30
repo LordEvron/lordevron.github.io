@@ -1,81 +1,81 @@
 ---
 id: 579
-title: 'Nuclear Reactor&#8217;s fuel'
+title: "Nuclear Reactor's fuel"
 date: '2019-07-08T16:34:54+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=579'
 permalink: /2019/07/08/nuclear-reactors-fuel/
-yasr_overall_rating:
-    - '0'
-yasr_review_type:
-    - Product
 categories:
-    - 'Math&amp;physics'
+    - 'Mathandphysics'
 tags:
-    - fission
-    - nuclear
+    - radiation
     - physics
-    - plutonium
-    - pool
-    - powerplants
     - reactors
-    - uranium
 ---
 
-Yesterday I saw a commercial of Chernobyl HBO TV series and it inspired me to write this article on nuclear power reactors. The idea is to briefly explain the physics behind the nuclear fission and what happen to the uranium inside the reactor. So lets start.
+The recent Chernobyl HBO series commercial inspired this article on nuclear power reactors.  We'll briefly explain the physics of nuclear fission and what happens to the uranium within a reactor.
 
-You may have heard that common nuclear reactors works by bombarding uranium atoms with neutrons and splitting them into “smaller pieces”. During the splitting process, more neutrons are created that hit and split other uranium atoms, creating a chain reaction. This process is called Nuclear Fission (not to be confused with nuclear fusion that is the one that happen in stars). Because the sum of the “pieces” weight less than the original atom, that missing mass is converted directly into energy according with the famous Einstein formula (remember that photons with no mass also have energy!):
+
+Common nuclear reactors generate power by bombarding uranium atoms with neutrons. This causes the uranium atoms to split into smaller pieces, releasing more neutrons in the process. 
+These newly released neutrons then go on to split other uranium atoms, creating a chain reaction. 
+This process is called nuclear fission (distinct from nuclear fusion, which powers stars).
+Because the combined mass of the resulting "pieces" is less than the original uranium atom, the missing mass is converted into energy, 
+as described by Einstein's famous equation (remember that even massless photons have energy!).
 
 **E<sup>2 </sup>= m<sub>0</sub><sup>2</sup>c<sup>4 </sup>+ (p c)<sup>2</sup>**
 
-Usually this is more or less what the people knows about “nuclear power”. Also they know that is somehow dangerous. So well, if you want to know why is dangerous, continue to read!
+This articlemove a bit behind the simple understanding that they split uranium atoms with neutrons to create energy. It explores the nuances of neutron types, 
+uranium isotopes, and the challenges of nuclear waste.
+Most people know that nuclear reactors split uranium atoms with neutrons, releasing energy, and that this process is somehow dangerous. Let's explore why.
+There are two types of neutrons: fast and slow (or thermal). Slow neutrons are, well, slower. When a fast neutron passes through a material like water, 
+it can collide with atoms (hydrogen in water's case) and lose momentum, becoming a slow neutron. 
+Materials that slow down neutrons are called moderators. Water is a common moderator. Other examples include graphite (which we'll discuss later), heavy water, and beryllium.
 
-First things that you will need to know is that there are actually two type of neutrons: the fast ones and the slow ones (also called Thermal neutrons). The difference is pretty easy: the slow one are slower! When a Fast neutron pass trough some materials (for example water), the neutron can “bump” into the material atoms (hydrogen in case of the water) and lose some of its momentum. The result is a slow neutrons. Materials capable of slowing down neutrons are called “moderators”. So we can just slow down fast neutron by submerging them into water. Other example of moderators are Graphite (we will see why is a bad idea to use it in the next article), heavy water or beryllium.
+A sustainable nuclear reaction requires that each split uranium atom, on average, splits at least one more. 
+Otherwise, the reaction dies out. Conversely, if each split atom causes many more splits, the reaction becomes uncontrollable, leading to a nuclear explosion.
 
-Another concept needed is the sustainable reaction principle. In order to make a nuclear reaction self sustainable (chain reaction), each uranium atom that get split must in average split at least another uranium atom. If this is not the case the reaction dies out. On the other hands, if each split uranium atom release enough neutron to split many more uranium atoms, then the reaction became quickly uncontrollable and you created a nice nuclear mushroom.
+Uranium has several isotopes, but the most important are uranium-235 and uranium-238. Natural uranium is mostly uranium-238 (99%), 
+with only 1% uranium-235. These isotopes react differently to neutrons:
 
-Ok now we can go back to our uranium stuff. Uranium has many isotopes but the two most important are the 235 and 238. Uranium in nature is mostly present as uranium-238 (99%) and only 1% is uranium-235. This two isotopes behave very differently, when bombarded with neutrons. In particular:
+- Uranium-238 + slow neutron = absorbs neutron, becomes plutonium-239.
+- Uranium-238 + fast neutron = can split (releasing energy) or absorb neutron (becoming plutonium-239).
+- Uranium-235 + slow neutron = splits readily (releasing energy) with high neutron efficiency.
+- Uranium-235 + fast neutron = can split, but less efficiently than with slow neutrons.
 
-- If you bombard uranium 238 with a slow neutron, most likely it is gonna absorb that neutron and became a plutonium-239 atom.
-- if you bombard uranium 238 with fast neutrons, either is gonna break into smaller parts and release energy or is gonna absorb that neutron and became a plutonium-239 atom.
-- if you bombard uranium 235 with slow neutron, mostly likely is gonna break into smaller parts and release energy with a great neutron efficiency (good)
-- if you bombard uranium 235 with fast neutron, they still split into smaller pieces, but is not so efficient, because the probability of splitting up is much much smaller than slow neutrons case.
+Generally, slow neutrons are much more effective at splitting atoms than fast neutrons. Because uranium enrichment is expensive, 
+using uranium-235 with slow neutrons is currently the most cost-effective way to generate nuclear power.
 
-More in general, the efficiency of fast neutrons of splitting atoms is much lower than the efficiency of slow neutrons. So, because enriching uranium is very very expensive, it turns out that the cheapest way for now to produce nuclear energy is to use uranium 235 together with slow neutrons.
+However, the 1% concentration of uranium-235 in natural uranium is insufficient for a sustained chain reaction. It must be enriched to 3-5%. 
+This means increasing the concentration of uranium-235 about fivefold.
 
-Unfortunately, even with the slow neutrons, the 1% concentration of uranium 235 present in nature is not enough to sustain a chain reaction, so it must be enriched by reaching at least 3% to 5%. This basically means that before we can use natural uranium as fuel, we need to increase the concentration of uranium 235 by a factor or 5 or so. This process is called “Enrichment”.
+Enriched uranium is placed in a moderator (like water) and bombarded with neutrons to initiate a chain reaction. 
+The reaction's heat boils water, which drives turbines to generate electricity.
 
-So once that we have this enriched uranium bars, we can then put them in a moderator (water) and start a chain reaction by bombarding it with neutrons. Once started, the reaction will self sustain (if not, please adjust the neutron speed ). The reaction heat is also transferred to water that is used to power up turbines etc.
+This common approach has drawbacks:
 
-This is basically how all the current nuclear power station work. However this approach has few drawbacks.
+- Uranium enrichment is expensive.
+- Only uranium-235 (1% of natural uranium) is used.
+- Uranium-238 (the remaining 99%) is converted into transuranic elements (including plutonium-239) when bombarded with slow neutrons. 
+These elements are highly radioactive, mostly non-fissile (except plutonium-239), and have half-lives of thousands of years.
 
-1. You may have noticed that we need to enrich the uranium… very expensive process to do.
-2. We are only using the uranium 235 to create energy. This means that more than 95% of the uranium is not used!!!
-3. Because that 95% of uranium is actually uranium 238 and we are bombarding it with slow neutrons, it happen that some percentage of it is converted in heavier elements called “Transuranium” elements (reported below).![](http://localhost:8080/wp-content/uploads/2019/07/attenide.png)
+So, we extract uranium, use only 1% of it, and create highly dangerous, long-lasting radioactive waste.
+Ironically, unenriched uranium can be handled safely (unless ingested or inhaled), but after being "burned" in a reactor, it becomes incredibly dangerous.
+Ideally, we'd like to "burn" all the uranium and eliminate the long-lasting waste. Fast neutron reactors offer a potential solution. 
+They use fast neutrons instead of slow neutrons.  Fast neutrons can split uranium-238 (releasing energy) or convert it to plutonium-239. 
+Plutonium-239 can also be split by fast neutrons, releasing energy. 
+Thus, uranium-238 can either directly or indirectly produce energy in a fast neutron reactor.
 
-The problem with these elements is that are highly radioactive, non fissile (except plutonium 239 that is actually fissile) and their half life is thousands of years.
+Fast neutron reactors don't need a moderator, allowing for smaller reactor designs, suitable for applications like submarine propulsion.
+So, we can have smaller, cheaper, more efficient reactors with significantly less long-lasting radioactive waste. Sounds great, right?  Not so fast.
+Because fast neutrons are less efficient at splitting atoms, the fuel needs to be highly enriched (around 25% uranium-235 or plutonium-239) to start the reaction. 
+This is very expensive and produces weapons-grade material.
+However, once the reaction starts, the fast neutrons also convert fertile uranium-238 into fissile plutonium-239, creating more fuel. 
+This is the principle behind breeder reactors.
+Ultimately, fast neutron reactors can significantly reduce waste, and because they burn transuranic elements, 
+the remaining waste has half-lives of hundreds of years, not thousands.
+The problem is that the fuel for fast neutron reactors can also be used to make nuclear weapons, and breeder reactors can produce plutonium-239, 
+which is also weapons-grade.
+The choice is between conventional reactors that use only a small fraction of uranium and create long-lasting waste, or fast neutron reactors that produce less waste but use fuel that can be used for bombs.
+What would you choose?
 
-So for resuming, we extract uranium from earth, we only use 1% of it and the 99% left is highly dangerous radioactive waste that will last few geologic eras.
-
-The funny fact is that before we put it in a reactor we can handle bars of enriched uranium with bare hands or sleep in a bed made of uranium without any problem (as far as we do not ingest or inhale it). But after “burning” it in the reactor, it would kill you within few second of exposure!
-
-So would be cool to be able to burn everything in the reactor and get rid of all those toxic shit! Luckily, there is a solution, and is the Fast Neutron Reactors. This reactors instead of using slow neutrons, they use the fast neutrons. As we saw before, when the uranium 238 is hit by fast neutrons, either is split, producing energy, or is absorbed and transformed into plutonium 239. When the plutonium 239 is hit by a fast neutron, it splits into lighter elements, producing energy. So how you can see, when hit by a fast neutron, the uranium 238 either produce energy directly (good) or gets converted is something that can produce energy directly (also good!)
-
-Furthermore, When using fast neutron reactors, we do not need to use any moderator, so we can reduce the size of the reactor and use it for propelling a submarine for example (and that is what they do!).
-
-So, we can make the reactor smaller, cheaper, 99 times more efficient and with almost no dangerous waste that last thousand of years. Sound great, lets do it!… Well not so fast… There is one little problem…
-
-Because the efficiency of the fast neutrons is not so high, we need to start from fuel that has uranium 235 (or plutonium-239) enriched to 25%! That is very expensive to produce.. and is a weapon grade uranium (in the meaning that you can actually use it to create Nukes!)…
-
-The good news is that, once the reaction starts, because the fast neutron hit release many more neutrons, some of those neutrons will convert fertile uranium 238 into fissile plutonium 239. So it kind of create its own fuel. This process is used in breeder reactors.
-
-So at the end, we will have much less waste, and because it has burned all the Transuranium materials, their half life will be hundred years, and not thousand of years!
-
-However there is problem. Because fast neutron reactors need high enriched fuel, the same fuel can be used for create nuclear weapons. Also, breeder reactors itselfs can be used to create high enriched plutonium239 material that can also be used for bombs.
-
-So how you can see the choice was between, use normal nuclear reactors that uses only few % of the uranium and create dangerous long lasting radioactive waste or use the fast neutrons reactors that produce much less wastes but uses fuel that can be used for bombs…
-
-What you would have choose?
-
-Anyway, next article i will discuss how the current nuclear power plants manage depleted uranium.
+The next article will discuss how current nuclear power plants manage depleted uranium.

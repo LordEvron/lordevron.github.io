@@ -7,8 +7,8 @@ title: "Home"
 ---
 Welcome to my blog!
 
-Here, I share my thoughts on a variety of subjects, but I'm particularly fascinated by physics—especially astrophysics 
-and quantum physics—as well as the ever-evolving world of technology, from fundamental chip design to cutting-edge computing.  
+Here, I share my thoughts on a variety of subjects, but I'm particularly fascinated by physics, especially astrophysics 
+and quantum physics as well as the ever-evolving world of technology, from fundamental chip design to cutting-edge computing.  
 I also occasionally delve into the other realms such as psychology.
 
 

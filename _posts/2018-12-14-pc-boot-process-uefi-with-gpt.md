@@ -4,55 +4,70 @@ title: 'PC boot process – UEFI with GPT'
 date: '2018-12-14T16:36:09+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=514'
 permalink: /2018/12/14/pc-boot-process-uefi-with-gpt/
 categories:
     - Technical
 tags:
     - boot
-    - gpt
+    - technology
     - linux
     - uefi
 ---
 
-In the [previous article](http://localhost:8080/2018/12/13/pc-boot-process-mbr/), I presented the boot process of BIOS based system with MBR disk. Today we will move forward and we will see the changes introduced with UEFI and GPT disks. I also have another article in plan where I will discuss mixed versions, secure boot and TPM. Anyway.. Let’s continue from where we left. The MBR structure was introduced in early 80s and we already saw that it suffers from many limitations. Before we start we need to understand one important point: UEFI is the “next generation” of the BIOS while GPT replace the MBR disk structure. So, ideally UEFI and GPT are two different and independent “upgrades” of two completely different systems. Indeed is possible to have UEFI boot with MBR disks, or BIOS boot with GPT disk (which we will see in the next article). However UEFI/GPT work so well together that they are often confused and considered as one single improvement.. but keep in mind they are not.
+In the previous article, I explained the boot process for BIOS-based systems using MBR disks. Today, we'll explore the advancements 
+introduced by UEFI and GPT. I also plan to cover mixed configurations, secure boot, and TPM in future articles.
+Let's start with the GPT (GUID Partition Table).  GPT is part of the UEFI standard and replaces the MBR, overcoming its limitations 
+while maintaining some backward compatibility.  Figure 1 illustrates the GPT structure.
 
-So lets start with the GPT table. GPT stands for <span class="ILfuVd">GUID Partition Table and is actually a part of the UEFI standard too</span>. The GPT substitute the MBR by redefining the partition table format. It overcome the limitation of MBR while trying to keep compatibility at the same time. Let’s see in details its structure reported in figure 1.
+<div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
+  <img src="{{ site.baseurl }}/assets/images/2018/12/GPT_table.png" 
+       alt="GPT table" 
+       style="width: 100%; height: auto; display: block;">
+  <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
+    GUID Partition Table Scheme
+  </div>
+</div>
 
-<figure aria-describedby="caption-attachment-323" class="wp-caption aligncenter" id="attachment_323" style="width: 375px">![](http://localhost:8080/wp-content/uploads/2018/12/GPT_table.png)<figcaption class="wp-caption-text" id="caption-attachment-323">Figure 1: GPT Scheme \[source:[wikimedia](https://upload.wikimedia.org/wikipedia/commons/0/07/GUID_Partition_Table_Scheme.svg)\]</figcaption></figure>
+GPT uses Logical Block Addressing (LBA), a modern method for addressing hard drive sectors, instead of the older Cylinder, Head, Sector (CHS) used by MBR. 
+LBAs are typically 512 bytes, similar to CHS sectors.  GPT allocates more space to the partition table itself. 
+It reserves 33 LBAs at the beginning and 32 at the end of the disk (secondary GPT). This secondary GPT is a backup in case the primary GPT is corrupted. 
+The first LBA (LBA0) is the Protective MBR.  This is a safeguard for older MBR tools that aren't GPT-aware.  
+It marks the entire GPT as a single `eeh` partition, with an unknown file system, preventing these tools from accidentally damaging the GPT.
+LBA1 contains the GPT header, including information like the disk UID, UEFI signature, CRCs, and UEFI version. 
+LBAs 2-33 store the partition entries. Each LBA contains four 128-byte entries, allowing for up to 128 partitions in the default GPT configuration.
+Each 128-byte entry stores information about a partition:
 
-As we can see there are a lot of new features here. Firstly, GPT uses Logical Block Addressing (LBA), a more modern way to define hard disk sectors rather than the old Cylinder, Head, Sector (CHS) used in MBR disks. Size of a LBA is also de-facto set to 512 bytes similar to a CHS sector. So we can notice that in GPT we do have much more “space” associated with the table itself. Indeed in this case we have reserved 33-LBAs in the beginning of the disk and 32 LBAs in the end of this disk (secondary GPT) (LBA0 is not copied to the end). This secondary GPT is just a duplicate of the primary GPT and is used as redundancy and backup in case that the Primary GPT gets corrupted. The first LBA (LBA-0) is called Protective MBR and is used as protection. Indeed many of the MBR tools used to fix the boot sectors, were developed before the GPT and because of that are not aware of GPT disks and they could try to overwrite/ destroy the GPT partition table. Because of that, the GPT standard reserved the LBA0 as protective and marked the whole GPT table as “***eeh***” partition. These MBR tools will see that the MBR space is occupied by a partition with an unknown file system and they will hopefully not touch it.
+- Bytes 0-15: Partition type GUID (16 bytes)
+- Bytes 16-31: Unique partition GUID (16 bytes)
+- Bytes 32-39: First LBA (8 bytes)
+- Bytes 40-47: Last LBA (8 bytes)
+- Bytes 48-55: Attribute flags (8 bytes)
+- Bytes 56-127: Partition name (72 bytes)
 
-In the LBA1 it start the real GPT data with a header that contain a some information such as the disk uid, the UEFI signature, CRCs, Uefi version etc; nothing that we are really interested on.  
-In the LBA2 to LBA33 is where the partition entries are stored. Each of those LBAx contain 4 entries of 128 Byte each (remember that LBA are 512Bytes in size).  
-Each of those field represent a possible partition entry. So since we have 32 LBA and space for 4 partition entry to each of those, it means that the GPT standard has (in its default definition) space for 128 partitions entries.
+The partition type GUID identifies the type of partition (e.g., EFI System Partition), while the unique partition GUID is a 
+unique identifier for each partition. The attribute flags store information like read-only status, hidden status, no auto-mount, 
+and whether the partition is MBR bootable.
 
-Each of those 128 byte fields, store information regarding the partition itself, where it start, where it stop and so on. Here there is the full table adapted from Wikipedia:
+With 8 bytes allocated for LBAs, GPT can address disks up to 9.4 zettabytes (ZB), or 9.4 billion terabytes.
 
-Byte 0 to 15 –&gt; (0x00) 16 bytes Partition type GUID  
-Byte 15 to 31 –&gt; (0x10) 16 bytes Unique partition GUID  
-Byte 32 to 39 –&gt;(0x20) 8 bytes First LBA (little endian)  
-Byte 40 to 47 –&gt; (0x28) 8 bytes Last LBA (inclusive, usually odd)  
-Byte 48 to 55 –&gt;(0x30) 8 bytes Attribute flags (e.g. bit 60 denotes read-only)  
-Byte 56 to 128 –&gt; (0x38) 72 bytes Partition name (36 UTF-16LE code units)
+Now, let's see what happens during boot on a UEFI-based system. UEFI is more sophisticated than BIOS, even supporting a mouse interface.
+A key difference is that UEFI understands partition tables and some file systems.  This allows it to read the partition table, find specific partitions, 
+and execute files within them.
 
-It is worth to spent few world to the partition type GUID and unique partition GUID. The first value is a standard 16byte value that uniquely identify the partition type. For example all the EFI partition will have the same Partition type GUID.The second GUID is the unique partition GUID and this is a 16 byte id that uniquely identify your partition and is not shared with anything else. Another important field here is the Attribute flags. Here are stored important attribute that are set for the partitions. I will not report all of them, but from here you can see if a partition is read only, or if is hidden, with no auto-mount set (letter assignment in window), or for example if is MBR bootable or not (equivalent to “Active Partition” flag in MBR systems).  
-Also we can see that because we reserve 8 bytes for storing LBAs, that we can address disks up to 9.4 ZettaByte ZB in size (2^64 sectors)… this is equivalent to 9.4 Billions Terabytes, so should be enough for a while.
+When the power button is pressed, UEFI executes. It initializes peripherals and performs checks, similar to the legacy BIOS. 
+Then, it checks EFI variables stored in NVRAM. These variables store user/OS-specific configurations, such as boot order and paths to bootloaders. An example:
 
-So now that we dug into the GPT, we can see what happen when we press the “ON” Button within a UEFI based system. As we know the UEFI is more complex software (it even support mouse in the menu) and it has replaced the BIOS. However, because many people still call the “UEFI” systems as “BIOS”, so, the “old BIOS” has been unofficially renamed as “Legacy Bios”.  
-So the main difference of UEFI vs Bios is that the *<span style="text-decoration: underline;">new firmware is capable of understanding partition tables and some File Systems. </span>*This is a major innovation because allows the UEFI to read the hard disk partition table, look for some special partition, read the files in it and execute one of them! And this is more or less what happen.
+```
+BootCurrent: 0000
+Timeout: 5 seconds
+BootOrder: 0001,0000
+Boot0000: Ubuntu HD(2,c8800,96000,cabda21a-3435-4869-93bd-9f550b7ea29a)File(\EFI\Ubuntu\grubx64.efi)
+Boot0001: Windows Boot Manager HD(2,c8800,96000,cabda21a-3435-4869-93bd-9f550b7ea29a)File(\EFI\Microsoft\Boot\bootmgfw.efi)
+```
+UEFI looks for an EFI System Partition (ESP), typically formatted as FAT32 and around 300-500MB in size. 
+The ESP stores bootloaders for all installed operating systems. For example:
 
-So when we press a start button the UEFI get executed. Similar to legacy bios, it initialize some peripherals, does some checks. But then come the new part. After the initialization is completed, it checks the EFI variables stored in the NVRAM. These variables store user-specific/OS-specific/[CIA-specific](https://wikileaks.org/ciav7p1/cms/page_26968097.html) configurations. They can still be accessed and modified from root users (eg. using #efibootmgr -v). Example of this variable are \[adapted from mageia\]:
-
-**BootCurrent**: 0000  
-**Timeout**: 5 seconds  
-**BootOrder**: 0001,0000  
-**Boot0000** Ubuntu HD(2,c8800,96000,cabda21a-3435-4869-93bd-9f550b7ea29a)File(\\EFI\\Ubuntu\\grubx64.efi)  
-**Boot0001**\* Windows Boot Manager HD(2,c8800,96000,cabda21a-3435-4869-93bd-9f550b7ea29a)File(\\EFI\\Microsoft\\Boot\\bootmgfw.efi)WINDOWS………x…B.C.D.O.B.J.E.C.T.=.
-
-so we can see that (along other things) store information of the boot order, boot entries with relative path to the boot loaders and so on.  
-So after loading this variables, the UEFI look for a EFI System Partition (ESP). This is a very special partition usually formatted as FAT32. size of this partition is around 300MB-500MB. Inside this partition are stored all the bootloaders for all the OS present on the system. For example it could look like this:
-
+```
 \# tree /boot/efi/EFI  
 /boot/efi/EFI  
 ├── Boot  
@@ -67,14 +82,19 @@ So after loading this variables, the UEFI look for a EFI System Partition (ESP).
 │ ├── bootmgfw.efi \[The standard Win8 bootloader\]  
 │ ├── bootmgr.efi
 
-and these are the path also present in the NVRAM variables.  
-So the UEFI will look for the ESP partition and launch the relative bootloader as configured in the NVRAM variables.  
-Notice that this is only possible because now the UEFI can understand the FAT32 filesystem.
+```
+UEFI then launches the bootloader specified in the NVRAM variables. This is possible because UEFI understands the FAT32 file system.
+When a new OS is installed, it copies its bootloader to the ESP (e.g., `EFI/ubuntu/grubx64.efi`) and adds an entry to the NVRAM. 
+UEFI detects the new bootloader and can launch it. The bootloader then starts the OS.
+UEFI can recognize bootable DVDs or USB drives because they typically have an ESP. 
+While it's technically possible for UEFI to find bootloaders without NVRAM entries, it's not recommended. 
+NVRAM entries pointing to non-existent bootloaders (e.g., after uninstalling an OS) are not a problem; 
+UEFI will simply skip them and proceed to the next boot entry. In case all fails, UEFI also includes a shell environment, 
+allowing for more advanced configuration and troubleshooting. This is also a feature of UEFI.
 
-So when you install a new Operative System, what it actually does is to copy a bootloader in the ESP partition (eg “EFI/ubuntu/grubx64.efi”) and add a new variable entry in the NVRAM. The UEFI will then “see” that there is a new bootloader and launch it if selected. The bootloader will then take care of starting up the OS.
 
-So I want to remark few things. EFI will recognize a valid ISO DVD or USB stick to boot from because its standard way to have an ESP partition.Strictly speaking if you are very lazy, you can avoid to create a NVRAM entry for your bootloader and UEFI should be able to find it out by itself (similar to what happens to bootable media). However is not considered a good things to do. Also you may have some NVRAM variables pointing to some non existing bootloaders (eg if you uninstalled windows or linux). In this case, is not a problem. The only things that will happen is that IF you try to launch it, the UEFI will not find the bootloader and move to the next entry in the boot order list.
+UEFI is a significant improvement, allowing for a virtually unlimited number of installed OSes. 
+Each OS simply adds its bootloader to the ESP and an entry to the NVRAM.
+I plan to write more articles on this topic, covering BIOS with GPT, UEFI with MBR, advanced multi-OS installations, 
+secure boot, and TPM. Stay tuned!
 
-Over all, the UEFI system is a much better way for handling the booting system, because you can have virtually unlimited OS installed. They simply add their Bootloader in the EFI partion and add an entry in the NVRAM.
-
-And this is all for now. I do have plan to write one or two more articles on this topic for example explaining how BIOS work with GPT or UEFI with MBR. I want also to present some more advanced usage on how to install multiple OS (of the same type) with UEFI, and see the implication of secure boot and Trusted Platform Modules… Stay tuned!

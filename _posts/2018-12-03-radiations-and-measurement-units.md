@@ -4,63 +4,100 @@ title: 'Radiations and measurement units.'
 date: '2018-12-03T01:29:28+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=494'
+
 permalink: /2018/12/03/radiations-and-measurement-units/
 categories:
-    - 'Math&amp;physics'
+    - 'Mathandphysics'
 tags:
-    - measurement
     - physics
     - radiation
-    - radioactive
 ---
 
-Yesterday I was playing with a Radon sensor. I got a little confused when I wanted to convert the dose from Becquerel /meter ^3 to Sievert, so this gave me the inspiration to write this small article on radiation types and measurement unit used to define them.
+Yesterday I was playing with a Radon sensor. I encountered some confusion while working with it, specifically when trying to convert the reading from 
+Becquerel per cubic meter (Bq/m³) to Sieverts (Sv). This prompted me to write this brief overview of radiation types and their associated units of measurement.
 
-The first thing to define is what is a radiation. Physic definition of radiation is quite broad, and it is defined as “emission or transmission of energy in the form of waves or particles through space or through a material medium.” This include also light, sound, etc. So when for example light hit a material (Eg Glass), it transfer its energy to target. This energy is usually absorbed by the material as electron excitation. Basically when the photon hit the material atom, it will make an electron to jump to the next energy level. This electron can eventually jump back to the original position and re-emit a new photon. However if we do increase the energy of the photon, it can happen that when it hits the atom, it will be able to kick out completely one electron creating a ion. The energy carried by visible light, or sound is in general not high enough for this to happen. However some other type of radiation that we will soon explain have enough energy to ionize the medium where they pass trough. This is why we refer to them as”ionizing radiation”. This means that the energy of the incoming radiation is so high, that is able to kick out electrons and ionize atoms of molecules. Example of ionizing radiation are Alfa particle, Beta Particles, Gamma Rays, Neutrons, X-rays, positrons, etc.
 
-However, lets focus to the main 5 types which are:
+Radiation, broadly defined, is the emission or transmission of energy in the form of waves or particles. 
+This includes familiar phenomena like light and sound.  For instance, when light strikes glass, it transfers energy, 
+typically causing electrons in the glass atoms to jump to higher energy levels. These electrons can then return to their original state, 
+re-emitting a photon. However, if the photon's energy is high enough, it can completely eject an electron from the atom, creating an ion. 
+Visible light and sound generally lack the energy for this ionization process. Other types of radiation, which we'll discuss shortly, possess sufficient 
+energy to ionize the medium they pass through. These are termed "ionizing radiation." This means that the energy of the incoming radiation is 
+so high that it is able to kick out electrons and ionize atoms or molecules and create damages on biological tissues. 
+it's worth noting that some non-ionizing radiation can still have biological effects (e.g., UV radiation can cause sunburn and skin cancer). 
+The key difference is the mechanism of interaction with biological tissue. 
+Ionizing radiation directly knocks electrons off atoms, while non-ionizing radiation typically causes other types of molecular changes.
+Examples of ionizing radiation include alpha particles, beta particles, 
+gamma rays, neutrons, X-rays, and positrons.
 
-1\. Alpha particle: This mainly consist of fast moving Helium nucleus  
-2\. Beta particles: This mainly consist of fast moving electrons  
-3\. Gamma rays: This are high energy photons.  
-4\. X-Rays : similar to gamma rays are high energy photons.  
-5- Neutrons: This are high energy neutrons
 
-In terms of penetration alpha particles are stopped by almost all the materials. Even your skin layer is enough to stop them. So sitting close to a alpha radiation source is quite safe, as long as you do not eat it or inhale it. In that case the radiation will end up irradiating some active tissues (eg lungs) and cause problems.
+Let's focus on five key types:
 
-Thanks to the smaller mass, Beta radiation can penetrate more and can easily pass your first skin layer or a paper layer. However can be easily stopped by a thin layer of wood, plastic, or any denser material.
+1. **Alpha particles**: Consist of fast-moving helium nuclei.
+2. **Beta particles**: Consist of fast-moving electrons.
+3. **Gamma rays**: High-energy photons originated from nuclear transitions.
+4. **X-rays**: Also high-energy photons, similar to gamma rays produced by the acceleration of electrons (e.g., in an X-ray tube).
+5. **Neutrons**: High-energy neutrons (indirectly ionizing, and their interaction with matter can create radioactive isotopes, which then decay and emit other types of radiation)
 
-X-Rays and Gamma radiation are both high energy photons. since they are mass-less, they can travel further in the air, and can also pass thought wood, paper etc. they can only be stopped by a thick layer of heavy metal plates such as lead. It should be noticed that even if photons can directly ionize atoms with the photoelectric and Compton effect, mostly of the ionization is actually indirect ionization. you can refer to “secondary beta particles” if you want to know more.
+In terms of penetration alpha particles are stopped by almost all the materials. Even your skin layer is enough to stop them. 
+So sitting close to a alpha radiation source is quite safe, as long as you do not eat it or inhale it. 
+In that case the radiation will end up irradiating some active tissues (eg lungs) and cause problems.
 
-Neutron are the last in the list and they are also an indirectly ionizing source. the reason is that similar to photons, they do not have a charge so they do not directly ionize other materials, but they can be absorbed by a stable atom, making it unstable and thus when they will decay, will emit other type of radiation. Indeed, neutrons are the only type of radiation that can transform other material into radioactive. Neutrons can penetrate mostly of the materials the only effective shield consist of a thick later of hydrogen rich material such as water or concrete.
+Thanks to the smaller mass, Beta radiation can penetrate more and can easily pass your first skin layer or a paper layer. 
+However can be easily stopped by a thin layer of wood, plastic, or any denser material.
 
-Ok so now we know that “radiation” (in the common used term) are actually particles (or waves) emitted by atoms. How do we measure them?
+X-Rays and Gamma radiation are both high energy photons. since they are mass-less, they can travel further in the air, 
+and can also pass thought wood, paper etc. they can only be stopped by a thick layer of heavy metal plates such as lead. 
+It should be noticed that even if photons can directly ionize atoms with the photoelectric and Compton effect, mostly 
+of the ionization is actually indirect ionization. you can refer to “secondary beta particles” if you want to know more.
 
-Firstly we need to define **what we are going to measure**. The answer to this question is more complex of what apparently seems (and here is also where i got confused!). The four main quantities that we may be interested to measure in relation to radiation are:
+Neutron are the last in the list and they are also an indirectly ionizing source. the reason is that similar to photons, 
+they do not have a charge so they do not directly ionize other materials, but they can be absorbed by a stable atom, 
+making it unstable and thus when they will decay, will emit other type of radiation. Indeed, neutrons are the only type of radiation 
+that can transform other material into radioactive. Neutrons can penetrate mostly of the materials the only effective shield consist of a 
+thick later of hydrogen rich material such as water or concrete.
 
-1- Activity  
-2-Absorbed dose  
-3-Equivalent dose  
-4-Effective dose
+Now that we understand what "radiation" (in the common sense) is—particles or waves emitted by atoms—how do we measure it?
 
-There are also more quantities that are related such as exposure and fluence, but for sake of simplicity we are going to focus on this four.
+Defining what we're measuring is more complex than it seems (and where I initially got confused!).  Four key quantities are of interest:
 
-***Activity*** is measured in Becquerel (Bq) and represent 1 decay event (radiation emission) per second. So this describe how active is our radioactive source material. So the radon sensor that I have, it reports this value. The number of radioactive events that happen in a second in a cubic meter of air. (Bq/m^3). Notice that this is only referring to the material itself and it can be easily calculated once mass and material type are settled. For example one gram of potassium has (more or less) 30 Bq.
+1. Activity
+2. Absorbed dose
+3. Equivalent dose
+4. Effective dose
 
-But how much of that doses actually get absorbed?
+Other related quantities exist, like exposure and fluence, but we'll focus on these four for simplicity.
 
-***Absorbed Dose*** is measured in Gray (Gy) and correspond to the amount of Joule absorbed by a kg of matter. So 1 Gray is 1 Joule/1 kg. Now we can notice the difference between Bq and Gray. In this case we are measuring the radiation that is deposited to the target material and is independent from the source. Is a physical dose of radiation that is absorbed by a material.
+- **Activity**, measured in Becquerel (Bq), represents one decay event (radiation emission) per second. It describes how "active" a radioactive source is.  
+My radon sensor reports activity in Bq/m³, indicating the number of radioactive decays per second in a cubic meter of air.  
+Activity relates to the source material itself and can be calculated based on mass and material type. For example, one gram of potassium has approximately 30 Bq.
 
-So the two point described only deal with the physic of the material, not with the “living things”. Indeed different type of radiation can have very different effect on the human body. 1Gray of alpha radiation is 20 times more dangerous than a 1 Gray of beta radiation. How to take into account that?
 
-With the **Equivalent Dose** we do actually take into account the effect of the various radiations types and the effect they will have on the body. The measurement unit is Sievert (Sv) and like the Gray is also equivalent to Joule/Kg . Basically is like the absorbed dose, but with a extra factor that describe how dangerous is that type of radiation for the human body.  
-So for example 1 Gy of Alpha radiation is 20 Sv while 1 Gy of gamma radiation is 1 Sv. 1 Gy of beta radiation is also 1 Sv.
+But how much of that radiation is actually absorbed?
 
-But the human body is not all the same.. skin is less sensitive to radiation of other parts such as lung! So?
+- **Absorbed dose**, measured in Gray (Gy), represents the amount of energy (in Joules) absorbed per kilogram of matter.  
+One Gray equals one Joule per kilogram.  This differs from activity; it measures the radiation deposited in the target material, independent of the source. 
+It is a physical dose of radiation absorbed by a material.
 
-Then we need another quantity to measure and that is the **Effective dose**. It is also measured in Sievert, so it consist of the same Equivalent dose but multiplied by a “risk factor” (or effectiveness factor). For example the “risk factor” (Wt) for the skin is 0.01 while for ovaries is 0.2. So keeping the example before, 1 Gray of beta radiation on the skin will give us a 1 Sv of equivalent dose and 0.01 Sv of Effective dose. If we do have 1 Gray of Alpha radiation of the ovaries, this will give us a 20 Sv of equivalent dose and 4 Sv of effective dose (400x more than the skin example)!!!
+These two quantities describe the physics of the material, not the impact on living organisms. 
+Different radiation types have varying effects on the human body. One Gray of alpha radiation is about 20 times more harmful than one Gray of beta radiation. 
+How do we account for this?
 
-So I hope this clarified a little the difference of measurement quantities that can be chosen when talking about radiation.
+- The **equivalent dose** takes into account the biological impact of different radiation types.  Measured in Sievert (Sv), 
+it's also expressed in Joules per kilogram.  It's similar to the absorbed dose but includes a weighting factor reflecting 
+the radiation's biological effectiveness. For example, 1 Gy of alpha radiation is equivalent to 20 Sv, while 1 Gy of gamma radiation is 1 Sv.  
+1 Gy of beta radiation is also 1 Sv.
 
-And regarding my question, i could not just transform from Bq to Sv, without defining all the other parameters in between. So, conversion dose coefficient (inhalation) recommended by ICRP is 0.017 mSv/y for 1 Bq/m3.
+
+However, the human body isn't uniformly sensitive to radiation. Skin is less sensitive than organs like the lungs.  Therefore, we need another quantity:
+
+- The **effective dose**, also measured in Sievert, accounts for the varying sensitivity of different tissues. 
+It's the equivalent dose multiplied by a "risk factor" or "weighting factor" (Wt) specific to each tissue. 
+For example, the Wt for skin is 0.01, while for ovaries it's 0.2. So, 1 Gy of beta radiation to the skin results in 1 Sv 
+equivalent dose and 0.01 Sv effective dose.  1 Gy of alpha radiation to the ovaries yields 20 Sv equivalent dose and 4 Sv effective dose 
+(400 times greater than the skin example!).
+
+Hopefully, this clarifies the different radiation measurement quantities.
+
+Regarding my original question, I couldn't directly convert Bq to Sv without considering the other factors. 
+The ICRP (International Commission on Radiological Protection) recommends a conversion factor for inhalation of 0.017 mSv/year per 1 Bq/m³.

@@ -4,46 +4,72 @@ title: 'Space, time and the needs of a new theory'
 date: '2018-10-22T15:40:25+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=477'
 permalink: /2018/10/22/space-time-and-the-needs-of-a-new-theory/
 categories:
-    - 'Math&amp;physics'
+    - 'Mathandphysics'
 tags:
     - physics
     - relativity
-    - universe
 ---
+This is the third article in the [relativity](/_tags/physics.html/) series. It took me some time to write down because 
+I wanted to give priority to technology focused articles.  
+I also sometimes wonder if anyone is actually reading these posts, but I'll continue regardless.  
+Let's dive into some fundamental concepts.
 
-So, This is the third article of the [relativity](http://localhost:8080/tag/relativity/) series. It took me some time to write down because I was busy with other things and gave priority to the more technical articles. Furthermore I am not really sure that any of you is actually reading this stuffs… anyway, lets get started with some more basic concepts.
 
-One of the main question that you may ask if you are new in this field is “why all this complicated stuffs? Isn’t the old good Newtonian mechanics enough to explain all the stuffs happening around us, including gravity, acceleration, distances, etc?” Well it turns out that the answers is No.
+A common question for newcomers to relativity is: why all this complexity? 
+Isn't Newtonian mechanics sufficient to explain the world around us, including gravity, acceleration, and distances?  The answer, surprisingly, is no.
 
-Newtonian laws are easy to understand and they work great for speeds much smaller than the speed of light. Furthermore, keeping space and time as two separate entities, they do not seems to violate our perception of world. For example suppose I am sitting in a train that is traveling at 100km/h towards a ground target. if I shoot a bullet towards that ground target and the bullet speed is 200km/h, the bullet will hit a target on the ground at 300km/h (bullet speed+ train speed). Easy to calculate and to understand. More important, in this case, the shooter, the guy sitting next to the target and the astronaut observing the scene from the space station, agree on:
+Newtonian laws are intuitive and work well at speeds much slower than the speed of light.  
+Treating space and time as separate entities aligns with our everyday perceptions. 
+For example, imagine being on a train traveling at 100 km/h and firing a bullet forward at 200 km/h.  
+From the ground, the bullet's speed would appear to be 300 km/h (the sum of the two speeds).  
+Simple and understandable.  Moreover, in this scenario, observers in different locations (e.g., on the train, on the ground, in space) would agree on:
 
 - When the bullet was fired.
 - When the bullet hit the target
 - The time passed between the two events
-- The space traveled by the bullet.
+- The space traveled by the bullet. 
 
-All this 4 points seem pretty straight forward. After all, they were all witnesses of the same event, right?. Well it turns out that, that is just an approximation and is valid only for low speeds. Even in that case they are committing a super-small error that is negligible in everyday conditions.
+These points seem straightforward, as all observers witnessed the same event, right? 
+However, this is an approximation valid only at low speeds. Even then, there's a tiny, negligible error.
+To understand this, consider the same experiment but with a photon (traveling at the speed of light, c) instead of a bullet. 
+Using the same logic, the photon's speed at the target would be c + 100 km/h, which is incorrect, as nothing can exceed the speed of light. 
+Actual measurements would still show the photon traveling at c.  (And if you tried this with a "bullet" traveling near c, 
+the results would be even more counterintuitive.)
 
-For understanding this we can repeat now the experiment but instead of the bullet we can shot a photon (traveling with speed c). How fast the photon will hit the target? If we just use the same formula above we get that the photon is hitting the target at speed (c+100km/h) that is wrong since the photon now exceed the speed of light… If you try to actually do the experiment, you will measure that the photon will still travel at c. \[If you think that photon is a special case that you can use a bullet that travel a speed (c-10km/h).. and the result will be even stranger!…\]. So, the point is the reality the universe behave in more complex manners than what described by Newton laws. In general for fast traveling bullets, the three observers notice something strange, that can be resumed with the 4 points here:
 
-- The three observers do NOT agree when the shot was fired.
-- The three observers do NOT agree when the shot hit the target.
-- The three observers do NOT agree on how much time passed between the two events.
-- The three observers do NOT even agree about how much space there is between things. So they cannot agree neither on how much the bullet traveled!
-- All of them are right at the same time, in the meaning that all the measurements are consistent within their own reference frame.
+The universe operates in a more complex way than described by Newtonian physics. 
+At high speeds, observers disagree on several key points:
 
-So this seems crazy but is the way how to the universe work. I want to remark again that is not just a mathematical construct, but those bullet points are actually FACTS that can be tested experimentally (and have been tested in a million different ways!). So for how strange they can sound that is what happen in the real world… just get over it!
+- They disagree on when the shot was fired.
+- They disagree on when the shot hit the target.
+- They disagree on the time interval between the events.
+- They even disagree on the distance between objects, and therefore the distance the bullet traveled.
 
-So back to the observers.. they do not agree on the “when”, they do not agree on “where” or even in the order of the events! event B following event A observed by the guy on the moon, could be observed with the opposite order by ET sitting on the edge of the universe… So the question is.. do observers ever agree on something?.. well luckily yes… It turn out that they do agree on something called the space-time interval. This quantity s.i. is defined as :
+Crucially, all of them are right within their own frame of reference. Their measurements are consistent with their individual perspectives.
 
- **s.i. = (Δx)² – (cΔt)² = (Δs)²**
+This might seem bizarre, but it's how the universe functions.  These aren't just theoretical constructs; they are observed facts supported 
+by countless experiments.  As strange as it sounds, this is reality.
 
-With reference to event A and B: **Δ**x is the distance between them and **Δ**t is the time between A and B measured by each observer. So s.i is the only value that observers agrees on and when they calculate it, they get the same results. So remember, that they will NOT agree on the pure **Δ**x nor they will agree on the pure **Δ**t, but they do will calculate the same s.i. value. Indeed event A can be in the past for Observer 1 and in the future for Observer 2. but both of them will calculate the same s.i.
+So, if observers disagree on "when" and "where," and even on the order of events (event B following event A for one observer might be reversed for another), 
+is there anything they do agree on?  Yes, they agree on the space-time interval.  This quantity (`s.i.`) is defined as:
 
-You should notice the minus sign in between there. If the space time interval between A and B is negative means that A can influence B. If is positive, means that A will never be able to influence B. Now, since the s.i. is the same for all the observers, it is actually what define CAUSALITY between events. Indeed, since the **Δt** are relative to the observers, the only reliable quantity is s.i. !  
-In a bit more mathematical terms will mean that the space time interval is a quantity that is conserved for all frame or references.
 
-Furthermore if we look at the formula, it closely resemble a distance between points in a standard Cartesian plane.. So maybe that is actually a distance calculation in some strange 4-d space? … Well that is what Minkowski found out… and the 4-d mathematical space derived was just called space-time, where time is just “another” coordinate, and the points in this 4-d space are called Events. But this is an argument for the next article, where we will discover the Minkowski space and the space-time diagrams.. Stay tuned!
+**s.i. = (Δx)² – (cΔt)² = (Δs)²**
+
+
+where `Δx` is the spatial distance between events A and B, and `Δt` is the time interval between them, measured by each observer. 
+The space-time interval is the only quantity on which all observers agree.  They won't agree on `Δx` or `Δt` individually, 
+but they will calculate the same value for `s.i.`  Even if the order of events differs between observers, the `s.i.` remains consistent.
+
+Notice the minus sign in the equation.  If the space-time interval is negative, event A can influence event B. 
+If it's positive, A cannot influence B.  Because s.i. is invariant, it defines causality between events. 
+Since `Δt` is relative, `s.i.` is the only reliable measure of causal relationships.  
+In mathematical terms, the space-time interval is a conserved quantity across all frames of reference.
+
+The formula also resembles the distance formula in a Cartesian plane. 
+This suggests that it might represent a distance in a four-dimensional space.  This was Minkowski's insight, leading to the concept of space-time, 
+where time is treated as another coordinate. Points in this 4D space are called events. 
+This will be the subject of the next article, where we'll explore Minkowski space and space-time diagrams. Stay tuned!
+

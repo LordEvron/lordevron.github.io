@@ -1,43 +1,56 @@
 ---
 id: 258
-title: 'Miniaturized Automatic WiFi attacking device with 2 operative modes&#8230;'
+title: 'Miniaturized Automatic WiFi attacking device with 2 operative modes'
 date: '2018-07-25T11:15:33+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=258'
 permalink: /2018/07/25/miniaturized-automatic-wifi-attacking-device-with-2-operative-modes/
 categories:
     - Technical
 tags:
-    - Arduino
+    - arduino
     - ESP12
     - ESP8266
-    - flash
-    - MCU
-    - Wifi
+    - hardware
+    - technology
 ---
 
-I want to continue the discussion about the ESP12 that i started last time… Short resume: I found a ESP8266 wifi module and I accidentally discovered that can be used to send free wifi packages. This was enough to fully catch my attention and try to do some cool stuffs with it…  
-In particular i decided to build a wifi portable de-authentication device. So but this bad things were so obvious that someone else had to have already done it… A quick search on github and i found [death-attack implemented on a 8266-ESP12](https://github.com/spacehuhn/esp8266_deauther) which implemented a targeted deauth attack towards a *<span style="text-decoration: underline;">specific Client</span>*… Well not what i was looking for but close enough.. Anyway back to the original track..I originally started by just wide sending broadcast de-authentication attacks… This did not work properly since mostly of the new devices, actually ignore broadcast messages. So I had to find a way around. Luckily the code that i found had some function to list specific clients. So that was it. I programmed the code to loop for each network and store all the client connected to it. Then the attack could start by sending 3 client-targeted deauthenticated frames. once reached the end, the loop restarts, regenerating the new client lists and resending attacks… It works like a charm effectively jamming all the wifi 2.4GHz channels (not the 5GHz!). while is on, no device is able to connect or use the wifi..
+I'm continuing my exploration of the ESP12. To recap, I discovered that this ESP8266 Wi-Fi module can be used to send free Wi-Fi packets, 
+sparking my interest in building something cool.
 
-Not happy i also wanted to implement a second cool feature. Fake BSSID! Since we can send forged frames, than we can make it simulate fake Access points! since i had still free space on the flash of the device, i decided to implement this attack on the side, and then select which attack we want to perform by toggling a pin HIGH or LOW. In this second attack mode, the devices will generate 150 access points each with its own name and MAC, that will be visible from any client around it. I wanted to generate 255 but unfortunately the core speed is not so fast, so it takes pretty long to send out beacons, so if you increase too much the number of access point, the beacon/sec rate for each access point drops too much and do not get picked up as access point. Around 50 is the optimal number. You can set up this number in the code.
+My goal was to create a portable Wi-Fi deauthentication device.  Suspecting this had been done before, 
+I searched GitHub and found a project called [esp8266_deauther](https://github.com/spacehuhn/esp8266_deauther) that implemented a 
+targeted deauthentication attack against a specific client.  While not exactly what I was looking for, it was a useful starting point.
 
-So resuming the device that can perform TWO type of attacks: The device does not need any control or start. Just power it up and it start working right away. By having GPIO16 to GND or to VCC you can select one of the two attack modes:
+Initially, I tried broadcasting deauthentication attacks, but most modern devices ignore broadcast messages. 
+Fortunately, the code I found included functions for listing connected clients.  
+I adapted the code to loop through each network, storing all connected clients. The attack then sends three targeted deauthentication frames to each client.  
+After completing the loop, it regenerates the client list and repeats the attack. This effectively jams all 2.4GHz Wi-Fi channels (though not 5GHz).  
+While active, the device prevents new connections and disrupts existing ones.
+I also wanted to add a fake BSSID feature.  Since the device can forge frames, it can simulate fake access points.  
+With remaining flash memory, I implemented this attack as a secondary mode, selectable via a GPIO pin. 
+In this mode, the device generates 150 fake access points, each with its own name and MAC address, visible to any nearby client.  
+I originally aimed for 255 access points, but the ESP8266's processing speed limits the beacon rate. 
+Generating too many access points reduces the beacon rate per access point, making them undetectable. 
+Around 150 proved to be optimal, a number configurable in the code.
 
-1- Wide Band Death attack (Selected with GPIO16 to GND) … This will make deautenticate all the client within few meters from the devices. Until the device is powered, no client is able to connect to any network. Clients already connected will be disconnected.  
-2- Fake SSID flooder (Selected with the GPIO16 to VCC) … This will create 150 different fake access points. The fake access points will be visible from any client around it.
+In summary, the device performs two types of attacks: It requires no user interaction after being powered on. GPIO16 controls the attack mode:
 
-The full code with more detailed instructions,[ can be found on my git page](https://github.com/luca85/ESP_wifi_fun).
+1. **Wide Band Deauthentication Attack** (GPIO16 to GND): Deauthenticates all clients within range, preventing connections and 
+disrupting existing ones until the device is powered off.
+2. **Fake SSID Flooder** (GPIO16 to VCC): Creates 150 fake access points, visible to any nearby client.
 
-I also want to include a small disclaimer: THIS IS FOR TESTING PURPOSE ONLY. I AM not RESPONSIBLE FOR ANY MISSUSES OF THE CODE. USE IT ONLY IN ISOLATED ENVIRONMENT AND FOR TESTING AND UNDERSTANDING THE 802.11 PROTOCOL. The effect of this code can be easily reproduced with a simple command in AirCrack-ng tool, so there is nothing new on the table. Just another way to do it.
 
-Few final remarks:
+The complete code, along with detailed instructions, is available on my [GitHub page](https://github.com/LordEvron/ESP_wifi_fun).
 
-1\. notice that the device only work with 2.4GHz and not with 5GHz!
+**Disclaimer**: This code is for testing purposes only. I am not responsible for any misuse. Use it only in isolated environments for testing and understanding the 802.11 protocol. The effects of this code can be easily replicated with a simple command in AirCrack-ng; this is simply another implementation.
 
-2\. . The device has limited speed capabilities. It take around 1.3 seconds to loop around all 150 SSIDs. This means that the client will get 2 beacon every 1.3 seconds for each fake SSID. This 10 time lower frequencies than what is normal.
 
-3\. [Read my previous post on how to flash code on the ESP-12](http://localhost:8080/2018/02/08/flash-code-to-esp8266-esp-12-module-step-by-step-guide/)
+Final Remarks:
 
-Also, since it was just a quick test, i just spent few hours on it, the bare minimum to make it work. So the code look really messy!!! But it works and that is the important part 🙂 !  
-I hope you enjoyed the reading.
+1. This device only works with 2.4GHz Wi-Fi, not 5GHz.
+2. The device has limited processing power. It takes approximately 1.3 seconds to cycle through all 150 SSIDs. 
+This results in each fake SSID receiving only two beacons every 1.3 seconds, a much lower frequency than normal.
+3. For instructions on flashing code to the ESP-12, see my [previous post](/2018/02/08/flash-code-to-esp8266-esp-12-module-step-by-step-guide/).
+
+This project was a quick test, and the code reflects that—it's functional but admittedly messy.  I hope you found this interesting.

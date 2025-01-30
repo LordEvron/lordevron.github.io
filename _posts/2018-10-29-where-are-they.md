@@ -6,87 +6,101 @@ author: Lord_evron
 layout: post
 guid: 'http://localhost:8080/?p=480'
 permalink: /2018/10/29/where-are-they/
-yasr_overall_rating:
-    - '0'
-yasr_review_type:
-    - Product
 categories:
     - Non-Technical
 tags:
     - aliens
-    - fermi
-    - ufo
     - universe
 ---
 
-Ahhh Halloween.. The only day of the year when Aliens can walk among us without go undercover. Because according to many conspiracy theory there are a lot of aliens walking among us…and not only nowadays… Ancient civilizations also had good relationships with Extra Terrestrial visitors! Thanks to this testimony now we know for sure that:
+Ah, Halloween! The one day of the year when aliens can walk among us unnoticed... or so some conspiracy theories suggest. 
+They claim extraterrestrial visitors have been interacting with humanity for ages. 
+These theories often depict aliens as green, humanoid, fond of Mexico and the US (especially cornfields), interested in moving large stones 
+(think pyramids and Stonehenge), and prone to creating crop circles.  One might expect a bit more sophistication from a civilization capable of 
+interstellar travel and surviving intense radiation.
 
-– They are mostly green and they look like humans (two eyes, two legs, two arms, etc.)  
-– They love Mexico and U.S. (especially large US corn fields)  
-– They like to move heavy stone around (building pyramids, and Stonehenge like sites)  
-– They like to make circles in crops…
 
-Now., to be honest I was expecting a little more from a civilization with a technology that allow them to travel hundreds of light years and withstand heavy doses of gamma radiation.. 😀
+Jokes aside, the question remains: are there aliens out there? Let's approach this scientifically. 
+The observable universe contains roughly 10 billion galaxies, each with an average of 100 billion stars. 
+This equates to a staggering 1 billion trillion stars! (Source: University of California).  
+With so many stars, shouldn't the universe be teeming with alien life?  
+Highly advanced civilizations would also require vast amounts of energy, potentially leaving visible megastructures. 
+Yet, we haven't encountered any extraterrestrials (except perhaps those in the cornfields).
 
-OK …Enough with mambo jumbo..but the question remain.. There are aliens out there? Let’s analyze the problem with some scientific approach… There are<span class="ILfuVd"> about 10 billion galaxies in the observable universe! The number of stars in a galaxy varies, but assuming an average of **100 billion** stars per galaxy means that there are about **1,000,000,000,000,000,000,000** (that’s **1 billion trillion**) stars in the observable universe! \[source: University of California\]. That is definitely quite a lot of stars, so there should be a shitload of alien traffic out there!.. Also, hyper-tech civilization will also requires a lot of energy and thus we should be able to see huge mega structures around.. Yet we haven’t spotted any ET yet (a part the one in the corn fields 😀 )..</span>
 
-So if there should be plenty of life in the universe.. where are they? this question was firstly asked by Enrico Fermi, and became what has been known as Fermi paradox. Basically this paradox remark the discrepancy between the high number of expected aliens with the observation of none of them… So what is happening? Well firstly we need to estimate the number of expected alien life.. Well, the number of alien that should be able to communicate with us should depends by three main things:
+This discrepancy between the expected abundance of alien life and the lack of observed contact is known as the Fermi Paradox.  
+So, where is everyone?  Estimating the number of potentially communicative alien civilizations depends on three main factors:
 
-– 1 .Astrophysical factors: Number of planet that have the right conditions for sustaining life  
-– 2 .Biological factors: How easy to develop intelligent life on those planets  
-– 3. Social factor: How long the average civilization will lasts and the willing to communicate.
+1. Astrophysical factors: The number of planets with suitable conditions for life.
+2. Biological factors: The probability of life developing on those planets.
+3. Social factors: The longevity of civilizations and their willingness to communicate.
 
-We can estimate how probably each of these 3 points are and then try to come out with a formula.  
-For point 1 (Astrophysical factors) we can estimate that the number of planet (Pl) out there that has the right condition will depend from :
+We can estimate the likelihood of each factor and combine them into a formula.
 
-Pl= <span class="texhtml">*R* </span>\* fp \* ne
 
-Where <span class="texhtml">*R*</span> = the average rate of star formation in our galaxy<span class="texhtml"> *f*<sub>p</sub></span> = the fraction of those stars that have planets  
-<span class="texhtml">*n*<sub>e</sub></span> = the average number of planets that can potentially support life per star that has planets  
-Pl then should be an estimate of how many planets that support life should be out there… Just notice that the fractions can range from 0 (none of them) to 1 (all of them).
+For astrophysical factors, we can estimate the number of habitable planets (Pl) as:
 
-For point 2 (Biological factors) where we need to estimate number of intelligent aliens (IA) able to communicate with us on those planet it can be something like:
+`Pl = R* * fp * ne`
 
- IA= Pl \* fl \* fi
+Where:
 
-<span class="texhtml">*Where Pl is the planet number that we calculated before,  
-f*<sub>l</sub></span> = the fraction of planets that could support life that actually develop life at some point  
-<span class="texhtml">*f*<sub>i</sub></span> = the fraction of planets with life that actually go on to develop intelligent life (civilizations)
+    R* = the average rate of star formation in our galaxy
+    fp = the fraction of stars with planets
+    ne = the average number of potentially life-supporting planets per star with planets
 
-Basically we take all the habitable planet and we count only the one with life able to communicate with us..
+For biological factors, we estimate the number of intelligent, communicative alien civilizations (IA) as:
 
-For the point 3 (Social factor) we can estimate Sc as the fraction of the intelligent civilization willing to communicate multiplied by the the average length that they will keep trying.. So:
+`IA = Pl * fl * fi`
 
-Sc= L \* fc.
+Where:
 
-<span class="texhtml">*f*<sub>c</sub></span> = the fraction of civilizations that develop a technology that releases detectable signs of their existence into space  
-<span class="texhtml">*L*</span> = the length of time for which such civilizations release detectable signals into space
+    Pl = the number of habitable planets (calculated above)
+    fl = the fraction of habitable planets where life actually develops
+    fi = the fraction of planets with life that develop intelligent civilizations
 
-So if we put all together the final estimation is
+For social factors, we estimate (Sc) as:
 
-<span class="mwe-math-element"> ![{\displaystyle N=R_{*}\cdot f_{\mathrm {p} }\cdot n_{\mathrm {e} }\cdot f_{\mathrm {l} }\cdot f_{\mathrm {i} }\cdot f_{\mathrm {c} }\cdot L}](https://wikimedia.org/api/rest_v1/media/math/render/svg/08459525b4c05af9b9e1748406e26ad869d9462d)</span>
+`Sc = L * fc`
 
-And that is the famous Drake equation
+Where:
 
-According with our observations, N is 0, meaning that we did not yet met any Alien. The problem with this equation is that R is incredibly high, so for having N = 0, it means that at least one of the other variable should be 0 or very very close to it… The question is.. which one?
+    fc = the fraction of civilizations that develop detectable communication technology
+    L = the length of time such civilizations transmit detectable signals
 
-In 1961 when this equation was written, we really had to guess all the variable there.. but today, thanks to satellites, telescopes and similar we do have a more close idea, at least for astrophysical factors of the equation . Indeed in recent years we discovered thousands planets orbiting around stars. So essentially every star has planets, so <span class="texhtml">*f*<sub>p</sub></span> is close to 1.  
-For <span class="texhtml">*n*<sub>e, </sub></span>as today, NASA has estimated around 40 billions (40.000.000.000) habitable planets (rocky, with potential liquid water etc..). And those are only in the milky way! So <span class="texhtml">*n*<sub>e</sub></span> is also pretty high.
+Combining these factors gives us the famous Drake Equation:
 
-OK, so from astrophysical point of view we are sure that the universe is full of place where life could evolve.. How about biological/social?. On how many planet the life does actually evolve? That is where we still navigate in deep dark.. We have no idea on how to estimate that… however now we are sure that is one of the factors of point 2 or 3 that is close to 0. This means that life has the right condition but fails to develop.. we can investigate this further and assume one of the two things must be true:
+`N = R * fp * ne * fl * fi * fc * L`
 
-1\. Life on other planets fails to start.. Basically despite good environment conditions, life is not able to evolve and reach the same level that we have here on earth. In this case if the Biological Factor that is near 0.
+Our current observations suggest `N = 0` because we did not encounter any Alien civilization yet.  Given the incredibly high value of `R`, this implies that at least one of the other 
+variables must be zero or extremely close to it.  Which one?
+In 1961, when the equation was formulated, all these variables were largely guesswork. 
+Today, thanks to telescopes and satellites, we have better estimates, at least for the astrophysical factors.  
+We've discovered thousands of exoplanets, suggesting that nearly every star has planets (`fp ≈ 1`). 
+NASA estimates around 40 billion potentially habitable planets in the Milky Way alone (`ne` is also high).
 
-2\. Life on other planets starts just fine. In many planets, life with same level as earth is very common. However, something bad happen to all of them once reached a certain point. In this case is the social factor that is near 0
+So, astrophysically, the universe seems ripe for life.  But what about the biological and social factors?  
+We're still in the dark regarding how often life actually emerges.  However, we know that either `fl`, `fi`, or `fc*L` must be close to zero.  
+This means that life either struggles to emerge, or, if it does, it faces significant obstacles to developing into communicative civilizations.
 
-This two points are known as great filters. If assumption of filter 1 is true is actually good for us.. It simply means that we do are the lucky one…among all the million planets only 1 attempt succeeded and its us! Also mean that we passed the worst part and we do not have impediments in front of us. We have the potential to be the first specie to colonize galaxies!
+This leads to the concept of the "Great Filter."  We can frame the problem as two possibilities:
 
-On the contrary if assumption 2 is true, than is really bad for us.. It means that thousands of other civilization developed to our level but then something bad happened to all of them.. so we also should be expecting something similar…
+1. Life rarely starts: Despite favorable environments, life struggles to evolve.  In this case, the biological factor (`fl` or `fi`) is near zero.
+2. Civilizations are short-lived: Life might be common, but something prevents civilizations from surviving long enough to communicate.  
+Here, the social factor (`fc*L`) is near zero.
 
-So what between filter 1 and 2 is more likely? In the past the 1st one seemed the most supported, however a set of recent papers have put assumption 2 back into the game. In particular we should consider that more a civilization improve their technology, more likely is to get wiped out, either by accident of by deliberate actions. Indeed potentially technologies able to annihilate the full civilization became more and more accessible by more people and thus there will be at least one that will push the “red button”. Even if this technologies are kept away from mostly of the people, give it enough time and there will be at least one crazy person with the right access that will blow everything up. Example of such destructive tech could be genetically modified viruses, nuclear weapons, bio stuffs, etc.
+If the first scenario is true, it's good news for us! It means we're incredibly lucky, perhaps the only successful case.  
+It also implies that we've overcome the biggest hurdle and have the potential to colonize the galaxy.
+If the second scenario is true, it's less encouraging.  It suggests that countless civilizations have risen and fallen, 
+implying a similar fate might await us.
+Which scenario is more likely?  Historically, the first seemed more plausible. However, recent research has revived the second possibility.  
+As civilizations advance technologically, they also become more vulnerable to self-destruction, whether accidental or intentional.  
+Potentially civilization-ending technologies become more accessible, increasing the risk of someone "pushing the red button."  
+Examples include engineered viruses, nuclear weapons, and other bioweapons.
 
-So, we do not know yet where they are, but if the filter 2 is the cause of being alone, than we should be pretty cautious about what we do..
+We don't yet know the answer. But if the second scenario is correct, we should be extremely cautious about our own actions.
 
-Oh… just a small remark for the one that believe that aliens are among us. Well, I can reply with the banner of American scientist looking for aliens: “It’s Never Aliens—until It Is”… So, this simply means that if there is another (simpler) explanation than go for that…
+Finally, for those who believe aliens are already among us, I'll quote a common scientific refrain: "It's never aliens—until it is." 
+In other words, always look for simpler explanations first.
 
-See you in the next article…!
+See you in the next article!
+
