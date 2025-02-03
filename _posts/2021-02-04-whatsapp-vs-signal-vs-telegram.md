@@ -4,10 +4,7 @@ title: 'Whatsapp vs Signal vs Telegram'
 date: '2021-02-04T17:46:43+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=838'
 permalink: /2021/02/04/whatsapp-vs-signal-vs-telegram/
-yasr_schema_additional_fields:
-    - 'a:39:{s:17:"yasr_schema_title";s:0:"";s:16:"yasr_book_author";s:0:"";s:21:"yasr_book_bookedition";s:0:"";s:20:"yasr_book_bookformat";s:15:"AudiobookFormat";s:14:"yasr_book_isbn";s:0:"";s:25:"yasr_book_number_of_pages";s:0:"";s:16:"yasr_movie_actor";s:0:"";s:19:"yasr_movie_director";s:0:"";s:19:"yasr_movie_duration";s:0:"";s:22:"yasr_movie_datecreated";s:0:"";s:18:"yasr_product_brand";s:0:"";s:16:"yasr_product_sku";s:0:"";s:37:"yasr_product_global_identifier_select";s:5:"gtin8";s:36:"yasr_product_global_identifier_value";s:0:"";s:18:"yasr_product_price";s:0:"";s:27:"yasr_product_price_currency";s:0:"";s:30:"yasr_product_price_valid_until";s:0:"";s:31:"yasr_product_price_availability";s:12:"Discontinued";s:22:"yasr_product_price_url";s:0:"";s:26:"yasr_localbusiness_address";s:0:"";s:29:"yasr_localbusiness_pricerange";s:0:"";s:28:"yasr_localbusiness_telephone";s:0:"";s:20:"yasr_recipe_cooktime";s:0:"";s:23:"yasr_recipe_description";s:0:"";s:20:"yasr_recipe_keywords";s:0:"";s:21:"yasr_recipe_nutrition";s:0:"";s:20:"yasr_recipe_preptime";s:0:"";s:26:"yasr_recipe_recipecategory";s:0:"";s:25:"yasr_recipe_recipecuisine";s:0:"";s:28:"yasr_recipe_recipeingredient";s:0:"";s:30:"yasr_recipe_recipeinstructions";s:0:"";s:17:"yasr_recipe_video";s:0:"";s:25:"yasr_software_application";s:0:"";s:16:"yasr_software_os";s:0:"";s:19:"yasr_software_price";s:0:"";s:28:"yasr_software_price_currency";s:0:"";s:31:"yasr_software_price_valid_until";s:0:"";s:32:"yasr_software_price_availability";s:12:"Discontinued";s:23:"yasr_software_price_url";s:0:"";}'
 categories:
     - Technical
 tags:
@@ -17,47 +14,63 @@ tags:
     - whatsapp
 ---
 
-The recent privacy policy changes by Whatsapp has triggered a big migration towards similar platforms such as Signal and Telegram. But are those really better? Why? In this article we will see what are the strong and weak points of each of them from a privacy prospective.
+WhatsApp's recent privacy policy changes have spurred a mass migration to platforms like Signal and Telegram. 
+But are these alternatives truly better? This article examines the strengths and weaknesses of each from a privacy perspective.
 
-So lets start to explore three basic concepts. Of course these definitions are quite simplified and generalized :
+Let's define three key concepts (simplified for clarity):
 
-- Open source: when a code is open source it means, that the code is public and everyone can read it and understand not only what it does but also how it does it.
-- End-to-end encryption. When a message is encrypted end to end, it means that the sender encrypt a message that only the receiver device can decrypt. None in the middle (including servers, hackers, or law enforcement) can in theory read or decrypt the messages.
-- Encryption protocols: this define how the data gets encrypted. some protocols are more secure (eg harder to break) then others.
+- Open Source: Open-source code is publicly available, allowing anyone to read and understand its functionality.
+- End-to-End Encryption (E2EE): E2EE ensures that only the sender and recipient can decrypt messages. No intermediary, including servers, can read them.
+- Encryption Protocols: These define the data encryption methods. Some are more secure than others.
 
-So the three apps differentiate each other on these three aspects. Lets see one by one:
+These three apps differ in these areas:
 
-## Whatsapp
+# WhatsApp
 
-Whatsapp is a closed source app owned by Facebook. This means that you cannot be sure of what the app does in reality. The only thing you can do is to trust them and their documentation. Unfortunately, in security, trust is BAD… Like, really Bad… So not a good start.. but lets see what they are suppose to do: They claim that all the messages are end to end encrypted (good) and it is “on” by default. This means that as soon as you start a new chat, it it automatically e2e encrypted.. As Encryption protocol they (claim to) use the Signal protocol, an open source encryption protocol developed by Open Whisper System.
+WhatsApp, owned by Facebook, is closed source.  This means its inner workings are opaque.  We must rely on their claims 
+and documentation, which, in security, is problematic. They claim all messages are E2EE by default, using the Signal Protocol 
+(an open-source protocol developed by Open Whisper Systems).
 
-## Telegram
+# Telegram
 
-Telegram is also owned by a for-profit Russian company, and is “kind” of open source. I said kind of because the APP is open source but the server side code is proprietary. When you use telegram your chat are NOT end-to-end encrypted by default, and the encryption keys are stored in their server, meaning that potentially, they can read all your conversations. You can enable the e2e encryption using “Secret-Chats”. As encryption protocol they use a custom made protocol that they developed. This is something that is really bad, since the first rule of security is “do not come with your new cool algorithm but use what has been already proven to be good”
+Telegram, owned by a Russian for-profit company, is "kind of" open source. The app is open source, but the server-side code 
+is proprietary.  Regular chats are not E2EE by default; encryption keys are stored on their servers. 
+E2EE is only available in "Secret Chats." They use a custom-built encryption protocol, which is generally discouraged in 
+security best practices.
 
-## Signal
+# Signal
 
-Signal is a truly open source project, where both the server side and the app side is open source. They are also the one developing (and using) the Signal encryption protocol that Whatsapp (and many more) uses. They are owned by “Signal Foundation” (successor of Open Whisper) that is a no-profit organization. The chats always are end-to-end protected and you can even add the functionality to auto-delete messages after a certain time.
+Signal is fully open source, both server and client-side. Developed by the non-profit Signal Foundation 
+(formerly Open Whisper Systems), it uses the Signal Protocol (which they also developed).
+Chats are always E2EE, with an option for auto-deleting messages.
 
-## Comparison
+# Comparison
 
-So now that we have an overview of the main features and their *Owners* , we can discuss pros and cons of each of them. Whatsapp is completely closed source so, as i mention before, you cannot really know if they introduced a backdoor in the code that allows them to decrypt all the messages with a single key. So, if you are concerned about your messages to remain secret, you really need to trust them.. but who does not trust Facebook with regards of privacy? Signal on the other hands, is completely open source, and its code has been audited several times. This is the best way to earn trust! Telegram on the other hands lies in the middle. The reason is that they have a open source app (and that is the most important), however the server code is closed. we will get back to this in a sec.
+WhatsApp's closed source nature makes it impossible to verify their claims about security. Trust is a significant vulnerability. 
+Signal's open-source code has been audited, establishing greater trust. Telegram falls in between, with an open-source app but closed-source servers.
 
-Regarding the e2e encryption.. Whatsapp **claims** that is doing it, signal definitely do it. Telegram again lies in the middle. You COULD activate it, but is not there by default. It means that if you just start a normal chat, they server holds the keys for decrypting you chat…and the server code is closed source! So again they can do whatever with your messages. This to me sound super stupid, like locking your door with a super-safe door and leaving the key under the carpet..
+Regarding E2EE, WhatsApp claims to use it, Signal definitely does, and Telegram offers it optionally. 
+Telegram's default lack of E2EE means they potentially have access to conversations.
 
-The encryption algorithm.. The Signal one is developed by open Whispers based on known mathematical algorithms (good), while the one in telegram is custom made.. This does not necessary means is bad (but usually is..). They are simply using something that is not mathematically proved to be unbreakable. And the strange thing is that they had available better alternatives.
+For encryption, WhatsApp (supposedly) uses the well-regarded Signal Protocol, while Telegram uses a custom protocol. 
+Custom protocols are generally viewed with suspicion in the security community.
 
-So you need to simply chose between:   
-1\. Whatsapp that **Claims** that is doing things properly (but it does not show it)  
-2\. Telegram, that showing things done in a suspiciously non optimal way.   
-3\. Signal, that has been proven to fulfill all the basic security requirements.
+The choice boils down to:
 
-## Metadata and Phone number
+- WhatsApp: Claims to be secure (but offers no proof).
+- Telegram: Implements security in a questionable way.
+- Signal: Proven to meet basic security requirements.
 
-It is important to mention that the e2e encryption only protect the content of your message but not the metadata. This means that third parties cannot see the content of the messages that Alice sent to Bob, but they can see the size of it, when was sent, when was received, how often do they talk, who Alice talk to, common contacts, etc… These data gives up a lot of information about yourself, including your friend network. Often you do not need to read the message content to be able to know what two people talks about 🙂 …
+# Metadata and Phone Numbers
 
-Another big drawbacks present in the the requirements of phone number for registration.. This is what actually makes the metadata collected to be associated with your real identity. Ideally you would not need any phone number to register in order to preserve your privacy.
+E2EE only protects message content, not metadata. Metadata includes message size, timestamps, frequency of communication, 
+and contact information. This data can reveal a lot.
+Requiring a phone number for registration is another privacy concern. 
+It links metadata to your real-world identity.  Ideally, registration wouldn't require a phone number.
 
-So in conclusion, my advise is to switch to signal to talk with your friends.. or use only “Secret chats” in telegram. Despite some questionable choices, Telegram support bots, super groups, channels, and these features alone makes it worth to be installed.
+In conclusion, switching to Signal is advisable for private conversations. 
+Telegram's "Secret Chats" are an alternative.  Despite some shortcomings, Telegram's features like bots, supergroups, 
+and channels make it a worthwhile app to have.
 
 I hope you learned something new.. Happy texting!
+

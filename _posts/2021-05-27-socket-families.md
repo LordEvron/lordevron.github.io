@@ -14,38 +14,48 @@ tags:
     - socket
 ---
 
-This is a short article to clarify few things on sockets. I had to do some research to work with those classes, especially when you do some more advance uses. Lets start with some basic.
+This article clarifies some aspects of sockets in Python, a topic that can be confusing, 
+especially for advanced use cases. Let's start with the basics.
+A socket is an endpoint for two-way communication. Network sockets are defined by three parameters:
 
-A socket is defined as an endpoint of a two way communication. The socket used in networking are fully determined by three parameters:
-
-1. Ip Address
+1. IP Address 
 2. Port
 3. Protocol
 
-Usually servers binds the socket on a port and wait for incoming connections. The clients then try to connect to the server hostname:port and they can start the communication.
+Servers typically bind a socket to a port and listen for incoming connections. 
+Clients then connect to the server's hostname:port to initiate communication.
 
-Python provides a quite nice and exhaustive socket class that provide all these low level features. However their usage can be a little confusing in the beginning.
+Python's socket class provides access to these low-level features, but its usage can be initially confusing.
 
-Lets start to say that the python socket class mirror the linux socket class. So you can simply create a new socket with `socket.socket()` call. This call accept three main parametes that are socket family, socket type and socket protocol.
+The Python socket class mirrors the Linux socket class. You create a new socket using `socket.socket()`, 
+which accepts three main parameters: socket family, socket type, and socket protocol.
 
-The definition are of those possible values are also defined as constants in the class and are two types: AF\_XXXX where define address families and PF\_XXXX which are protocol families. Here a quick overview of the address families:
+Possible values for these parameters are defined as constants in the class, categorized as `AF_XXXX` (address families) and `PF_XXXX` (protocol families). 
+Here's a quick overview of address families:
 
-- **AF\_INET , AF\_INET6, AF\_UNIX** etc, are used when you want to communicate using either TCP or UDP protocols.
-- **AF\_PACKET** is used when you want to access the raw data of the network card, for example for implementing your own protocol. In this case you need root permission or **CAP\_NET\_RAW** capabilities to do that. In this case you operate at level 2 of the osi layer.
+- `AF_INET`, `AF_INET6`, `AF_UNIX`: Used for communication over TCP or UDP.
+- `AF_PACKET`: Used for accessing raw network card data (e.g., for custom protocol implementation). Requires root privileges or `CAP_NET_RAW` capabilities and operates at OSI layer 2.
 
-For the socket type parameters you can chose one between these:
+Socket type parameters include:
 
-- **SOCK\_STREAM** : is a connection based protocol (connection stays on) where the connection is terminated either when a parties close the connection or when an error occur. *Usually you chose this if you are using TCP protocol*
-- **SOCK\_DGRAM** : is a single datagram transmission. You send a datagram and get a response and the connection is closed. *Usually you chose this if you are using UDP protocol.*
-- **SOCK\_RAW**: when you need to get the raw packets including the link level header (but not the physical layer header that is removed). This operate in a lower level then the previous two, where the link headers are removed.
-- **SOCK\_RDM, SOCK\_SEQPACKET** : They are not really used.
+- `SOCK_STREAM`: Connection-based protocol (connection persists) that terminates when either party closes it or an error occurs. Typically used with TCP.
+- `SOCK_DGRAM`: Single datagram transmission. A datagram is sent, a response is received, and the connection closes. Typically used with UDP.
+- `SOCK_RAW`: Accesses raw packets, including the link-level header (but not the physical layer header). Operates at a lower level than `SOCK_STREAM` and `SOCK_DGRAM`.
+- `SOCK_RDM`, `SOCK_SEQPACKET`: Less commonly used.
 
-For the protocol parameter, you can usually omit it if you are working with standard TCP or UDP, otherwise you can define the one you are using for example **IPPROTO\_IP** .
+The protocol parameter can usually be omitted for standard TCP or UDP. Otherwise, you can specify the protocol (e.g., `IPPROTO_IP`).
 
-Just keep in mind that if you use **AF\_PACKET** then you need to bind to a interface (eg. wlan0) rather than an ip because you are operating at level 2 of osi. Also you cannot neighter use the sent\_to() function since it requires a destination address (you can simply use the send() function that normally is used for established connections.).
+If you use `AF_PACKET`, you bind to an interface (e.g., wlan0) rather than an IP address, as you're operating at OSI layer 2. 
+You also can't use `sendto()` (which requires a destination address); use `send()` instead.
 
-As last i want to mentions a couple of things regarding the methods connect() and bind(). It can be a little confusing to define when to use bind() and when connect(). Usually you call bind() on the server side and connect() in the client side but is not mandatory. The difference betewen the two is that bind() it start listening to the given port, while connect() it is used to start a new connection toward the other side. If for example you have two client that randomly start transmitting to each other using UDP, then you need to call bind() to both of them and call connect() when you want to transmit. On the other hand if the communication is always on, then you could for example chose one to listen and one to connect and then reuse the same connection over and over.
+Regarding `connect()` and `bind()`, it can be confusing to know when to use each. `bind()` is usually called on the server side, 
+and `connect()` on the client side, but this is not mandatory. `bind()` starts listening on a port, while `connect()` initiates a connection to the other party. 
+For example, if two clients are randomly sending UDP datagrams to each other, both need to call `bind()` and then `connect()` when they want to transmit. 
+In persistent communication scenarios, one side can listen (`bind()`) and the other connect (`connect()`), and then reuse that connection.
 
-Just a final remark, that the socket connection are bidirectional, so on the same socket you can transmit and receive at the same time. Also you can set up advanced options such as TTL with the call `setsockopt()`
 
-I hope that this was informative. Working with lower level socket takes much more knowledge and skill than using higher level libraries.. So congratulation to be in the elite team 🙂
+Socket connections are bidirectional, allowing simultaneous transmission and reception. Advanced options like TTL can be set using `setsockopt()`.
+
+Working with lower-level sockets requires more knowledge and skill than using higher-level libraries. 
+So congratulation to be in the elite team 🙂 
+

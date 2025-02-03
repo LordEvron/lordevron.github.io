@@ -28,7 +28,7 @@ Now, consider these four frames:
 
    1. A box on Earth's surface.
    2. A box in deep space, far from any significant gravitational influence.
-   3. A freely falling box (e.g., dropped from an airplane).git sta
+   3. A freely falling box (e.g., dropped from an airplane).
    4. A box accelerating uniformly in space with an acceleration equal to Earth's gravity (e.g., inside a constantly accelerating rocket).
 
 According to Newtonian mechanics, frames 1 and 2 are inertial, while frames 3 and 4 are not due to their acceleration.

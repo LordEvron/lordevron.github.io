@@ -4,29 +4,30 @@ title: 'Variables in Bash'
 date: '2020-05-20T15:59:36+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=458'
 permalink: /2020/05/20/variables-in-bash/
-yasr_schema_additional_fields:
-    - 'a:22:{s:18:"yasr_product_brand";s:0:"";s:16:"yasr_product_sku";s:0:"";s:37:"yasr_product_global_identifier_select";s:5:"gtin8";s:36:"yasr_product_global_identifier_value";s:0:"";s:18:"yasr_product_price";s:0:"";s:27:"yasr_product_price_currency";s:0:"";s:30:"yasr_product_price_valid_until";s:0:"";s:31:"yasr_product_price_availability";s:12:"Discontinued";s:22:"yasr_product_price_url";s:0:"";s:26:"yasr_localbusiness_address";s:0:"";s:29:"yasr_localbusiness_pricerange";s:0:"";s:28:"yasr_localbusiness_telephone";s:0:"";s:20:"yasr_recipe_cooktime";s:0:"";s:23:"yasr_recipe_description";s:0:"";s:20:"yasr_recipe_keywords";s:0:"";s:21:"yasr_recipe_nutrition";s:0:"";s:20:"yasr_recipe_preptime";s:0:"";s:26:"yasr_recipe_recipecategory";s:0:"";s:25:"yasr_recipe_recipecuisine";s:0:"";s:28:"yasr_recipe_recipeingredient";s:0:"";s:30:"yasr_recipe_recipeinstructions";s:0:"";s:17:"yasr_recipe_video";s:0:"";}'
 categories:
     - Technical
 tags:
     - bash
     - code
     - linux
-    - variables
+    - technology
 ---
 
-Lets talk about variables in bash scripts. Nothing super technical, but this is just a small clarification article for a such useful features. But lets start from the beginning. .. What are bash variable and why a user or developer should care about it?
-
-The answer is easy.. as the name suggest they are just variable that programs can access and read the value. The cool things, is that some of them are set by default and are called environmental variables. For example, suppose that your script/ software needs to read data from your local home folder. Usually this folder in linux system is “/home/USERNAME”. Of course you could hard-code that path for your special case, but this not a good approach, since it will only work for a specific username. How can you access that path without knowing the specific username (a part from ~)? One possible solution is by using env variable. For example linux env variable “HOME”. So from your shell script you can just access $HOME and that will resolve to the correct path. But if you are reading this article you already know all this.. lets move on.
+Let's talk about variables in bash scripts. This isn't a deep dive, but rather a clarification on this useful feature. 
+What are bash variables, and why should a user or developer care?
+Simply put, they are variables that programs can access and read. Some are set by default and are called environmental variables. 
+For example, if your script needs to access your home directory in Linux, which is usually `/home/USERNAME`, 
+you could hardcode that path. However, this isn't ideal, as it only works for one specific username. 
+How can you access the path without knowing the username (besides using `~`)?  One solution is using the `HOME` environment variable. 
+In your shell script, you can use `$HOME`, which will resolve to the correct path. 
+But since you're reading this, you probably already know this, so let's move on.
 
 ## Shell scripting
 
-If you have been shell scripting you probably noticed few things: for example what is the difference between:
+If you've done any shell scripting, you've likely encountered some nuances. For instance, what's the difference between these:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-
+```bash
 GREET="Hello_"
 # with no quotes
 echo $GREET
@@ -40,15 +41,17 @@ echo "$GREET"
 # with curly braces
 echo ${GREET}
 >Hello_
+
 ```
 
-</div>Lets see what each of those does, in particular, Lets start to see the effect on adding a single quote –&gt; echo ‘$GREET’  
-In this case, bash threat the characters in between quotes as string and will not try to interpret it. So, echo ‘$GREET’ will print “$GREET”. So use single quotes IF you do not want any bash substitution. What about the other three commands?
+Let's examine each one, starting with the single quote example: `echo '$GREET'`. 
+Bash treats characters within single quotes literally as a string, without attempting any interpretation.  
+So, `echo '$GREET'` prints *$GREET*. Use single quotes when you want to prevent any bash substitution. 
+What about the other three commands?
 
-With the double quotes, bash will try to substitute the variable in the string. So lets see this example:
+With double quotes, bash does attempt variable substitution within the string. Consider this example:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-
+```bash
 SHELL=bash
 # with no quotes we get error
 echo pipe | is used to connect output in $SHELL
@@ -62,22 +65,23 @@ echo "pipe | is used to connect output in $SHELL"
 
 ```
 
-</div>The command without quotes will raise an error since bash will actually use the | to pipe the two command together (“pipe” and “is”). the second example will print “pipe | is used to connect output in $SHELL”, while the third echo will print “pipe | is used to connect output in bash”. Also notice that in bash, string without quotes is subject to word splitting and globbing ***So double quotes are often the one you are meant to use***. Also we can explicitly tell bash to skip the substitution for a specific variable by using the backslash. For example:
+The unquoted command results in an error because bash tries to pipe the commands "pipe" and "is" together using the `|` character. 
+The single-quoted example prints the string literally, including "$SHELL". Only the double-quoted version substitutes the variable, 
+printing "pipe | is used to connect output in bash". Also, be aware that unquoted strings in bash are subject to word 
+splitting and globbing. **Double quotes are often the correct choice.** You can also prevent substitution for a specific variable
+using a backslash:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-
+```bash
 SHELL=bash 
 # We can escape the substitution with \
 echo "\$SHELL is set to $SHELL"
 >$SHELL is set to bash
-
 ```
 
-</div>It will print “*$SHELL is set to bash*“  
-Ok.. what about the curly braces? Well those are for isolating the Variable name in case you have long sentences. For example
+This will print "$SHELL is set to bash".
+What about curly braces? They're used to isolate variable names, especially in longer strings. For example:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-
+```bash
 GREET="Hello_"
 # $GREETWorld is not set!
 echo "$GREETWorld"
@@ -87,14 +91,16 @@ echo "${GREET}World"
 >Hello_World
 ```
 
-</div>In the first echo, bash will try to resolve a variable called *GREETWorld*, and by not finding it, it will return an empty string. In the second echo, the variable is correctly resolved and *“Hello\_world*” is printed.
+In the first `echo`, bash looks for a variable named `GREETWorld`, which doesn't exist, resulting in an empty string. 
+The second `echo` correctly uses curly braces to isolate the `GREET` variable, printing "Hello_World".
 
 ## SOURCE and EXPORT
 
-Few words about the two keywords, “source” and “export”. So it may have happened to lauch some scripts using those keywords without really knowing why. So by default when you launch a script it will be executed in a new (child) shell. So why you should care? Well because the variable for that new shell may be different. For example suppose that you do something like this:
+Let's discuss "source" and "export." You might have used these keywords without fully understanding them. 
+When you run a script, it's executed in a new (child) shell. Why does this matter? 
+Because variables in the child shell might be different. For instance:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-
+```bash
 # Create myscript.sh that echo VAR variable
 echo 'echo $VAR' >> myscript.sh
 # Create the VAR variable and make sure is there
@@ -114,13 +120,15 @@ source myscript.sh
 . ./myscript.sh
 >Hello
 ```
+We create a script that echoes the `VAR` variable (note the single quotes). We then set `VAR` in the current shell. 
+However, when we execute the script normally (`./myscript.sh`), it doesn't print the value because it's running 
+in a new shell where VAR is not defined.  Using "source" (or `.`) runs the script in the current shell, allowing it to access `VAR`. 
+Note that `.` is equivalent to `source`, but `.` (or `source`) is not the same as `./`, which specifies a path and creates a subshell.
 
-</div>As you can see, you create a script that echo the variable VAR (notice the single quotes before &gt;&gt; ). Then you set VAR in the current shell and you can access that value with echo. However when you launch the script, it will not print the value. This happen because the script is launched in a new shell automatically and thus the value VAR is NOT defined in the new shell. However we can tell bash to run the script in the current shell with the “source” command. In this case, the script is run from the CURRENT SHELL, and thus it can access the variable VAR. The source command is also equivalent to “.” command. NOTICE THAT .=source but those are not the same as ./ (which basically is just specifying the path).
+What if you want to access `VAR` from the child shell as well? That's where "export" comes in. "export" makes a variable available 
+to all child processes:
 
-So what if I want to access the VAR also from the new child shell? then the EXPORT command comes in. With export you are telling bash to “export” that variable to all the child processes. So you can do this:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-
+```bash
 # Create myscript.sh that echo VAR2 variable
 echo 'echo $VAR2' >> myscript.sh
 # Set VAR2 and make sure that is there
@@ -139,14 +147,14 @@ source ./myscript.sh
 >Hello
 ```
 
-</div>Similar to what we have done before, we define a VAR2 variable and we echo that from a script. The first time that we call a script we get the empty string printed, however, after we export the variable VAR, and call again the script, it correcly print “Hello” since it can be accessed also from the new shell. Of course the current shell also retains it as you can see by calling “source ./myscript.sh”
+We define `VAR2` and echo it from a script. The first execution prints nothing. After exporting `VAR2`, the script correctly prints 
+"Hello" because the child shell can now access it. `source` still works as before, as the current shell also retains the variable.
 
 ## EVAL
 
-Eval is another nice command that deserve its own small paragraph. Lets retake the example of our small echo command of the script, and lets do something different.
+"eval" is another useful command. Let's revisit our script example and try something different:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-
+```bash
 # Lets create a txt file with a simple text
 echo "Hello_world" >> hello.txt
 # we create a variable that contains another variable. 
@@ -162,8 +170,13 @@ eval $COMMAND
 >Hello_world
 ```
 
-</div>So we create a txt file with “hello\_word” as text. Then we create a var name called COMMAND that hold a cat command and a $MYFILE. Because we are using single quotes, this is not resolved from bash, keeping it as $MYFILE. We then define this MYFILE as the text that we created in the beginning.
+We create a text file "hello.txt" containing "Hello_world". `COMMAND` stores the string "cat $MYFILE". 
+Because of the single quotes, `$MYFILE` is not immediately resolved. We then define `MYFILE` as "hello.txt".
 
-Look what happen when we try to launch $COMMAND… This will resolve to “cat $MYFILE” and there is no file called $MYFILE, thus raising an error. But when we use EVAL, the content of the COMMAND get reevaluated and $MYFILE var get substituted and the cat command succeed!. This can be useful if you have Variable names inside other variable names. However notice that the use of “eval” is not recommended because can easily lead to errors, however is a nice to know tool anyway and could be useful sometimes.
+When we try to execute `$COMMAND`, it resolves to `cat $MYFILE`, which results in an error because there's no file named literally 
+`$MYFILE`.  However, `eval $COMMAND` re-evaluates the content of `COMMAND`. This time, `$MYFILE` is substituted with "hello.txt," 
+and the cat command successfully prints "Hello_world".  This is useful when you have variable names stored within other variables. 
+However, be aware that "eval" can be risky if not used carefully, as it can lead to unexpected behavior (also never use it with untrusted sources). 
+It's a powerful tool, but use it with caution.
 
 We can And that is it for now… Happy Bash Coding…
