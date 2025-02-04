@@ -5,7 +5,7 @@
 layout: index
 title: "Home"
 ---
-Welcome to my blog!
+## Welcome to my blog!
 
 Here, I share my thoughts on a variety of subjects, but I'm particularly fascinated by physics, especially astrophysics 
 and quantum physics as well as the ever-evolving world of technology, from fundamental chip design to cutting-edge computing.  
