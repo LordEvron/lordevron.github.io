@@ -9,7 +9,7 @@ title: "Home"
 
 Here, I share my thoughts on a variety of subjects, but I'm particularly fascinated by physics, especially astrophysics 
 and quantum physics as well as the ever-evolving world of technology, from fundamental chip design to cutting-edge computing.  
-I also occasionally dive into the other realms such as psychology.
+I also occasionally dive into other realms such as psychology.
 
 You don't know where to start? Here's a reading suggestion: [universe25](/2018/04/25/universe-25-the-fall-of-the-utopian-dream/), 
 [kernel and initramfs]( /2022/02/14/pc-boot-process-kernel-and-initramfs/), and [straight lines on a curved surface](/2018/02/19/can-you-draw-a-straight-line-on-a-curved-surface/)
