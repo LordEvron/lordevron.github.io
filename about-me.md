@@ -32,7 +32,7 @@ My digital toolbox:
     * Bilingual in Windows and Linux—because knowing both is a survival skill.
     * Code polyglot: C, C++, Qt, Python, Terraform
     * Speaks fluent Linux (because why fight the machine when you can work with it?)
-    * Occasionally dabbles in JavaScript, Go, and Assembly because understanding the core matters
+    * Occasionally using JavaScript, Go, and Assembly (because understanding what machine says in their native language is important!)
 
 * Not a fan of fancy interfaces (who needs them when you got a shell?)
 
@@ -42,7 +42,7 @@ My digital toolbox:
 
 * Research:
     * Published a  [paper](https://onlinelibrary.wiley.com/doi/10.1155/2011/214549) with 218+ citations; basically, academic street cred
-    * Check out my useless papers: <a href="{{ site.baseurl}}/publications.html">publication list</a>
+    * Check out my "useless" papers: <a href="{{ site.baseurl}}/publications.html">publication list</a>
 
 In short: I break things, build things, and make machines do my bidding. Because knowledge is power and occasionally, chaos.
 

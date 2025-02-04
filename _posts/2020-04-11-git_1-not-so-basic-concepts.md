@@ -4,40 +4,148 @@ title: 'GIT_1 : (not so) Basic Concepts'
 date: '2020-04-11T14:05:53+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=754'
 permalink: /2020/04/11/git_1-not-so-basic-concepts/
-yasr_schema_additional_fields:
-    - 'a:22:{s:18:"yasr_product_brand";s:0:"";s:16:"yasr_product_sku";s:0:"";s:37:"yasr_product_global_identifier_select";s:5:"gtin8";s:36:"yasr_product_global_identifier_value";s:0:"";s:18:"yasr_product_price";s:0:"";s:27:"yasr_product_price_currency";s:0:"";s:30:"yasr_product_price_valid_until";s:0:"";s:31:"yasr_product_price_availability";s:12:"Discontinued";s:22:"yasr_product_price_url";s:0:"";s:26:"yasr_localbusiness_address";s:0:"";s:29:"yasr_localbusiness_pricerange";s:0:"";s:28:"yasr_localbusiness_telephone";s:0:"";s:20:"yasr_recipe_cooktime";s:0:"";s:23:"yasr_recipe_description";s:0:"";s:20:"yasr_recipe_keywords";s:0:"";s:21:"yasr_recipe_nutrition";s:0:"";s:20:"yasr_recipe_preptime";s:0:"";s:26:"yasr_recipe_recipecategory";s:0:"";s:25:"yasr_recipe_recipecuisine";s:0:"";s:28:"yasr_recipe_recipeingredient";s:0:"";s:30:"yasr_recipe_recipeinstructions";s:0:"";s:17:"yasr_recipe_video";s:0:"";}'
 categories:
     - Technical
 tags:
     - code
     - git
-    - source
+    - technology
 ---
 
-If you are a programmer and if your team consist of more than 1 person, then you are probably using GIT. There are two ways to use git: the wrong way and the right way. If you never used “rebase” command or if you never squashed any of your commits or if you never heard about forks, then you are probably using it wrong. Ah before we start, I assume that you are familiar with basic git terminology.
+If you are a programmer and your team consist of a total number of people more or equal than 1, then you are probably using GIT. 
+Git can be quite complex for advance use cases, so if you never used “rebase” command or if you never squashed 
+any of your commits or if you never heard about forks, then you are probably not utilizing it properly.
+This guide aims to introduce and explain these concepts to help you leverage Git more effectively.
+Ah before we start, I assume that you are familiar with basic git terminology.
 
-One common way for people to use git is to just use one common repo, with only one master branch. the team members (usually only few) pull from the origin/master and push their changes to the origin/master. This is the easiest workflow and also the wrong one, because everyone is pushing whatever sh\*t with no control. For example a developer implementing some minor changes: lets say he has to set VAR= “Hello”. He may have 3 commits with messages that makes no sense such as *“changing var to HELO”* , *“reverting var to ORIGINAL”* , *“changing var to HELLO”*. This three commits will show in the master history, creating confusion. In addition if someone has pushed other code in between those commits, then there will be also merges, thus the master history will soon became a mess and impossible to decode. Not a good workflow… So what is a good workflow for keeping the master branch clean? Well, as always, it depends. If you do are only few people and all of them are (very) good with git, then ideally you could only rely on master branch. They can make sure to rebase and squash their commits before they push it directly on master branch… However, this still quite dangerous. Even if they are super good with git, they may end up rewriting history of the origin/master branch with is something that should never be done in a good git workflow. Also, in case we want someone to “approve” our code before it gets merged to master, then we need to change our methodology, but this will be explained in the next article.. Let’s start with basic firsts.
+One common way for people to use git is to just use one common repo, with only one "master" branch. 
+the team members (usually only few) pull from the origin/master and push their changes to the origin/master. 
+This is the easiest workflow and also the wrong one, because everyone is pushing whatever sh\*t with no control.
+Consider a developer making minor changes, such as setting a variable: `VAR="Hello"`.
+They might inadvertently create a series of commits with meaningless messages like `changing var to HELO`, 
+`reverting var to ORIGINAL`, and `changing var to HELLO`. These individual commits, 
+along with potential merges from other developers, will clutter the 'master' branch history,
+making it difficult to understand the development process and track down the source of issues.
+
+
+Not a good workflow…A more structured approach is essential for maintaining a clean 'master' branch. While a single 'master' 
+branch might be feasible for small teams of highly skilled Git users, it still carries inherent risks.
+Even with experienced developers, direct pushes to 'master' can lead to unintended history rewrites, which should be avoided. 
+Additionally, this approach lacks a formal code review process.
+To incorporate code reviews and ensure a more robust workflow, we need to introduce additional mechanisms. 
+This will be explored in detail in the next article. For now, let's begin by establishing a foundational understanding of some essential Git concepts.
 
 ## Basic Git Concepts and Pull Requests. 
 
-Usually, even experienced programmers lack of knowledge in basic GIT concepts. They may know few commands, and have been using it for 20 years but they never understood what those commands do or how git works. for example is enough to ask them simple questions such as : Can I have remote repo and not being “origin”? How to pull code from multiple online remotes? What is a detached head state? If you already know the answer to those question just skip to the next article.
+Surprisingly, even experienced programmers often lack a deep understanding of fundamental Git concepts.
+While they may be familiar with a few commands and have used Git for years, they may not fully grasp the underlying mechanics.
+For example, consider these basic questions:
 
-So if you ask me those questions, I would usually answer with a “**RTFM”**. However, is Easter and we are all “good”, so I want to remark a couple of concept that I notice people do not grasp properly. The first is very basic but yet some people fails to get it: you work with completely different git repo. Indeed one common mistake is to think that when multiple people cloned the same git repo they are working, with the same files. This leads to some confusion. In reality when we do git clone, we are cloning, meaning making a full copy of the remote repo at one given instant of time. This means that we do a copy of the branches and their names. By default when we do git clone, the URL of the remote repo, get assigned the name of “origin” so if you do ***“git remote -v”*** you will see the remote name eg: “origin” followed by url . Because we cloned, each local branch is automatically set to track the one with the same name in the origin. This means that if we had a remote branch named “dev/feat1” then when we checkout the “dev/feat1” locally and issue git pull and it will pull the code from “origin/dev/feat1” But this is just the default case. Indeed when we create a new branch locally eg “dev/feat2”, make some local commit and then we try to push it to origin, git will inform us that the new branch has no remote equivalent. Usually it also suggest us the command “***git push –set-upstream origin dev/feat2***“.
+- Can I have remote repositories other than "origin"?
+- How do I pull code from multiple online repositories?
+- What is a detached HEAD state and how does it occur?
 
-It is important to understand what that command does. It basically tells git that the local *dev/feat2* will be tracking the REMOTE *origin/dev/feat2* . Why this is important? because next time we are in dev/feat2 and we do git pull or git push, it will pull or push from origin/dev/feat2. But this ***is just a setting***!. We could ideally set the local dev/feat2 to track origin master, so when we do git push, it will push into origin/master directly (not advised.) . So branches are just names! **USUALLY for convenience, local branched and remote branches have the same name, but IT IS NOT A REQUIREMENT!** And what about “origin”? origin is just the default name gave to the default remote repo when we clone. We could rename it as “PEDRO” by just typing “***git remote rename origin pedro***“, so next time we can do “git pull pedro master”. If you do not understand this tracking thing, then you cannot work with multiple remotes. If you fork a repo and then you clone it locally, you have 3 copy of the same code. One original, one on your git remote account (fork), and one local. Git can only track 1 branch at time so, when you locally cloned your fork, that repo became your origin. This means that the local master is pulling and pushing from the remote/master repo present in **your fork**. Now, let’s suppose your colleague push some code on master in the original repo, and you want to include/sync this new code into your repo. If you do “git pull master” it will pull from **origin** **master** and thus from your fork and not from the original repo. We need to tell git to add the original remote with the command “Git remote add NAME URL ” Usually NAME is upstream, but again is JUST A NAME. you can call it “PABLO” if you want. Once we added this new remote you can check with git remote -v and you will see that there are two remotes “origin” and “upstream” (or “pedro” and “pablo” if you like non conventional names). Now can simply do “git pull upstream master” to pull code changes from the original master repo to our local branch. Is that it? NO, because now the changes are on the local repo but not on your fork. in order to do so, we need to push the changes to the fork with git push. Now everything is sync. Notice that those commands are issued from the local master branch. indeed if we do git pull upstream master while we are in a dev/feat1 branches, we are merging the upstream master into dev/feat1 and then when we do git push those changes ends up in origin/dev/feat1 and not in master! Just try to make a drawing if you did not get any of this.
+If you're already comfortable with these concepts, feel free to proceed to the next article.
 
-Now lets suppose you pushed some new code on dev/feat2 and you want it to appear in the original repo on branch master.. how normally is done?
+Alternatively, if you ask me those questions, I would usually answer with a “**RTFM”**. However, is Easter, and we are all “good”... so lets continue..
 
-Well first you push the code to your remote fork. Then from there using the GUI open a Pull Request (sometimes called merge request) into the original repo. This is basically a request to merge your code changes with the one in the original repo. Now, few clarification. **The pull request can be opened from any branch to any branch**. Ideally you could push your changes to your fork master branch and then open a PR to the original master branch from your fork master. However this is not considered good practice. Usually you have a branch in your fork, and then you open a PR from that branch to the original master. once is approved, you can sync again your fork master with the new original master… We will discuss this more in details in the next article.
+
+## Understanding Git Remotes and Branches
+A common misconception is that multiple developers working on the same project share a single, unified set of files. However, this is not the case. 
+When you clone a Git repository, you create a complete, independent copy of that repository at a specific point in time. 
+This includes all branches and their respective histories.
+
+### The "origin" Remote:
+
+By default, the URL of the repository you cloned from is assigned the name `origin`. You can verify this using the command `git remote -v`. 
+This "origin" acts as a reference point for your local repository.
+Local branches are typically configured to track their counterparts on the remote repository. For instance, the local branch 
+`dev/feat1` automatically tracks the remote branch `origin/dev/feat1`. 
+This means that commands like git pull and git push will interact with the corresponding remote branch by default.
+
+
+When you create a new local branch (e.g., "dev/feat2") and attempt to push it to the remote, Git will inform you that no remote branch exists for it. 
+The suggested command, `git push -u origin dev/feat2`, establishes a tracking relationship between the local branch and a newly 
+created remote branch with the same name.
+While it's common practice to use the same names for local and remote branches, this is not a strict requirement. 
+You can configure a local branch to track any remote branch, even if they have different names.
+However, this can lead to confusion and is generally discouraged.
+The default "origin" remote can be renamed using git remote rename command. So `git remote rename origin pedro`, will rename origin to pedro, 
+and allows you to do `git pull pedro master` This allows you to use a more descriptive or personalized name for your remotes.
+
+
+When you fork a repository on platforms like GitHub or GitLab, you essentially create a personal copy of that repository on your account.
+This independent copy allows you to experiment, make changes, and contribute to the original project without directly modifying the main repository.
+- After cloning your fork, your local repository's "origin" will point to your fork.
+- To interact with the original repository (often referred to as "upstream"), you need to add it as a new remote using `git remote add upstream <URL of original repository>`.
+
+then you can for example incorporate changes from the original repository to your fork by:
+
+1. Pulling from upstream: `git pull upstream master` (fetches changes from the original repository's "master" branch)
+2. Push to your fork: `git push origin master` (pushes the updated code to your fork's "master" branch)
+
+***Important Note***: When working with multiple branches, it's crucial to be mindful of the current local branch context. 
+For example, issuing `git pull upstream master` while on the local branch `dev/feat1` will merge the upstream "master" branch into your local `dev/feat1` 
+branch and not in your local master branch!
+
+
+Now lets suppose you pushed some new code on dev/feat2 and you want it to appear in the original repo on branch master... how normally is done?
+
+Well first you push the code to your remote fork. Then from there using the GUI open a Pull Request (sometimes called merge request) into the original repo. 
+This is basically a request to merge your code changes with the one in the original repo. 
+Now, few clarification. **The pull request can be opened from any branch to any branch**. Ideally you could push your changes 
+to your fork master branch and then open a PR to the original master branch from your fork master. 
+However, this is not considered good practice. Usually you have a branch in your fork, and then you open a PR from that branch to the original master. 
+once is approved, you can sync again your fork master with the new original master… We will discuss this more in details in the next article.
 
 ## Detached Head 
 
-Last concept that i want to clarify is the HEAD and commit hash. HEAD is just a pointer to the last commit of the branch that you are currently on. When you checkout another branch, then git will move the HEAD to the tip (last commit) of the newly checked out branch. As easy as that. This is important to understand what it means when you end up to detached head state and how to fix it.
+Last concept that i want to clarify is the HEAD and commit hash. The HEAD in Git is a pointer that always points the currently checked-out commit. 
+When you switch branches using `git checkout dev/feat1`, the HEAD pointer moves to the most recent commit of the `dev/feat1` branch. 
+Subsequent commits on this branch will be added to its history, and the HEAD pointer will automatically advance to point to the newest commit.
 
-So, for switching to branch dev/feat1 you use the “git checkout dev/feat1”. In this case, git move the HEAD pointer to the last commit of “dev/feat1”. Now you can add more commit and they will be “appended” to the history of dev/feat1 branch (and the HEAD will be automatically moved forward to point the last commit). However, the checkout commands also accept a commit hash as argument. In this case you are checking out a specific commit. Because a commit can belong to many branches, git does not know where to move the HEAD pointer. For example if you have something like this:
+Git's checkout command also accepts a commit hash as an argument (e.g., `git checkout 67ce4`). This directly checks out that specific commit. 
+However, since a commit can belong to multiple branches, Git cannot definitively determine which branch to associate with it. 
+This results in a "detached HEAD" state
 
-<div class="wp-block-image"><figure class="aligncenter size-large">![](http://localhost:8080/wp-content/uploads/2020/04/image.png)</figure></div>The commit **67ce4**, is a shared commit between the two branches. If you checkout it out with “git checkout 67ce4”, git will check it out, but will not know in wich branch you are on. This means that the HEAD pointer is not moved and you are in a detached HEAD state. If you work from this state and commit your code, git will not “append it” to any branch, and those new commit will leave in a limbo, detached from any branch. So do not do that. The easiest way to fix the detached head state is to create a new branch from that commit for example called “fix/temp”. When you do that, git will move the HEAD to the tip of that new branch, and you can now safely push your commit to that new branch. Alternatively, for exiting the detached head state, you can also checkout another branch if you want, for example “git checkout master”. Detached heads are usually painful when working with sub-modules because “git submodule init” usually checkout the specific commit from the sub-module rather then the branch.
+<div style="width: 100%; max-width: 500px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
+  <img src="{{ site.baseurl }}/assets/images/2020/04/image.png" 
+       alt="Detached Head" 
+       style="width: 100%; height: auto; display: block;">
+  <div style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
+    Detached Head
+  </div>
+</div>
+
+For example the commit **67ce4**, in the diagram, is shared by two branches. If you use the command `git checkout 67ce4` to check out this specific commit, 
+Git will successfully locate and check out that commit. However, since this commit belongs to multiple branches, 
+Git cannot definitively determine which branch you intend to be on.
+
+Consequently, the HEAD pointer, which normally tracks the current branch, remains unattached. This state is referred to as a "detached HEAD" state.
+
+Implications of a Detached HEAD
+- Isolated Commits: Any new commits made while in a detached HEAD state will not be associated with any branch. 
+These commits will exist independently, effectively "dangling" within your repository's history. This can make it difficult to track, manage, 
+and integrate these commits later.
+- Submodule Challenges: Working with submodules can be particularly problematic in a detached HEAD state. 
+Commands like git submodule init often check out specific commits within the submodules, which can further complicate the situation 
+and potentially lead to additional detached HEAD states within the submodules themselves.
+
+### Exiting a Detached HEAD State
+
+There are two primary ways to resolve a detached HEAD state:
+
+- Create a New Branch: The most recommended approach is to create a new branch from the current detached HEAD state:
+    ```Bash
+    git checkout -b new_branch_name
+    ```
+    This creates a new branch (e.g., "new_branch_name") and moves the HEAD pointer to the tip of this newly created branch. You can then continue working on this branch and push your changes as usual.
+
+- Check Out Another Branch: Alternatively, you can switch to another existing branch:
+    ```Bash
+    git checkout <existing_branch_name> 
+    ```
+    This will move the HEAD pointer to the tip of the specified branch, effectively exiting the detached HEAD state.
 
 If any of these basic concepts is not clear, then before you move to the next article you really need to **RTFM.**

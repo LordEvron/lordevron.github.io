@@ -4,12 +4,7 @@ title: 'PC boot process – Kernel and Initramfs'
 date: '2022-02-14T16:52:13+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=861'
 permalink: /2022/02/14/pc-boot-process-kernel-and-initramfs/
-yasr_schema_additional_fields:
-    - 'a:1:{s:17:"yasr_schema_title";s:0:"";}'
-ao_post_optimize:
-    - 'a:5:{s:16:"ao_post_optimize";s:2:"on";s:19:"ao_post_js_optimize";s:2:"on";s:20:"ao_post_css_optimize";s:2:"on";s:12:"ao_post_ccss";s:2:"on";s:16:"ao_post_lazyload";s:2:"on";}'
 categories:
     - Technical
 tags:
@@ -17,29 +12,125 @@ tags:
     - linux
 ---
 
-Welcome to another article on the PC boot process! This article will complete the booting process from where[ we left it](http://localhost:8080/tag/boot/). In particular i am assuming that you are familiar with UEFI and GPT partition as explained in details in [this post](http://localhost:8080/2018/12/14/pc-boot-process-uefi-with-gpt/).
+Welcome to another article on the PC boot process! This article will continue our exploration of the boot process, 
+building upon our previous discussion of UEFI and GPT partitioning In particular I am assuming that you are familiar with UEFI and GPT partition 
+as explained in details in [my previous post](/2018/12/14/pc-boot-process-uefi-with-gpt/). This article dives deeper into the process, specifically 
+focusing on systems with Secure Boot enabled and running Linux distributions like Ubuntu
 
-The first thing that the PC does when you press the power button is to run a UEFI firmware. This is vendor specific code, so ether they load the code directly from the memory location of the stored UEFI firmware, or they use another read only firmware (stored in some eeprom) to start the real UEFI. As I discussed in previous posts, the UEFI firmware is capable of understanding partition tables and some file systems, so, when executed, it will look for a special partition called Efi System Partition (ESP), and based on the Value of the Uefi Variables stored in the NVRAM, it will try to start one of the bootloader. All this has been discussed in previous articles. So in this article i want to go more in details on what happens from this point on, assuming that you have secureboot active and you are running some linux distro eg. ubuntu. If secure boot is active, the signature of your bootloader must be valid and the signing key must be present in the UEFI signature database (refer to secure boot article for more info). Usually the manufacturer only adds keys for windows, so when your uefi will try to launch **“grubx64.efi”** file, it will fails saying that file does not contains a valid signature. For this reason a workaround has been found: Microsoft has signed some binaries called **“shimx64.efi”** and that is what uefi will launch. Since that is signed by Microsoft, it will be executed. The scope of that tiny wrapper is just to check the signature of the “**grubx64.efi**” to make sure that is signed with “Canonical” (ubuntu) keys and execute it. So basically is just a signed wrapper around grub64 bootloader.
 
-When grubx64 is executed, it will load the file “`<strong>/boot/grub/x86_64-efi/normal.mod</strong>`” from the partition configured by `grub-install`. If the partition index has changed, GRUB will be unable to find the `normal.mod`, and presents the user with the GRUB Rescue Shell. After normal.mod has been loaded, it will parse the `<strong>/boot/grub/grub.cfg</strong>` file and it loads extra modules if needed (eg graphical menu). Grub.cfg file contains information on the kernels and the relative initramfs installed on the system together with their locations on disk.
+### The UEFI Firmware
 
-Kernel files are usually zipped. Indeed if you navigate on your /boot partition you will notice the name of the format “vmlinuz-x.xx.xxx”. Those files are the zipped kernel files. Associated with them there is usually a initramfs file of the format initrd.img-xxxx.x.xx. Grub will load the selected kernel and the associated initial root file system image (initramfs) into memory and then start the kernel, passing in the memory address of the initramfs image.
 
-The kernel will then read the first block of the passed memory address and try to understand if is “initrd” schema or “initramfs” schema. Let stop a second to see what those files are and why they are needed. When the kernel starts, it has no idea what hardware is running onto, what peripherals are available, what drivers are needed etc. All this must be figured out before the user can use the pc. The idea of these files, is to provide the kernel with a early user space; basically a filesystem mounted in memory which include all the required folders (eg. /proc, /sbin, /sys etc.) and files. These files will help the kernel to perform all that hardware discovery process that has to be done.
+The first thing that the PC does when you press the power button is to run a UEFI firmware. 
+This is vendor specific code, so ether they load the code directly from the memory location of the stored UEFI firmware, 
+or they use another read only firmware (stored in some eeprom) to start the real UEFI. 
+
+As I discussed in previous posts, the UEFI firmware is capable of understanding partition tables and some file systems, so, when executed, 
+it will look for a special partition called Efi System Partition (ESP), and uses NVRAM variables to select and launch bootloaders. 
+If Secure Boot is enabled, additional security checks are performed before launching any bootloaders. Let's see them in details. 
+
+### Secure boot and Linux Distributions:
+Secure Boot is a firmware-level security feature that ensures only trusted software can execute during the boot process. 
+It achieves this by verifying the digital signatures of bootloaders against a trusted list of keys stored in the system's firmware.
+So, if secure boot is active, the signature of your bootloader must be valid and the signing key must be present in the UEFI signature database (
+refer to secure boot article for more info). Manufacturers typically pre-populate the trusted key list primarily with keys for Windows bootloaders. 
+so when your uefi will try to launch linux bootloaders such as `grubx64.efi` that are not signed with keys included in the default key list,
+their execution will be blocked by Secure Boot.
+For this reason a workaround has been found: *The "shimx64.efi" Solution*.
+`shimx64.efi` is a small, Microsoft-signed program specifically designed to work with Linux distributions on systems with Secure Boot enabled.
+It acts as an intermediary between the UEFI firmware and the Linux bootloader (eg. `grubx64.efi`).
+`shimx64.efi` verifies the signature of `grubx64.efi` against the keys specific to the Linux distribution (e.g., Canonical keys for Ubuntu).
+If the signature is valid, `shimx64.efi` then allows `grubx64.efi` to load and initiate the boot process for the Linux distribution.
+
+So basically is just a wrapper around grub64 bootloader that perform signature verification and key managements.
+
+### GRUB Boot Process:
+
+Once executed, `grubx64.efi` loads the `normal.mod` module, located at `/boot/grub/x86_64-efi/normal.mod`. 
+This file path is determined by the partition configuration set during "grub-install." 
+If this partition changes, GRUB will fail to find `normal.mod` and present the user with the GRUB Rescue Shell.
+Once loaded in memory, `normal.mod` loads any necessary extra modules (e.g., for a graphical menu) and parses the configuration file, `/boot/grub/grub.cfg`. 
+This file contains information about installed kernels, the corresponding initramfs images, and their locations on the disk. 
+Kernel files, typically named `vmlinuz-x.xx.xxx`, are compressed kernel images. Each kernel has an associated initramfs image, 
+usually named `initrd.img-xxxx.x.xx`. GRUB loads the selected kernel and its corresponding initramfs image into memory.
+
+
+### initramfs
+
+The kernel then examines the first block of the loaded initramfs image to determine its format: "initrd" or "initramfs."
+ Let stop a second to see what those files are and why they are needed. When the kernel starts, it has no idea what hardware is running onto, 
+what peripherals are available, what drivers are needed etc. All this must be figured out before the user can use the pc. 
+The idea of these files, is to provide the kernel with a early user space; basically a filesystem mounted in memory which include 
+all the required folders (eg. /proc, /sbin, /sys etc.) and files. 
+These files will help the kernel to perform all that hardware discovery process that has to be done.
 
 The difference between the two schema is:
 
-- **“initrd”** disk is just an image of a file disk that is copied in ram and mounted as file system, .
-- **“initramfs”** (the one ubuntu uses) is just a “[**cpio**](https://en.wikipedia.org/wiki/Cpio)” archive (zipped files), containing modules needed by the kernel.
+- ***initrd*** is a simple disk image copied into memory and mounted as a file system. is not so in use anymore
+- ***initramfs*** (the one ubuntu uses) is just a “[**cpio**](https://en.wikipedia.org/wiki/Cpio)” archive (zipped files), 
+containing modules needed by the kernel. This is what is normally used todays
 
-So in case the kernel finds out that the schema is a “initrd”, then it will just mount the images on a specific path, otherwise if is a “initramfs” schema, it will unzip the folders in a `<strong>special instance of "<a href="https://en.wikipedia.org/wiki/Tmpfs">tempfs</a>"</strong>` that will become the initial file root system.
+So in case the kernel finds out that the schema is a *initrd*, then it will just mount the images on a specific path, otherwise if is a *initramfs* schema, 
+it will unzip the folders in a special instance of [TMPFS]("https://en.wikipedia.org/wiki/Tmpfs") 
+that will become the initial file root system. So, the initramfs provides the kernel with an initial, in-memory file system 
+(including directories like */proc*, */sbin*, and */sys*). This temporary file system allows the kernel to gather information about the 
+system's hardware and load necessary drivers before transitioning to the main operating system.
 
-So, what modules are inside the “initramfs”? That depends on what software you use for making the “initramfs”.. For some distribution such as Debian, initramfs is very tailored to a specific machine, containing only modules required by that pc. Other distribution, such as ubuntu, makes the initramfs more generic and they zip inside a little of everything, that can be useful to boot in a bunch of different machines… Just notice that in this second case, the software must perform a lot of more hardware checks to make sure it loads all and only the required drivers and kernel modules. For example for LVM volumes, lvm utilities must be started; for encrypted drives, decrypting script must be invoked, etc.
+So, what modules are inside the *initramfs*? The specific contents of *initramfs* vary significantly depending on the Linux distribution 
+and its configuration. Distributions can adopt two primary approaches to *initramfs* creation:
 
-Once the kernel has mounted the early user space, it can launch the init script in /usr/sbin. When this process starts, it became the first parent process of all your other processes and it has always pid=1. If init dies, you will get a kernel panic.
+- Tailored *initramfs*: This approach prioritizes efficiency by including only the bare minimum of drivers and utilities 
+necessary to boot the system on a specific hardware configuration. This results in smaller *initramfs* images,
+which can potentially lead to faster boot times. However, this approach limits compatibility, as the *initramfs* 
+may not contain the necessary components for different hardware setups.
 
-In old systemV, init process would parse the /etc/inittab, but newer systemd does not use /etc/inittab file anymore, but the services are automatically started in parallel. Anyway, from here, init acts as init system that brings up and maintains userspace service.
+- Generic *initramfs*: This approach aims for broader compatibility by including a wider range of drivers, utilities, 
+and scripts within the *initramfs* image. This allows the system to potentially boot on a wider variety of hardware configurations. 
+However, this generality comes at a cost. The kernel needs to perform extensive hardware detection and driver loading checks to determine which 
+modules are actually required, which can increase boot time and system complexity.
 
- Few remarks on initramfs and its utility. Ideally, if you have all the required modules statically compiled into kernel and your system is standard (eg no LVM, no encryption, etc), it is possible to skip the initramfs file, since the kernel has everything that needs. However, statically loading kernel modules make sense only if you have a custom kernel (so you tailor the kernel for your specific machine) or if is a know hardware (for example embedded systems or Raspberry pi do not uses initramfs). In other cases (general systems), kernel size will soon grow out of control making more difficult to remove and integrate new hardware. Furthermore, for non standard systems, for example encrypted drives on lvm, then the kernel cannot handle that without using a early user space needed to decrypt the drive before it can create a real file system.
+For example, systems utilizing Logical Volume Management (LVM) require the *initramfs* to include the necessary LVM utilities to recognize and manage 
+the logical volumes. Similarly, systems with encrypted root filesystems (such as those using LUKS) must have the *initramfs* 
+contain the scripts and tools to decrypt the file system before the main operating system can access it.
 
-This article was quite technical but i hope you discovered something new by reading it!
+The choice between a tailored and a generic *initramfs* approach involves a trade-off between compatibility, boot speed, and system complexity. 
+For some distribution such as Debian, initramfs is very tailored to a specific machine, containing only modules required by that pc.
+Other distribution, such as ubuntu, makes the initramfs more generic and they zip inside a little of everything, that can be useful to boot in a bunch 
+of different machines… Just notice that in this second case, the software must perform a lot of more hardware checks to make sure it loads all and only the required drivers and kernel modules. For example for LVM volumes, lvm utilities must be started; for encrypted drives, decrypting script must be invoked, etc.
+
+
+In an ideal scenario where all necessary hardware drivers are statically compiled into the kernel, and the system configuration is relatively standard 
+(lacking features like LVM or encrypted drives), it might be theoretically possible to omit the *initramfs* file. 
+However, statically compiling all drivers into the kernel has several drawbacks:
+
+- Kernel Size and Maintainability: Static kernel compilation leads to significantly larger kernel images. 
+This makes it challenging to add or remove hardware support, as kernel recompilation becomes necessary for every change.
+- Limited Applicability: Static kernel compilation is primarily suitable for specialized systems with well-defined and unchanging hardware configurations, 
+such as embedded systems or single-board computers like the Raspberry Pi.
+
+For most general-purpose systems, especially those with advanced features like LVM or encrypted drives, the *initramfs* is indispensable. 
+These features require early user-space operations, such as decrypting drives or managing logical volumes, 
+which cannot be handled directly by the kernel itself. The *initramfs* provides the necessary environment for these critical tasks to be executed before 
+the main file system is mounted and the system fully boots.
+
+### Init Process
+Once the kernel has successfully loaded and mounted the early user space (*initramfs* file system), it initiates the "init" process. Located in `/usr/sbin/init`,
+this process will be the "parent" of all other processes within the system, uniquely identified by the process ID (PID) 1. 
+The stability of the entire system will depend on from this single process. If the "init" process terminates unexpectedly, it typically results in a kernel panic, effectively crashing the system.
+
+The init process will then performs a series of steps to transition to the final userspace:
+
+- Mounting the Root Filesystem: "init" proceeds to mount the actual root filesystem of the operating system (e.g., an ext4 partition on a hard drive).
+- "pivot_root" System Call: A crucial step is the use of the pivot_root system call. 
+This call effectively shifts the root file system of the running process from the temporary "initramfs" environment to the newly mounted root filesystem.
+- "init" in the Final Userspace: After the successful "pivot_root" operation, the "init" process continues to execute within the context of 
+the newly mounted root filesystem. It then proceeds to start the remaining system services, such as starting the network, 
+mounting user partitions, and launching the login manager.
+
+Traditionally, the "init" process relied on the `/etc/inittab` file for configuration and process management. 
+However, modern systems, utilizing systemd as the init system, have moved away from this approach. In systemd, services 
+are automatically started concurrently, streamlining the system startup process. Regardless of the specific implementation, 
+the "init" system plays a vital role in bringing up and maintaining the user-space services that form the foundation of the operating system.
+
+
+This article was quite technical but I hope you learn something new by reading it!

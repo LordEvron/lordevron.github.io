@@ -36,6 +36,7 @@ What makes line A straight while line B, in this image, is not?
 </div>
 
 
+### Straightness
 Well it turns out that mathematicians have long understood how to define "straightness," and it involves the concept of parallel transport of a vector.  
 Parallel transport simply means taking a vector and moving it along a curve while keeping it parallel to its original direction.
 
@@ -59,6 +60,7 @@ The shortest path from Greenwich to the North Pole is along the meridian, but yo
 (passing the South Pole!). That's a much longer path, but both paths are geodesics. So, defining geodesics as "shortest paths" isn't quite accurate. 
 However, the tangent vector method always works!
 
+### Flat or Curved?
 Now we know how to define straight lines in curved spaces, but how do we determine if a space is flat or curved? Again, parallel transport comes to the rescue:
 
 1. Parallel transport a vector along a closed curve.

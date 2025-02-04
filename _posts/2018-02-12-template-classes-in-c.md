@@ -16,7 +16,7 @@ tags:
 
 C++ is arguably the most powerful among programming languages, offering unparalleled control and the ability to manipulate memory at the bit level.  
 This power, however, demands responsibility, a challenge many developers find daunting (hence the unfortunate popularity of languages like Java). 
-Today, I'll delve into the advanced realm of C++ templates.
+Today, I'll dive into the advanced realm of C++ templates.
 
 Templates provide a mechanism for writing functions that accept generic types.  
 C++ is statically typed, requiring explicit type declarations for variables. 

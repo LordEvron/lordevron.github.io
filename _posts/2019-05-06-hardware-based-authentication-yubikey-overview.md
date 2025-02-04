@@ -34,7 +34,7 @@ YubiKeys use different USB interfaces (protocols) depending on the function:
 - HID (Human Interface Device): Used for input devices like mice and keyboards. The YubiKey uses this (simulating a keyboard) to send OTPs or static passwords.
 - FIDO (Fast IDentity Online) U2F: Used for two-factor authentication on websites (Google, Bitbucket, etc.).
 
-Now, let's delve into the YubiKey's applications:
+Now, let's dive into the YubiKey's applications:
 
 - OTP (One-Time Password): The YubiKey has two configurable slots for different OTP implementations:
     - Yubico OTP 

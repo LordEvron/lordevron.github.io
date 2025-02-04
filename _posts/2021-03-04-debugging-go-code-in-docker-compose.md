@@ -13,7 +13,7 @@ tags:
     - go
 ---
 
-This is a small guide to clarify the setup needed to debug Go code running in a container in docker-compose using Delve debugger .
+This is a small guide to clarify the setup needed to debug Go code running in a container in docker-compose using dive debugger .
 Basically lets suppose that you have 3 service running in three different containers:
 
 1. A Python service with a REST interface exposed to the user

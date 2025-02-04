@@ -46,5 +46,5 @@ This insight paved the way for Einstein's theory of General Relativity, where gr
 Regarding the "reality" of gravity, in frame 4 (the accelerating rocket), the observer experiences an apparent force due to the rocket's acceleration. 
 The Equivalence Principle suggests that the gravitational force experienced on Earth's surface is also an apparent force arising from the acceleration of the Earth's frame. 
 From a relativistic perspective, the Earth's surface is effectively accelerating outward, creating the sensation of gravity.
-To fully understand this concept, we need to delve deeper into the mathematics of curved spacetime and the concept of geodesics, which describe the paths of freely moving objects in curved spacetime.
+To fully understand this concept, we need to dive deeper into the mathematics of curved spacetime and the concept of geodesics, which describe the paths of freely moving objects in curved spacetime.
 
