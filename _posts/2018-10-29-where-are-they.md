@@ -99,7 +99,7 @@ Examples include engineered viruses, nuclear weapons, and other bioweapons.
 
 We don't yet know the answer. But if the second scenario is correct, we should be extremely cautious about our own actions.
 
-Finally, for those who believe aliens are already among us, I'll quote a common scientific refrain: "It's never aliens—until it is." 
+Finally, for those who believe aliens are already among us, I'll quote a common scientific refrain: "It's never aliens until it is." 
 In other words, always look for simpler explanations first.
 
 See you in the next article!

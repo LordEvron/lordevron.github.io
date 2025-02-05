@@ -25,24 +25,25 @@ My digital toolbox:
 * Hardware:
     * Familiar with various microcontroller families (STM32 is my go to)
     * AWS Cloud wizardry (yes, I know it’s not exactly "hardware," but close enough)
-    * I also have experience with other clouds: Google Cloud, Azure, Digital Ocean—because why stop at just one?
-    * Comfortable with Arduino and Raspberry Pi—especially when making them do things they probably shouldn’t.
-
+    * I also have experience with other clouds: Google Cloud, Azure, Digital Ocean, because why stop at just one?
+    * Comfortable with Arduino and Raspberry Pi...Especially when making them do things they probably shouldn’t.
+<br><br>
 * Software:
-    * Bilingual in Windows and Linux—because knowing both is a survival skill.
+    * Bilingual in Windows and Linux, because knowing both is a survival skill.
     * Code polyglot: C, C++, Qt, Python, Terraform
     * Speaks fluent Linux (because why fight the machine when you can work with it?)
     * Occasionally using JavaScript, Go, and Assembly (because understanding what machine says in their native language is important!)
-
+<br><br>
 * Not a fan of fancy interfaces (who needs them when you got a shell?)
-
+<br><br>
 * AI & Data:
     * Trained machine learning models from even before tensorflow era!
     * Worked with Image recognition - to make computers see the world
-
+<br><br>
 * Research:
     * Published a  [paper](https://onlinelibrary.wiley.com/doi/10.1155/2011/214549) with 218+ citations; basically, academic street cred
     * Check out my "useless" papers: <a href="{{ site.baseurl}}/publications.html">publication list</a>
 
 In short: I break things, build things, and make machines do my bidding. Because knowledge is power and occasionally, chaos.
+<br><br>
 

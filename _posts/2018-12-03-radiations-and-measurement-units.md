@@ -57,7 +57,7 @@ making it unstable and thus when they will decay, will emit other type of radiat
 that can transform other material into radioactive. Neutrons can penetrate mostly of the materials the only effective shield consist of a 
 thick later of hydrogen rich material such as water or concrete.
 
-Now that we understand what "radiation" (in the common sense) is—particles or waves emitted by atoms—how do we measure it?
+Now that we understand what "radiation" is (particles or waves emitted by atoms), how do we measure it?
 
 Defining what we're measuring is more complex than it seems (and where I initially got confused!).  Four key quantities are of interest:
 

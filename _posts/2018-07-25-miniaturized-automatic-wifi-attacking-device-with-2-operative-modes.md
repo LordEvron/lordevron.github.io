@@ -53,4 +53,4 @@ Final Remarks:
 This results in each fake SSID receiving only two beacons every 1.3 seconds, a much lower frequency than normal.
 3. For instructions on flashing code to the ESP-12, see my [previous post](/2018/02/08/flash-code-to-esp8266-esp-12-module-step-by-step-guide/).
 
-This project was a quick test, and the code reflects that—it's functional but admittedly messy.  I hope you found this interesting.
+This project was a quick test, and the code reflects that it's functional but admittedly messy. I hope you found this interesting.

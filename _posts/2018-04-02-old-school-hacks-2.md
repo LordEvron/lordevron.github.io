@@ -16,9 +16,9 @@ tags:
 My previous post detailed a simple floppy disk hack. Now, I'll showcase a more intricate device I built. But first, a bit of context...
 
 In the late 90s, while Walkmans were still common, portable CD players were gaining traction. 
-I owned a Sony CD player with 10-second anti-shock (Electronic Skip Protection—a data buffer that prevented audio skipping during movement). 
+I owned a Sony CD player with 10-second anti-shock (Electronic Skip Protection, a data buffer that prevented audio skipping during movement). 
 It was great for listening to CDs while walking or in the car.  However, I wanted to play my CDs through the car speakers, not just headphones. 
-My father's car only had a basic cassette player—no aux input, not even auto-reverse!
+My father's car only had a basic cassette player, no aux input, not even auto-reverse!
 Car CD players were expensive, beyond my budget.  But I was determined to listen to my CDs through the car's speakers.  How?
 The solution involved repurposing a component from a Walkman. The Walkman had a small head that read the magnetic 
 field on the cassette tape (circled in red in the image).
@@ -33,7 +33,7 @@ field on the cassette tape (circled in red in the image).
 </div>
 
 
-That component is a magnetic transducer—it converts a magnetic field into an electrical signal. 
+That component is a magnetic transducer, and it converts a magnetic field into an electrical signal. 
 Crucially, it's bidirectional: feed it a small electrical signal, and it generates a magnetic field!
 So, a cassette player uses this component to read the magnetic tape.  
 But if we remove the tape, replace it with another transducer, and supply a signal to that transducer, 
@@ -61,8 +61,8 @@ Pressing "play" on the CD player sent the audio signal to the transducer in the 
 This transducer converted the electrical signal into a magnetic field, which was then picked up by the car's cassette player and amplified through the speakers.
 The system worked beautifully for years, and the sound quality was surprisingly good. 
 I did encounter some issues with auto-reverse on certain car radios, which I eventually resolved. 
-I can't recall exactly how—perhaps gluing a wheel or using a rubber band to connect them (I was only 15 at the time, so it's been a while!).
+I can't recall exactly how, perhaps gluing a wheel or using a rubber band to connect them (I was only 15 at the time, so it's been a while!).
 Interestingly, years later, I saw a commercial version of my modified cassette in an electronics store! Someone had actually turned it into a product.
 
-That's the story of the cassette adapter. I found a ton of other projects in that drawer—a fake fire simulator with LEDs and transistors, variable power chargers, 
+That's the story of the cassette adapter. I found a ton of other projects in that drawer: a fake fire simulator with LEDs and transistors, variable power chargers, 
 an earthquake detector with an alarm, and more. But this particular hack was one of my favorites.

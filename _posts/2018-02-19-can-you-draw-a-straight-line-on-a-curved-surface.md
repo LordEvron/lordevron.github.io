@@ -18,7 +18,7 @@ Picking up from my previous post on Inertial Frames of Reference, I want to outl
 
 GR often gets a reputation for being mathematically impenetrable, but that's a misconception.  
 A straightforward, qualitative understanding is entirely possible through a geometrical approach. 
-We can model spacetime as a 4D volume within which matter moves—more on that later.  
+We can model spacetime as a 4D volume within which matter moves, more on that later.  
 For now, it's crucial to grasp that GR concepts have geometric counterparts.
 This series aims to demystify general relativity from a purely geometrical perspective.  I may even follow up with a series exploring Einstein's Field Equations.
 Today's focus is on straight lines and curved spaces. Drawing a straight line on paper is trivial, but what about drawing one on a sphere? Does that even make sense?

@@ -27,7 +27,7 @@ While the wealthy have always enjoyed displaying their affluence, two significan
 
 1. **Widespread Affluence**: Globalization, improved working conditions, and social rights have increased access to consumer goods.  Many people in developed countries can now enjoy occasional restaurant meals, own modern technology, wear fashionable clothing, and travel.  The trappings of the upper classes have become more attainable.
 
-2. **Information Access**: The internet allows for easy comparison with people worldwide.  We can readily observe others' lifestyles—their food, conversations, clothing, possessions, and more—through articles, Google, Facebook, Instagram, and other platforms.
+2. **Information Access**: The internet allows for easy comparison with people worldwide.  We can readily observe others' lifestyles, their food, conversations, clothing, possessions, and more, through articles, Google, Facebook, Instagram, and other platforms.
 
 These changes have profoundly impacted social structures.  The lower classes, by emulating the lifestyles of the wealthy, have blurred the traditional distinctions.  
 The wealthy, in turn, have sought new ways to differentiate themselves.  Instead of simply acquiring more luxury goods, 

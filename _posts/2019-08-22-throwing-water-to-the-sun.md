@@ -14,7 +14,7 @@ tags:
 
 This summer's intense heat has led me to wonder how one might turn off the sun. 
 My initial thought was to douse it with water, like putting out a fire.  After all, water extinguishes flames. 
-Could we do the same with the sun?  Perhaps by using a massive amount of water—say, ten times its own mass?
+Could we do the same with the sun?  Perhaps by using a massive amount of water? say, ten times its own mass?
 
 
 However, while water can extinguish a regular fire by absorbing its energy and disrupting the chemical reaction (oxidation), 

@@ -76,7 +76,7 @@ So I found a repo that does exactly this! I recompiled the small software in Go 
 (You can find the [new binary here](https://github.com/LordEvron/bt_profile) under `/ubunt-mint` if you use ubuntu or under `/archlinux` if you use archlinux).
 
 So, just download the binary files into a path `/opt/blt\_switcher` and add an entry to cron to automatically start that software at startup with 
-the following command —
+the following command:
 
 ```bash
 /opt/blt_switcher -sink "bluez_card.E4_1B_22_4A_23_FD"
