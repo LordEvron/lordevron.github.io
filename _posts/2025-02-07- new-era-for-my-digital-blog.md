@@ -10,7 +10,7 @@ categories:
 tags:
     - wordpress
     - jekyll
-    - technical
+    - technology
 ---
 
 After some time away, I'm happy to announce that my blog is back and it has a brand new look and a whole lot of behind-the-scenes magic! 
