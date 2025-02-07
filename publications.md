@@ -22,8 +22,7 @@ layout: default
 
 <span style="font-weight: 400;">6- Luca Petricca, Per Ohlckers, Xuyuan Chen: co-author of the chapter “</span>**The Future of Energy Storage Systems”**<span style="font-weight: 400;"> of the textbook: “Energy Storage, ISBN 979-953-307-768-9” published by InTech. (Open acess publisher) DOI: 10.5772/52413</span>
 
-##   
-Conference Papers:**
+## <span style="font-weight: 400;">Conference Papers: </span>
 
 <span style="font-weight: 400;">7- Luca Petricca, Tomas Moss, Gonzalo Figueroa and Stian Broen, “</span>**Corrosion Detection Using A.I. : A Comparison of Standard Computer Vision Techniques and Deep Learning Model**<span style="font-weight: 400;">”, 3rd International Conference on Artificial Intelligence and Applications (AIAP-2016)” Vienna (Austria), CNSA-2016 pp. 91–99, 2016. CS &amp; IT-CSCP 2016 DOI : 10.5121/csit.2016.60608</span>
 
