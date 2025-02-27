@@ -13,20 +13,12 @@ tags:
     - technology
 ---
 
-Karpenter, an open-source node provisioning project from AWS, is revolutionizing how Kubernetes clusters scale on Elastic Kubernetes Service (EKS). Unlike the traditional Cluster Autoscaler, which relies on pre-defined node groups, Karpenter directly provisions compute resources in response to pending pods. This dynamic approach significantly improves cluster efficiency and reduces operational overhead.
+Karpenter, an open-source node provisioning project from AWS, is revolutionizing how Kubernetes clusters scale on Elastic Kubernetes Service (EKS). Unlike the traditional Cluster Autoscaler, which relies on pre-defined node groups, Karpenter directly provisions compute resources in response to pending pods. This dynamic approach significantly improves cluster efficiency and reduces operational overhead. Let see it in details.
 
 ## What is Karpenter?
 
-Karpenter is a Kubernetes node autoscaling solution that operates at the pod level. It monitors pending pods and directly provisions the necessary EC2 instances to satisfy their resource requirements. Here's a breakdown of its key features:
-
-* Pod-Driven Scaling: Karpenter reacts to the specific resource requests of pending pods, eliminating the need for pre-defined node groups and over-provisioning.
-* Rapid Provisioning: By directly launching EC2 instances, Karpenter reduces the time it takes for new nodes to become available, minimizing pod scheduling latency.
-* Flexible Instance Selection: Karpenter considers various factors, including instance type, architecture, and pricing, to select the most cost-effective and suitable EC2 instances for pending pods.
-* Simplified Configuration: Karpenter's configuration is declarative and Kubernetes-native, making it easier to manage and integrate with existing Kubernetes workflows.
-* Spot Instance Optimization: Karpenter is designed to work seamlessly with Spot Instances, allowing you to take advantage of significant cost savings without sacrificing application availability.
-* Direct EC2 Integration: Karpenter communicates directly with the EC2 API, bypassing the limitations of node groups and enabling fine-grained control over instance provisioning.
-
-So in practice, there's no need for manual node management or creation; you simply deploy pods and Karpenter  initiates a process that evaluates their resource requirements and dynamically launches the optimal (and most economical) EC2 instances to accommodate them. When you delete pods, then it will automatically scale down/ delete ec2 instances that are not needed anymore.
+Karpenter is a Kubernetes node autoscaling solution that operates at the pod level. It monitors pending pods and directly provisions the necessary EC2 instances to satisfy their resource requirements. 
+So in practice, there's no need for manual node management or creation; you simply deploy pods and Karpenter initiates a process that evaluates their resource requirements and dynamically launches the optimal (and most economical) EC2 instances to accommodate them. When you delete pods, then it will automatically scale down/ delete ec2 instances that are not needed anymore.
 
 ## How Karpenter Makes Work Easier:
 
@@ -49,7 +41,7 @@ Node groups often lead to over-provisioning, as you must anticipate peak workloa
 
 
 * **Simplified Configuration and Management:**
-  Karpenter's declarative configuration and Kubernetes-native design make it easy to integrate with existing Kubernetes workflows. This simplifies cluster management and reduces the learning curve for operators.
+  Karpenter's declarative configuration by using Kubernetes-native yaml files make it easy to integrate with existing Kubernetes workflows. This simplifies cluster management and reduces the learning curve.
    
 
 * **Easier Node Updates:**
@@ -62,26 +54,26 @@ Node groups often lead to over-provisioning, as you must anticipate peak workloa
   
 ### Key Components of Karpenter: NodePool & NodeClass
 
-Karpenter introduces **NodePool** and **NodeClass** as core components for managing node provisioning efficiently. 
+Karpenter introduces `NodePool` and `NodeClass` as core components for managing node provisioning efficiently. 
 
-**NodePool** defines the high-level policies for node provisioning, such as which workloads should be scheduled on dynamically created nodes. It acts as a controller, ensuring that the right types of nodes are created based on workload demands. 
-On the other hand, **NodeClass** provides the specific template configuration for the underlying infrastructure, such as *AMI (Amazon Machine Image)*, security groups, and instance metadata. It standardizes how nodes are launched, ensuring consistency across the cluster. Together, NodePool and NodeClass give Kubernetes operators fine-grained control over scaling, cost optimization, and infrastructure consistency, making Karpenter a powerful tool for dynamic node management.
+`NodePool` defines the high-level policies for node provisioning, such as which instance type should be used for the new nodes. 
+On the other hand, `NodeClass` provides the specific template configuration for the underlying infrastructure, such as *AMI (Amazon Machine Image)*, security groups, and instance metadata. It standardizes how nodes are launched, ensuring consistency across the cluster. 
 
-Practically speaking, NodePools reference NodeClasses, treating them as base configurations for node deployment
+Practically speaking, NodePools reference a NodeClass, using that nodeClass as base configurations for node deployment. Multiple nodePool can reference the same nodeClass.
 
-### Getting Started:
+### Installing Karpenter:
 
 For optimal performance and to prevent circular dependencies, Karpenter itself *should not run on the managed nodes it provisions*. It's best practice to deploy Karpenter within a separate, stable environment. This can be achieved through a small, dedicated node group or, preferably, a Fargate profile. It's much easier to use Fargate for Karpenter because AWS handles all the updates and security fixes automatically. If you run Karpenter on a regular node group, you'd have to do those updates yourself on that node group, which can be tricky and risky. Also, you will need to make sure that the node group is always up and running.  
 
-In a newly provisioned EKS cluster, establishing a Fargate profile specifically for Karpenter is recommended. After installing Karpenter within this isolated environment, core Kubernetes components like kubelet and application pods can be deployed. Karpenter will then dynamically provision the necessary EC2 worker nodes to accommodate these workloads, ensuring a clean separation of concerns and a reliable control plane
+In a newly provisioned EKS cluster, establishing a Fargate profile specifically for Karpenter is recommended. After installing Karpenter within this isolated environment, core Kubernetes components like kubelet and application pods can be deployed. Karpenter will then dynamically provision the necessary EC2 worker nodes to accommodate these workloads. Here are the main step to be done:
 
-1. Install Karpenter: Deploy Karpenter to your EKS cluster using Helm or kubectl.
+1. Install Karpenter: Deploy Karpenter to your EKS cluster (fargate profile) using Helm or kubectl.
 2. Configure IAM Permissions: Grant Karpenter the necessary IAM permissions to provision EC2 instances.
 3. Create a NodeClass and NodePools: Define the instance requirements for your workloads.
 4. Deploy Workloads: Deploy your Kubernetes workloads, and Karpenter will automatically provision the necessary nodes.
-5. Monitor: In case of problems, Monitor Karpenter's logs understand why is not able to create nodes. .
+5. Monitor: In case of problems, Monitor Karpenter's logs understand why is not able to create nodes.
 
-Example of nodePool and nodeClass (YAML). Notice that this is just an example and there are many more parameters that you can control. Please refer to official [karpenter](https://karpenter.sh/docs/) documentation for a full overview. 
+Here is an example of nodePool and nodeClass (YAML). Notice that this is just an example and there are many more parameters that you can control. Please refer to official [karpenter](https://karpenter.sh/docs/) documentation for a full overview. 
 
 ```yaml
 apiVersion: karpenter.sh/v1
