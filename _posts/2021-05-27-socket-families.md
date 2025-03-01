@@ -4,14 +4,13 @@ title: 'Socket Families'
 date: '2021-05-27T16:47:59+01:00'
 author: Lord_evron
 layout: post
-guid: 'http://localhost:8080/?p=849'
 permalink: /2021/05/27/socket-families/
 categories:
     - Technical
 tags:
-    - programming
-    - python
-    - socket
+    - technology
+    - linux
+    - code
 ---
 
 This article clarifies some aspects of sockets in Python, a topic that can be confusing, 
