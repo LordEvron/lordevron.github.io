@@ -16,7 +16,7 @@ tags:
 ---
 
 In my [previous article](/2021/05/27/socket-families/), I introduced some basic examples of socket programming in Python. Now, we'll dive deeper into practical applications, specifically focusing on capturing and analyzing network traffic using raw sockets. 
-This article will demonstrate how to capture packets at different layers of the network stack using [these 2 example scripts](https://github.com/LordEvron/PythonRawSocketSniffers), providing hands-on examples of how to dissect and understand the data flowing through your network. 
+This article will demonstrate how to capture packets at different layers of the network stack using [these 2 example scripts](https://github.com/LordEvron/PythonRawSocketSniffers), providing hands-on examples of how to parse/decode and understand the data packets on your network. 
 
 
 To better understand these examples, it's important to briefly touch upon the OSI (Open Systems Interconnection) model. 
@@ -116,5 +116,7 @@ Therefore, `AF_PACKET.py` provides a more comprehensive view of network traffic,
 
 
 By understanding these two approaches, you can gain a deeper view of network communication and develop powerful knowledge for network analysis.
+Remember that these scripts are for foundational understanding of packet capture and parsing.  
+Tools like Wireshark offer a more robust and user-friendly experience for in-depth network analysis.
 As always, I hope this article was useful!
 
