@@ -1,6 +1,6 @@
 ---
 id: 250207
-title: 'Bypassing ISP Surveillance: DNS and Encrypted Hello'
+title: 'Bypassing ISP Surveillance: DoT and Encrypted Client Hello'
 date: '2025-03-14'
 author: Lord_evron
 layout: post
@@ -23,9 +23,9 @@ Before we attempt to mitigate the issue, we need to understand where the problem
 
 Every time you type a website address into your browser, like 'example.com,' your computer needs to find its numerical 'address' on the internet, known as an IP address. This is where the Domain Name System (DNS) comes into play. Your computer sends a request to a DNS server, essentially asking, 'What's the IP address for example.com?' Traditionally, this request is sent in plain text. This is crucial because your Internet Service Provider (ISP) acts as the gateway to the internet. They handle all your internet traffic. As a result, they can see every DNS request you make, meaning they can see every website you're trying to visit, simpling by looking at those dns packets.
 
-### The TLS Handshake and Revealing the Website
+### The TLS Handshake and SNI
 
-Once the DNS server provides the website's IP address, your computer attempts to establish a secure connection with the website's server. Assuming that the site is using https, the process of establishing this secure connection is called the TLS handshake. During this handshake, your computer and the website's server exchange information to agree on a secure method of communication, how to encrypt the data etc. However, in the handshake process, a piece of information called the `Server Name Indication (SNI)` is sent in plain text in the **Client Hello message**. The SNI primary purpose is to allow a server to host multiple TLS certificates on a single IP address. This is crucial for web hosting providers who host numerous websites on their servers. Indeed, immagine that you have a server with *pablo.com* and *pedro.com* websites and a client (user) want to start the connection with one of them. The server must know which site the client want to visit, so it can present the correct certificate for the right website. however client cannot encrypt the traffic yet, because it does not have a certificate yet. So this is why the client during the handshake, add a SNI field, where it states that want to visit *pablo.com*. The server now can return the *pablo.com* certificate that contains encryption keys, and the client that finally use those key to encrypt traffic. After that the connection is point to point encrypted.
+Once the DNS server provides the website's IP address, your computer attempts to establish a secure connection with the website's server. Assuming that the site is using https, the process of establishing this secure connection is called the TLS handshake. During this handshake, your computer and the website's server exchange information to agree on a secure method of communication, how to encrypt the data etc. However, in the handshake process, a piece of information called the `Server Name Indication (SNI)` is sent in plain text in the **Client Hello message**. The SNI primary purpose is to allow a server to host multiple TLS certificates on a single IP address. This is crucial for web hosting providers who host numerous websites on their servers. Indeed, immagine that you have a server with *pablo.com* and *pedro.com* websites and a client (user) want to start the connection with one of them. The server must know which site the client want to visit, so it can present the correct certificate for the right website. However, client cannot encrypt the traffic yet, because it does not have a certificate (key) to use. So this is why the client during the handshake, add a SNI field, where it states that want to visit *pablo.com*. The server now can return the *pablo.com* certificate that contains encryption keys, and the client that finally use those key to encrypt traffic. After that the connection is point to point encrypted.
 Here is an example of the client hello message that I captured using wireshark. 
 
  <div style="width: 100%; max-width: 700px; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
@@ -141,28 +141,26 @@ dig type65 abcnews.al
 The second response will have an ech public key associated like this:
 
 
-`ipv4hint=104.21.36.186,172.67.94.23 ech=AEX+DQBB6wAgACCu5Zf/prTuoMBHkBPIY0FTjXBoA6rmKxGomns9....`
+`ipv4hint=104.21.36.186, 172.67.94.23 ech=AEX+DQB....`
 
 
-# Why is that usefull?
+# Why is that useful?
 Some readers, may still think that this is a bit pointless, since the ISP still route all our traffic to the final destination.
 So, Even with the implementation of Encrypted Client Hello (ECH) and DNS over HTTPS (DoH), a fundamental limitation remains: 
 your Internet Service Provider (ISP) still has visibility into the final server you are connecting to. 
-This is because your ISP act like a post office; they see the destination address (IP) on every letter you send.
+This is because your ISP act like a post office; they see the destination address (IP) on every message you send.
 
 
 But here's why ECH and DoH are still really useful: many websites use something called a reverse proxy, like *Cloudflare*. 
 These proxies are a big part of how the internet works today. They sit between you and the websites you visit. 
 They make websites faster, safer, and handle lots of traffic. And most importantly, *these proxies let many websites share the same internet address*.
 
-So, when you connect to a website that utilizes a reverse proxy, your ISP only observes a connection to the proxy's IP, 
-not the specific website you are accessing. This is where ECH plays a key role. 
-While your ISP can still see the connection to the reverse proxy itself, 
-ECH effectively hides the precise website you are visiting within that network. By encrypting the ClientHello message, 
-which includes the Server Name Indication (SNI), ECH prevents your ISP from determining which of the numerous websites behind the proxy you are accessing. 
-This is particularly true in today's web environment, where a vast number of websites rely on reverse proxies. 
+So, when you connect to a website that utilizes a reverse proxy, your ISP only can see the connection to the proxy's IP, 
+not the specific website you are accessing. And this is where ECH plays a key role. By encrypting the ClientHello message, 
+which includes the Server Name Indication (SNI), ECH prevents your ISP from knowing which of the numerous websites behind the proxy you are accessing. 
+This is particularly true in today's web environment, where a vast number of websites rely on Content Delivery Network (CDN). 
 Without ECH, (and even with encrypted DNS), your browsing activity within these shared infrastructures would still be visible. 
-ECH makes sure that your browsing privacy is maintained by hiding your final destination, even when the ISP has visibility of the 
+ECH makes sure that you maintain the browsing privacy by hiding your final destination, even when the ISP has visibility of the 
 connection to the proxy's server.
 
 
@@ -171,8 +169,7 @@ connection to the proxy's server.
 In conclusion, employing DNS over HTTPS/TLS (DoH/DoT) and Encrypted Client Hello (ECH) significantly improve online privacy 
 by hiding your browsing activity from your Internet Service Provider (ISP). DoH/DoT encrypts your DNS queries, 
 preventing your ISP from seeing the websites you're looking up, while ECH hides the specific website you're connecting to within a 
-shared server environment, like those using reverse proxies. These technologies are especially valuable in today's web, 
-where reverse proxies are prevalent, effectively obscuring your browsing destinations. 
+shared server environment, like those using reverse proxies or CDN.
 However, it's important to understand that these methods do not provide complete anonymity (for example when a server has only one site hosted) 
 or when an attacker prevents you from fetching ech key from dns server (forcing the handshake the fallback to standard unencrypted client hello). 
 
