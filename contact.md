@@ -13,7 +13,7 @@ You can contact me at: <span style="color: grey;">  **Petricca**(doot)**Luca**(a
 Here my public PGP key [0x610BD011](https://lukemainframe.top/assets/0x610BD011.asc):
 
 <pre style="font-size: 10pt; color: green; overflow-x: auto; max-width: 520px">
-—–BEGIN PGP PUBLIC KEY BLOCK—– 
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQENBFhFva4BCACjLciPU5/fBj7srcWsrvp19fkwYDDS3ebcuywc92s5mJ3WvOr2
 zystfH6Cy4QqR0Uc7H5F1N0aIQWJWUL/YdG00/SOkvjZr77txbpJmImUP/0xH1pj
@@ -53,5 +53,5 @@ q6VIwGrQLfitLceF0F0ncx+NUudnlMB5EWFX11KISY1PrQGBIF0Qv0zoDK6alJvt
 /AFbtB2zK3X5LvlXyHsqN6HaoGgunoqv5PgI1dAWuwqY9u/A0hrcmYkbIWv+CtUD
 tufMIBDybIGluEpO6l7MNZGT+7J5Z+Zg8g==
 =tlrR
-—–END PGP PUBLIC KEY BLOCK—–
+-----END PGP PUBLIC KEY BLOCK-----
 </pre>
