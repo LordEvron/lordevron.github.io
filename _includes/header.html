@@ -1,0 +1,28 @@
+{%- if page.layout == "post" -%}
+  {%- assign cwd = "~/blog" -%}
+{%- elsif page.url == "/" or page.url == "/index.html" -%}
+  {%- assign cwd = "~" -%}
+{%- else -%}
+  {%- assign cwd = page.url | remove: ".html" | remove: "/_" | remove_first: "/" | split: "/" | join: "/" | prepend: "~/" -%}
+{%- endif -%}
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+      <span class="brand-user">luke@mainframe</span><span class="brand-sep">:</span><span class="brand-path">{{ cwd }}</span><span class="brand-dollar">$</span><span class="cursor" aria-hidden="true"></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      {%- assign nav_titles = "Home,Blog Articles,Publications,About Me,Contacts" | split: "," -%}
+      {%- assign nav_labels = "home,articles,publications,about,contact" | split: "," -%}
+      {%- for title in nav_titles -%}
+        {%- assign nav_page = site.pages | where: "title", title | first -%}
+        {%- if nav_page -%}
+          {%- assign label = nav_labels[forloop.index0] -%}
+          {%- assign active = false -%}
+          {%- if page.url == nav_page.url -%}{%- assign active = true -%}{%- endif -%}
+          {%- if label == "articles" and page.layout == "post" -%}{%- assign active = true -%}{%- endif -%}
+          <a href="{{ nav_page.url | relative_url }}"{% if active %} class="active" aria-current="page"{% endif %}>{{ label }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+  </div>
+</header>
