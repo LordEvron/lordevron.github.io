@@ -1,0 +1,14 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-eof">EOF<span class="cursor" aria-hidden="true"></span></div>
+    <div class="footer-links">
+      <a href="{{ '/feed.xml' | relative_url }}">rss</a>
+      {%- if site.github_username %}
+      <a href="https://github.com/{{ site.github_username }}">github</a>
+      {%- endif %}
+      <a href="{{ '/assets/0x610BD011.asc' | relative_url }}">pgp:0x610BD011</a>
+    </div>
+    <div class="footer-copy">&copy; 2018&ndash;{{ site.time | date: "%Y" }} {{ site.title }} &middot; <em>{{ site.description }}</em></div>
+  </div>
+</footer>
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>

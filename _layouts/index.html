@@ -1,85 +1,50 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% include head-custom.html %}
-
-{% seo %}
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <a id="a-title" href="{{ '/' | relative_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-        <section id="pages">
-          {%- assign homepage = site.pages | where: "title", "Home" | first -%}
-          <a href="{{ homepage.url }}">{{homepage.title | escape}}</a> &nbsp
-          {%- assign article = site.pages | where: "title", "Blog Articles" | first -%}
-          <a href="{{ article.url }}">{{article.title | escape}}</a> &nbsp
-          {%- assign publication = site.pages | where: "title", "Publications" | first -%}
-          <a href="{{ publication.url }}">{{publication.title | escape}}</a> &nbsp
-          {%- assign aboutme = site.pages | where: "title", "About Me" | first -%}
-          <a href="{{ aboutme.url }}">{{aboutme.title | escape}}</a> &nbsp
-          {%- assign contact = site.pages | where: "title", "Contacts" | first -%}
-          <a href="{{ contact.url }}">{{contact.title | escape}}</a> &nbsp
-        </section>
-
-      </div>
-    </header>
-
-    <div class="container">
-      <section id="main_content">
-        {{ content }}
-      </section>
+---
+layout: default
+---
+<section class="hero">
+  <div class="term">
+    <div class="term-bar"><span></span><span></span><span></span><em>bash &mdash; 80&times;24</em></div>
+    <div class="term-body">
+      <p><span class="cmd-prompt">$</span> whoami</p>
+      <p class="hero-title">{{ site.title }}</p>
+      <p><span class="cmd-prompt">$</span> echo $MOTTO</p>
+      <p class="hero-motto">{{ site.description }}</p>
+      <p><span class="cmd-prompt">$</span> ls ~/interests</p>
+      <p class="hero-ls"><span>physics/</span> <span>silicon/</span> <span>linux/</span> <span>secops/</span> <span>code/</span> <span>psychology/</span></p>
+      <p><span class="cmd-prompt">$</span><span class="cursor" aria-hidden="true"></span></p>
     </div>
-<hr>
-    <div class="container">
+  </div>
+</section>
 
-                <h3 class="lastest-post">Latest Blog Posts: </h3>
-        <ul class="post-list">
-          {% assign posts = site.posts | slice: 0, 3 %}
-          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          {%- for post in posts -%}
-          <li>
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
-            <h3>
-              <a class="post-link" href="{{ post.url | relative_url }}">
-                {{ post.title | escape }}
-              </a>
-            </h3>
-              {{ post.excerpt }}
-          </li>
-          {%- endfor -%}
-        </ul>
+<section class="home-intro">
+  {{ content }}
+</section>
 
-    </div>
+<section class="home-latest">
+  <h2 class="section-title">latest</h2>
+  <div class="cards">
+    {%- for post in site.posts limit: 3 %}
+    <a class="card" href="{{ post.url | relative_url }}">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+      <h3>{{ post.title | escape }}</h3>
+      <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 170 }}</p>
+      <span class="card-more">read &gt;</span>
+    </a>
+    {%- endfor %}
+  </div>
+  {%- assign articles_page = site.pages | where: "title", "Blog Articles" | first %}
+  <p class="more-link"><a href="{{ articles_page.url | relative_url }}">ls -la ~/blog &gt;</a></p>
+</section>
 
-    <hr>
-
-<div class="container">
-  <h3>Available Tags</h3>
-  {% assign tag_pages = site.pages | where_exp: "item", "item.path contains 'tags/'" %}
-  {% for page in tag_pages %}
-    {% if page.name contains '.html' %}
-      {% assign tag_name = page.name | remove: '.html' %}
-      <a href="{{ site.baseurl }}{{ page.url }}">{{ tag_name }}</a>{% unless forloop.last %}, {% endunless %}
-    {% endif %}
-  {% endfor %}
-</div>
-
-    <div class="container" style="padding: 30px 0;" >
-      <section id="downloads">
-        {% if site.show_downloads %}
-          <a href="{{ site.github.zip_url }}" class="btn">Download as .zip</a>
-          <a href="{{ site.github.tar_url }}" class="btn">Download as .tar.gz</a>
-        {% endif %}
-        <a href="{{ site.github.repository_url }}" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-      </section>
-    </div>
-  </body>
-</html>
+<section class="home-tags">
+  <h2 class="section-title">tags</h2>
+  <div class="tag-list">
+    {%- assign tag_pages = site.pages | where_exp: "item", "item.path contains '_tags/'" | sort: "name" %}
+    {%- for tp in tag_pages %}
+      {%- if tp.name contains '.html' %}
+        {%- assign tag_name = tp.name | remove: '.html' %}
+        <a class="tag" href="{{ tp.url | relative_url }}">#{{ tag_name }} <span class="tag-count">{{ site.tags[tag_name].size | default: 0 }}</span></a>
+      {%- endif %}
+    {%- endfor %}
+  </div>
+</section>

@@ -3,24 +3,16 @@ permalink: /404.html
 layout: default
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+<div class="cmd"><span class="cmd-prompt">$</span> cd {{ page.url }}</div>
+<pre class="err-404">bash: cd: no such file or directory
 
-<div class="container">
-    <h1>Houston, we have a 404!</h1>
-  <h1>I've a feeling we're not in Kansas anymore.</h1>
+  _  _    ___   _  _
+ | || |  / _ \ | || |
+ | || |_| | | || || |_
+ |__   _| |_| ||__   _|
+    |_|  \___/    |_|
+</pre>
 
-  <p><strong> Look like you're lost in the matrix! </strong></p>
-  <p><strong>Have you tried turning it off and on again?</strong></p>
-</div>
+<h1>Houston, we have a 404!</h1>
+<p>I've a feeling we're not in Kansas anymore. Looks like you're lost in the matrix.</p>
+<p>Have you tried turning it off and on again? Or <a href="{{ '/' | relative_url }}">cd ~</a>.</p>
