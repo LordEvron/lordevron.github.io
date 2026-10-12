@@ -20,6 +20,23 @@ Linux internals, Kubernetes and security. Every now and then I wander off into *
 
 Looking for something specific? Use the [tags](#tags) at the bottom of the page, or `grep` the full [article list](/articles.html).
 
-Hope you find something cool here, that spark your curiosity and learn something new.
+### Sponsor the Curiosity
+I hope you find something fun or learn something new here! 
+This site has No ads, no trackers, zero paywalls. 
+If you loved what you read, feel free to drop a tip below, otherwise just enjoy the visit!
+
+<div class="wallets" id="donate">
+  <div class="wallet">
+    <span class="wallet-coin">BTC</span>
+    <a class="wallet-addr" href="bitcoin:bc1q373drssuk35e6wxgkpg0wdeafh8mh3exzs8n2l" title="Open in wallet">bc1q373drssuk35e6wxgkpg0wdeafh8mh3exzs8n2l</a>
+    <button type="button" class="wallet-copy" data-copy="bc1q373drssuk35e6wxgkpg0wdeafh8mh3exzs8n2l">copy</button>
+  </div>
+  <div class="wallet">
+    <span class="wallet-coin">ETH</span>
+    <a class="wallet-addr" href="ethereum:0x8CC1C8BD7E1F09CE5BaD7B562913dE9666DD9981" title="Open in wallet">0x8CC1C8BD7E1F09CE5BaD7B562913dE9666DD9981</a>
+    <button type="button" class="wallet-copy" data-copy="0x8CC1C8BD7E1F09CE5BaD7B562913dE9666DD9981">copy</button>
+  </div>
+  <p class="donate-note">Always double-check the address after pasting.</p>
+</div>
 
 > *“Light can only be understood with the wisdom of darkness.”*

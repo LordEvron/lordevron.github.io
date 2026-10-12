@@ -615,6 +615,41 @@ a.tag:hover .tag-count { color: var(--bg); }
 .pgp-key[open] summary::after { content: " [-]"; }
 .pgp-key pre { font-size: 12px; color: var(--green); }
 
+/* ---------- donate ---------- */
+
+.wallets { display: grid; gap: 10px; margin-bottom: 1.5em; }
+.wallet {
+  display: grid;
+  grid-template-columns: 3.2em 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.wallet-coin { color: var(--amber); font-weight: 800; font-size: 13px; }
+.wallet-addr {
+  border: 0;
+  color: var(--fg);
+  font-size: 13px;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+.wallet-addr:hover { color: var(--green); background: none; }
+.wallet-copy {
+  font: inherit;
+  font-size: 12px;
+  color: var(--fg-dim);
+  background: none;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  padding: 1px 10px;
+  cursor: pointer;
+}
+.wallet-copy:hover { color: var(--bg); background: var(--green); border-color: var(--green); }
+.donate-note { font-size: 12px; color: var(--fg-faint); margin: 0; }
+
 /* ---------- footer ---------- */
 
 .site-footer {
@@ -662,6 +697,8 @@ a.tag:hover .tag-count { color: var(--bg); }
   .neofetch-info > div { flex-wrap: wrap; }
   .finger { padding: 14px; }
   .finger > div { grid-template-columns: 1fr; }
+  .wallet { grid-template-columns: 1fr auto; }
+  .wallet-addr { grid-column: 1 / -1; grid-row: 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {

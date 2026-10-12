@@ -48,3 +48,14 @@ if (filter) {
     empty.hidden = shown !== 0;
   });
 }
+
+// Wallet address copy buttons
+document.querySelectorAll(".wallet-copy").forEach(function (btn) {
+  if (!navigator.clipboard) { btn.hidden = true; return; }
+  btn.addEventListener("click", function () {
+    navigator.clipboard.writeText(btn.getAttribute("data-copy")).then(function () {
+      btn.textContent = "copied!";
+      setTimeout(function () { btn.textContent = "copy"; }, 1500);
+    });
+  });
+});
