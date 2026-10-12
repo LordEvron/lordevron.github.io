@@ -1,0 +1,44 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Mobile: keep wide content from making the whole page scroll sideways */
+
+html, body {
+  overflow-x: hidden;
+}
+
+#main_content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Wide tables scroll inside their own box instead of stretching the page */
+#main_content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Code blocks / ASCII diagrams already scroll; make sure they never exceed the column */
+#main_content pre,
+#main_content img,
+#main_content iframe {
+  max-width: 100%;
+}
+
+#main_content img {
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  pre {
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 4px 6px;
+  }
+}
