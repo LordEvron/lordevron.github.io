@@ -36,7 +36,7 @@ layout: default
   <p class="more-link"><a href="{{ articles_page.url | relative_url }}">ls -la ~/blog &gt;</a></p>
 </section>
 
-<section class="home-tags">
+<section class="home-tags" id="tags">
   <h2 class="section-title">tags</h2>
   <div class="tag-list">
     {%- assign tag_pages = site.pages | where_exp: "item", "item.path contains '_tags/'" | sort: "name" %}
