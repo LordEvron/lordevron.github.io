@@ -7,43 +7,90 @@ layout: default
 image: /assets/images/2018/01/programmer-1-e1516723517503.jpg
 ---
 
-<div style="width: 100%; margin: 2rem auto; padding: 0 10px; box-sizing: border-box;">
-  <img src="{{ site.baseurl }}/assets/images/2018/01/programmer.jpg" 
-       alt="programmer" 
-       style="width: 100%; height: auto; display: block;">
+<div class="cmd"><span class="cmd-prompt">$</span> neofetch</div>
+
+<div class="neofetch">
+<pre class="neofetch-logo" aria-hidden="true">
+    ┌──┬──┬──┬──┐
+  ──┤          ├──
+  ──┤  ▓▓▓▓▓▓  ├──
+  ──┤  ▓ LM ▓  ├──
+  ──┤  ▓▓▓▓▓▓  ├──
+  ──┤          ├──
+    └──┴──┴──┴──┘
+</pre>
+<dl class="neofetch-info">
+  <div class="neofetch-title"><span>lord_evron</span>@<span>mainframe</span></div>
+  <div class="neofetch-rule"></div>
+  <div><dt>Name</dt><dd>***REDACTED***</dd></div>
+  <div><dt>Firmware</dt><dd>PhD Nano Technologies, MSc Electronics Engineering</dd></div>
+  <div><dt>Role</dt><dd>Programmer, data scientist, architect, SecOps Ninja</dd></div>
+  <div><dt>Shell</dt><dd>bash (who needs fancy interfaces?)</dd></div>
+  <div><dt>Languages</dt><dd>C, C++, Qt, Python, Terraform</dd></div>
+  <div><dt>Also speaks</dt><dd>JavaScript, Go, Assembly</dd></div>
+  <div><dt>Clouds</dt><dd>AWS, Google Cloud, Azure, DigitalOcean</dd></div>
+  <div><dt>Hardware</dt><dd>STM32, MCU, Raspberry Pi and a lot of soldering</dd></div>
+  <div><dt>Mission</dt><dd>Bend silicon and software to my will</dd></div>
+  <div class="neofetch-colors"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</dl>
 </div>
 
-I have a PhD in Nano Technologies and an MSc in Electronics Engineering, which basically means I spent years mastering 
-the nanoverse only to end up playing around with ones and zeros. 
-These days, I’m a programmer, data scientist, architect, and, most recently, a SecOps troubleshooter (or ninja, if you prefer).
+<figure class="evolution">
+  <img src="{{ site.baseurl }}/assets/images/2018/01/programmer.jpg" alt="Evolution of man, from ape to a programmer sitting at a computer">
+  <figcaption>$ git log --oneline human.evolution | tail -1 &rarr; <em>HEAD: sat down at a terminal, never got up</em></figcaption>
+</figure>
 
-My real goal? Bending silicon and software to my will. Whether it's low-level hardware hacking or high-level system design, 
-I enjoy making machines do what they were meant to do (or things they probably weren’t).
+## whoami
 
-My digital toolbox:
+I have a PhD in Nano Technologies and an MSc in Electronics Engineering. I spent years moving individual atoms around,
+then discovered that ones and zeros are far easier to push.
+These days I'm a programmer, data scientist and architect, and lately the person who gets woken up when production is on fire (SecOps).
 
-* Hardware:
-    * Familiar with various microcontroller families (STM32 is my go to)
-    * AWS Cloud wizardry (yes, I know it’s not exactly "hardware," but close enough)
-    * I also have experience with other clouds: Google Cloud, Azure, Digital Ocean, because why stop at just one?
-    * Comfortable with Arduino and Raspberry Pi...Especially when making them do things they probably shouldn’t.
-<br><br>
-* Software:
-    * Bilingual in Windows and Linux, because knowing both is a survival skill.
-    * Code polyglot: C, C++, Qt, Python, Terraform
-    * Speaks fluent Linux (because why fight the machine when you can work with it?)
-    * Occasionally using JavaScript, Go, and Assembly (because understanding what machine says in their native language is important!)
-<br><br>
-* Not a fan of fancy interfaces (who needs them when you got a shell?)
-<br><br>
-* AI & Data:
-    * Trained machine learning models from even before tensorflow era!
-    * Worked with Image recognition - to make computers see the world
-<br><br>
-* Research:
-    * Published a  [paper](https://onlinelibrary.wiley.com/doi/10.1155/2011/214549) with 218+ citations; basically, academic street cred
-    * Check out my "useless" papers: <a href="{{ site.baseurl}}/publications.html">publication list</a>
+What drives me is understanding a system all the way down: from the transistor to the kernel to the cluster.
+Once I know how something works, I can make it do what it was designed for, or, more fun, what it wasn't designed for!
 
-In short: I break things, build things, and make machines do my bidding. Because knowledge is power and occasionally, chaos.
-<br><br>
+## ls ~/toolbox
 
+<div class="toolbox">
+  <section class="toolbox-item">
+    <h3>hardware/</h3>
+    <ul>
+      <li>Various microcontroller families (STM32 is my go-to)</li>
+      <li>If it has silicon and a debug port, I can probably make it run something its datasheet never imagined</li>
+    </ul>
+  </section>
+  <section class="toolbox-item">
+    <h3>cloud/</h3>
+    <ul>
+      <li>AWS daily: someone else's hardware, my problem</li>
+      <li>Google Cloud, Azure, DigitalOcean: different consoles, same 3am outages</li>
+    </ul>
+  </section>
+  <section class="toolbox-item">
+    <h3>software/</h3>
+    <ul>
+      <li>Fluent in Linux, conversational in Windows</li>
+      <li>Code polyglot: C, C++, Qt, Python, Terraform</li>
+      <li>JavaScript and Go when needed, Assembly because understanding machines in their native language matter</li>
+    </ul>
+  </section>
+  <section class="toolbox-item">
+    <h3>ai-and-data/</h3>
+    <ul>
+      <li>Training machine learning models since before the TensorFlow era</li>
+      <li>Computer vision, back when making a computer recognise a cat was still impressive</li>
+    </ul>
+  </section>
+  <section class="toolbox-item">
+    <h3>research/</h3>
+    <ul>
+      <li>A <a href="https://onlinelibrary.wiley.com/doi/10.1155/2011/214549">paper</a> with 218+ citations, basically, academic street cred</li>
+      <li>The less famous ones live in the <a href="{{ site.baseurl }}/publications.html">publication list</a></li>
+    </ul>
+  </section>
+</div>
+
+## tl;dr
+
+I take machines apart to see how they think, then put them back together slightly better, or at least slightly more interesting. 
+Knowledge is power, but root access is a close second.

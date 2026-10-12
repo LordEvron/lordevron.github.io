@@ -7,12 +7,32 @@ layout: default
 image: /assets/images/2018/02/contact.jpg
 ---
 
-Found anything interesting or worth to discuss?
+<div class="cmd"><span class="cmd-prompt">$</span> finger lord_evron@mainframe</div>
 
-You can contact me at: <span style="color: grey;">  **Petricca**(doot)**Luca**(aat) **gmail.com** </span>  
-Here my public PGP key [0x610BD011](https://lukemainframe.top/assets/0x610BD011.asc):
+<div class="finger">
+  <div><dt>Login</dt><dd>lord_evron</dd></div>
+  <div><dt>Mail</dt><dd><span class="obf">petricca</span>(doot)<span class="obf">luca</span>(aat)<span class="obf">gmail</span>(d0t)<span class="obf">com</span></dd></div>
+  <div><dt>GitHub</dt><dd><a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></dd></div>
+  <div><dt>PGP key</dt><dd><a href="{{ '/assets/0x610BD011.asc' | relative_url }}">0x610BD011</a> (RSA 2048)</dd></div>
+  <div><dt>Fingerprint</dt><dd class="fpr">FBE4 B902 1588 6ED5 188F &nbsp;C0C2 6BF7 0378 610B D011</dd></div>
+  <div><dt>Plan</dt><dd>Found something interesting, spotted a bug in an article, or want to argue about physics? Drop me a line.</dd></div>
+</div>
 
-<pre style="font-size: 10pt; color: green; overflow-x: auto; max-width: 520px">
+Bots are welcome to read the site, but the address above is for humans.
+
+## Encrypt it
+
+Anything sensitive? Encrypt it with my public key. Import it in one line:
+
+```bash
+curl -s {{ site.url }}/assets/0x610BD011.asc | gpg --import
+```
+
+Then verify the fingerprint matches the one above, and that the downloaded key matches the copy below, before you trust it.
+
+<details class="pgp-key">
+<summary>cat 0x610BD011.asc</summary>
+<pre>
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQENBFhFva4BCACjLciPU5/fBj7srcWsrvp19fkwYDDS3ebcuywc92s5mJ3WvOr2
@@ -55,3 +75,4 @@ tufMIBDybIGluEpO6l7MNZGT+7J5Z+Zg8g==
 =tlrR
 -----END PGP PUBLIC KEY BLOCK-----
 </pre>
+</details>
