@@ -12,7 +12,7 @@ This is my logbook: a place where I take things apart, figure out how they work,
 **physics** (astro and quantum, the weirder the better) and **technology**, all the way from silicon and chip design up to
 Linux internals, Kubernetes and security. Every now and then I wander off into **psychology** too.
 
-**New here?** Try one of these to get a feel for the place:
+**New here?** Try one of these:
 
 - [Universe 25: the fall of the utopian dream](/2018/04/25/universe-25-the-fall-of-the-utopian-dream/)
 - [PC boot process: kernel and initramfs](/2022/02/14/pc-boot-process-kernel-and-initramfs/)
