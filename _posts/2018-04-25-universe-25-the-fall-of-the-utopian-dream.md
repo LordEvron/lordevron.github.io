@@ -22,7 +22,7 @@ The environment was meticulously maintained: the cage was cleaned and sterilized
 Calhoun essentially created an ideal, utopian environment for the mice.
 
 
-On day 0, he introduced four healthy, genetically normal mice (two male and two female) into the enclosure. 
+On day 0, he introduced four healthy, genetically perfect mice (two male and two female) into the enclosure. 
 After a 104-day acclimation period, the mice began to reproduce.  Under these optimal conditions, the population doubled approximately every 55 days.
 This rapid population growth continued until around day 315, when the population reached approximately 620.  Despite ample resources, 
 the effects of high population density began to manifest, and behavioral anomalies emerged. 

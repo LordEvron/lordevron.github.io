@@ -28,9 +28,9 @@ while maintaining some backward compatibility.  Figure 1 illustrates the GPT str
   </div>
 </div>
 
-GPT uses Logical Block Addressing (LBA), a modern method for addressing hard drive sectors, instead of the older Cylinder, Head, Sector (CHS) used by MBR. 
+GPT uses Logical Block Addressing (LBA) only, dropping the old Cylinder, Head, Sector (CHS) values that MBR still carries alongside its 32-bit LBAs, and it extends LBAs to 64 bits. 
 LBAs are typically 512 bytes, similar to CHS sectors.  GPT allocates more space to the partition table itself. 
-It reserves 33 LBAs at the beginning and 32 at the end of the disk (secondary GPT). This secondary GPT is a backup in case the primary GPT is corrupted. 
+It reserves 34 LBAs at the beginning and 33 at the end of the disk (secondary GPT). This secondary GPT is a backup in case the primary GPT is corrupted. 
 The first LBA (LBA0) is the Protective MBR.  This is a safeguard for older MBR tools that aren't GPT-aware.  
 It marks the entire GPT as a single `eeh` partition, with an unknown file system, preventing these tools from accidentally damaging the GPT.
 LBA1 contains the GPT header, including information like the disk UID, UEFI signature, CRCs, and UEFI version. 
@@ -61,33 +61,31 @@ Then, it checks EFI variables stored in NVRAM. These variables store user/OS-spe
 BootCurrent: 0000
 Timeout: 5 seconds
 BootOrder: 0001,0000
-Boot0000: Ubuntu HD(2,c8800,96000,cabda21a-3435-4869-93bd-9f550b7ea29a)File(\EFI\Ubuntu\grubx64.efi)
+Boot0000: Ubuntu HD(2,c8800,96000,cabda21a-3435-4869-93bd-9f550b7ea29a)File(\EFI\Ubuntu\shimx64.efi)
 Boot0001: Windows Boot Manager HD(2,c8800,96000,cabda21a-3435-4869-93bd-9f550b7ea29a)File(\EFI\Microsoft\Boot\bootmgfw.efi)
 ```
 UEFI looks for an EFI System Partition (ESP), typically formatted as FAT32 and around 300-500MB in size. 
 The ESP stores bootloaders for all installed operating systems. For example:
 
 ```
-\# tree /boot/efi/EFI  
-/boot/efi/EFI  
-├── Boot  
-│ ├── bootx64.efi \[The default bootloader\]  
-│ ├── bootx64.OEM \[Backup of same as delivered\]  
-├  
-├── ubuntu  
-│ └── grubx64.efi  
-├  
-├── Microsoft  
-│ └── Boot  
-│ ├── bootmgfw.efi \[The standard Win8 bootloader\]  
-│ ├── bootmgr.efi
-
+# tree /boot/efi/EFI
+/boot/efi/EFI
+├── Boot
+│   ├── bootx64.efi    [The default bootloader]
+│   └── bootx64.OEM    [Backup of same as delivered]
+├── ubuntu
+│   ├── shimx64.efi
+│   └── grubx64.efi
+└── Microsoft
+    └── Boot
+        ├── bootmgfw.efi   [The standard Win8 bootloader]
+        └── bootmgr.efi
 ```
 UEFI then launches the bootloader specified in the NVRAM variables. This is possible because UEFI understands the FAT32 file system.
 When a new OS is installed, it copies its bootloader to the ESP (e.g., `EFI/ubuntu/grubx64.efi`) and adds an entry to the NVRAM. 
 UEFI detects the new bootloader and can launch it. The bootloader then starts the OS.
-UEFI can recognize bootable DVDs or USB drives because they typically have an ESP. 
-While it's technically possible for UEFI to find bootloaders without NVRAM entries, it's not recommended. 
+UEFI can boot DVDs or USB drives even though they have no NVRAM entry: for removable media it looks for the default path `\EFI\BOOT\BOOTX64.EFI`, 
+and the same fallback path is used on a hard disk when no NVRAM entry works. 
 NVRAM entries pointing to non-existent bootloaders (e.g., after uninstalling an OS) are not a problem; 
 UEFI will simply skip them and proceed to the next boot entry. In case all fails, UEFI also includes a shell environment, 
 allowing for more advanced configuration and troubleshooting. This is also a feature of UEFI.
