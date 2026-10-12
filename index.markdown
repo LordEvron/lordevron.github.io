@@ -16,7 +16,7 @@ Linux internals, Kubernetes and security. Every now and then I wander off into *
 
 - [Universe 25: the fall of the utopian dream](/2018/04/25/universe-25-the-fall-of-the-utopian-dream/)
 - [PC boot process: kernel and initramfs](/2022/02/14/pc-boot-process-kernel-and-initramfs/)
-- [Can you draw a straight line on a curved surface?](/2018/02/19/can-you-draw-a-straight-line-on-a-curved-surface/)
+- [Inside the Xbox 360 RGH hack](/2026/05/22/xbox-360-rgh/)
 
 Looking for something specific? Use the [tags](#tags) at the bottom of the page, or `grep` the full [article list](/articles.html).
 
