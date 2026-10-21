@@ -20,12 +20,8 @@ the future is *open*: there is not yet a fact about what I will do tomorrow, and
 So before we can talk about free will, we need to answer a more basic question: **is the future real?** Does it "exist" right now,
 in the same way the chair I'm sitting on exists, or is it just a space of possibilities waiting to be filled?
 
-In this article we first look at the three main ways of answering that question. Then we look at what Einstein's relativity
-does to each of them, and why, if you take the physics seriously, the only picture left standing is a rather strange one:
-the **block universe**, where past, present and future are all equally there. Finally we come back to free will and see what is left of it.
-
-If you are new to relativity, my previous article on [space, time and the need for a new theory](/2018/10/22/space-time-and-the-needs-of-a-new-theory/)
-covers the basic ideas we'll use here: observers disagree on *when* things happen, and the space-time interval is what they agree on.
+In this article we first look at the three main ways of answering that question. Then we look at what Einstein's relativity 
+and finally we come back to free will and see what is left of it.
 
 ## Three Pictures of Time
 
