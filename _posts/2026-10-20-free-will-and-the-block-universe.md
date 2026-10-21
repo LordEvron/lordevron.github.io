@@ -170,7 +170,7 @@ he wrote to Besso's family:
 > *"... People like us, who believe in physics,
 > know that the distinction between past, present and future is only a stubbornly persistent illusion."*
 
-## Part 3: So, What About Free Will?
+## So, What About Free Will?
 
 If the future is already "there", is free will dead? Well it depends. A few things are worth separating.
 
