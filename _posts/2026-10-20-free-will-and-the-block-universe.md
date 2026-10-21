@@ -102,35 +102,15 @@ Now let's see what physics has to say about those different time pictures.
 
 Look carefully at the first two views. Both of them need a very specific ingredient: a single, universal **NOW**.
 Presentism needs it because it *is* reality. The growing block needs it because it is the edge where reality grows.
-In both cases, there must be an objective fact about which events in the universe are happening "right now".
+In both cases, there must be a single clock that synchronize the events in the universe are happening "right now".
 
 In Newton's world that is not a problem. Time is absolute: there is one clock for the whole universe, and "now" is the same
-for everybody, everywhere. But we know that Newton is wrong. One of the first and most solid results of special relativity
-is the **relativity of simultaneity**: two observers moving relative to each other **disagree** about which distant events are happening at the same time.
-And, crucially, neither of them is wrong. There is no experiment that can tell which one has the "true" now.
+for everybody, everywhere. But Newton is wrong. In Relativity, two observers moving relative to each other **disagree** about which
+events are happening at the same time. And, neither of them is wrong. Each observer has their own equally valid definition of “now,” 
+even though those definitions don’t match.
 
-The disagreement is tiny for everyday distances, but it grows with distance. The time shift between two observers' "now" at a
-distant place is approximately:
-
-**Δt ≈ v · d / c²**
-
-where `v` is their relative speed, `d` the distance to the event, and `c` the speed of light. Since `c²` is enormous,
-for anything on Earth `Δt` is completely negligible. But `d` can be enormous too.
-
-### The Andromeda paradox
-
-Roger Penrose made this famous with a nice thought experiment. Alice and Bob are walking past each other on a street.
-Alice walks one way, Bob walks the other, each at a normal walking speed of about 1.4 m/s, so their relative speed is about 2.8 m/s.
-Bob happens to walk toward the Andromeda galaxy, about **2.5 million light years** away (roughly `2.4 × 10²² m`).
-
-Plug the numbers in:
-
-```
-Δt ≈ v · d / c²
-   ≈ 2.8 m/s × 2.4 × 10²² m / (9 × 10¹⁶ m²/s²)
-   ≈ 7.5 × 10⁵ s
-   ≈ 8-9 days
-```
+The disagreement is tiny for everyday distances, but it grows with distance. This is shown in the famous Andromeda Paradox. 
+Alice and Bob are walking past each other on a street. Alice walks one way, Bob walks the other, each at a normal walking speed. 
 
 So at the moment they pass each other on the street, Alice's "now" and Bob's "now" in the Andromeda galaxy are more than **a week apart**.
 Imagine that in Andromeda an alien council is debating whether to launch an invasion fleet toward Earth.
